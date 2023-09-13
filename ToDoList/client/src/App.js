@@ -26,6 +26,12 @@ function App() {
         );
     };
 
+    const onToAddToDo = () => {
+        const title = prompt('New task ?');
+        const last = Number(todos.length + 1);
+        setTodos((state) => [{ _id: last, text: title, isCompleted: false }, ...state]);
+    };
+
     return (
         <div>
             {/* <!-- Navigation header --> */}
@@ -38,7 +44,9 @@ function App() {
                     <h1>Todo List</h1>
 
                     <div className='add-btn-container'>
-                        <button className='btn'>+ Add new Todo</button>
+                        <button className='btn' onClick={onToAddToDo}>
+                            + Add new Todo
+                        </button>
                     </div>
 
                     <div className='table-wrapper'>
