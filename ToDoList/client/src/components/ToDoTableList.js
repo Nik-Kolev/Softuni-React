@@ -1,3 +1,4 @@
+import ToDo from './ToDo';
 export default function ToDoTableList({ todos, toggleToDoStatus }) {
     return (
         <table className='table'>
@@ -10,17 +11,8 @@ export default function ToDoTableList({ todos, toggleToDoStatus }) {
             </thead>
             <tbody>
                 {todos.map((todo) => (
-                    <tr className={`todo ${todo.isCompleted ? 'is-completed' : ''}`.trim()}>
-                        <td>{todo.text}</td>
-                        <td>{todo.isCompleted ? 'Complete' : 'Not Complete'}</td>
-                        <td className='todo-action'>
-                            <button className='btn todo-btn' onClick={() => toggleToDoStatus(todo._id)}>
-                                Change status
-                            </button>
-                        </td>
-                    </tr>
+                    <ToDo key={todo._id} {...todo} toggleToDoStatus={toggleToDoStatus} />
                 ))}
-                {/* <!-- Todo item --> */}
             </tbody>
         </table>
     );
