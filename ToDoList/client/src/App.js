@@ -7,11 +7,15 @@ import ToDoTableList from './components/ToDoTableList';
 
 function App() {
     const [todos, setTodos] = useState([]);
+    const [isLoading, setIsloading] = useState(true);
 
     useEffect(() => {
         fetch('http://localhost:3030/jsonstore/todos')
             .then((res) => res.json())
-            .then((data) => setTodos(Object.values(data)));
+            .then((data) => {
+                setTodos(Object.values(data));
+                setIsloading(false);
+            });
     }, []);
     const toggleToDoStatus = (id) => {
         setTodos((state) =>
@@ -51,10 +55,9 @@ function App() {
 
                     <div className='table-wrapper'>
                         {/* <!-- Loading spinner - show the load spinner when fetching the data from the server--> */}
-                        {/* <Loading /> */}
+                        {isLoading ? <Loading /> : <ToDoTableList todos={todos} toggleToDoStatus={toggleToDoStatus} />}
 
                         {/* <!-- Todo list table --> */}
-                        <ToDoTableList todos={todos} toggleToDoStatus={toggleToDoStatus} />
                     </div>
                 </section>
             </main>
