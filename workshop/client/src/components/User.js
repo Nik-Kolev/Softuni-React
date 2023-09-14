@@ -1,7 +1,6 @@
-function convertDate(input) {
-    return input.toString().split('T')[0].replaceAll('-', '/');
-}
-export const User = ({ firstName, lastName, email, imageUrl, createdAt, phoneNumber, _id }) => {
+import { convertDate } from '../utils/dateUtils';
+
+export const User = ({ firstName, lastName, email, imageUrl, createdAt, phoneNumber, _id, onInfoClick }) => {
     return (
         <tr>
             <td>
@@ -48,7 +47,7 @@ export const User = ({ firstName, lastName, email, imageUrl, createdAt, phoneNum
                         ></path>
                     </svg>
                 </button>
-                <button className='btn info-btn' title='Info'>
+                <button className='btn info-btn' title='Info' onClick={() => onInfoClick(_id)}>
                     <svg
                         aria-hidden='true'
                         focusable='false'
