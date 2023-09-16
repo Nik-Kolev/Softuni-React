@@ -16,13 +16,26 @@ function App() {
                 console.log(err);
             });
     }, []);
+
+    const onUserCreateSubmit = async (e) => {
+        e.preventDefault();
+        const formData = new FormData(e.currentTarget);
+        const data = Object.fromEntries(formData);
+        const result = await userService.createUser(data);
+        setUsers((state) => [...state, result]);
+    };
+
+    const onUserDelete = async (userId) => {
+        await userService.remove(userId);
+        setUsers((state) => state.filter((x) => x._id !== userId));
+    };
     return (
         <>
             <Header />
             <main className='main'>
                 <section className='card users-container'>
                     <Search />
-                    <UserList users={users} />
+                    <UserList users={users} onUserCreateSubmit={onUserCreateSubmit} onUserDelete={onUserDelete} />
                 </section>
             </main>
             <Footer />

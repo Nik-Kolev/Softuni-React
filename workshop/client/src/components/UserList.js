@@ -2,9 +2,14 @@ import { User } from './User';
 import { useState } from 'react';
 import { UserDetails } from './UserDetails';
 import * as userService from '../services/userService';
+import { UserCreate } from './UserCreate';
+import { DeleteUser } from './DeleteUser';
 
-export const UserList = ({ users }) => {
+export const UserList = ({ users, onUserCreateSubmit, onUserDelete }) => {
     const [selectedUser, setSelectedUser] = useState(null);
+    const [showAddUser, setShowAddUser] = useState(false);
+    const [showDeleteUserModal, setShowDeleteUserModal] = useState(null);
+    const [showEditUser, setShowEditUser] = useState(null);
 
     const onInfoClick = async (userId) => {
         const user = await userService.getOne(userId);
@@ -14,11 +19,41 @@ export const UserList = ({ users }) => {
 
     const onInfoClose = () => {
         setSelectedUser(null);
+        setShowAddUser(false);
+        setShowDeleteUserModal(null);
+    };
+
+    const onUserAddClick = () => {
+        setShowAddUser(true);
+    };
+
+    const onUserCreateSubmitHandler = (e) => {
+        onUserCreateSubmit(e);
+        setShowAddUser(false);
+    };
+    // const onDeleteClick = (userId) => {
+    //     console.log(userId);
+    //     setShowDeleteUserModal(userId);
+    // };
+    // const onDeleteHandler = () => {
+    //     console.log('asd');
+    //     onDeleteUser(showDeleteUserModal);
+    //     onInfoClose();
+    // };
+
+    const onDeleteClick = (userId) => {
+        setShowDeleteUserModal(userId);
+    };
+
+    const onDeleteHandler = () => {
+        onUserDelete(showDeleteUserModal);
+        onInfoClose();
     };
     return (
         <>
             {selectedUser && <UserDetails {...selectedUser} onInfoClose={onInfoClose} />}
-
+            {showAddUser && <UserCreate onInfoClose={onInfoClose} onUserCreateSubmit={onUserCreateSubmitHandler} />}
+            {showDeleteUserModal && <DeleteUser onInfoClose={onInfoClose} onDelete={onDeleteHandler} />}
             <div className='table-wrapper'>
                 {/* Overlap components   */}
 
@@ -189,11 +224,14 @@ export const UserList = ({ users }) => {
                     </thead>
                     <tbody>
                         {users.map((x) => (
-                            <User key={x._id} {...x} onInfoClick={onInfoClick} onInfoClose={onInfoClose} />
+                            <User key={x._id} {...x} onInfoClick={onInfoClick} onInfoClose={onInfoClose} onDeleteClick={onDeleteClick} />
                         ))}
                     </tbody>
                 </table>
             </div>
+            <button className='btn-add btn' onClick={onUserAddClick}>
+                Add new user
+            </button>
         </>
     );
 };

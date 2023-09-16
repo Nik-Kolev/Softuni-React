@@ -1,6 +1,6 @@
 import { convertDate } from '../utils/dateUtils';
 
-export const User = ({ firstName, lastName, email, imageUrl, createdAt, phoneNumber, _id, onInfoClick }) => {
+export const User = ({ firstName, lastName, email, imageUrl, createdAt, phoneNumber, _id, onInfoClick, onDeleteClick }) => {
     return (
         <tr>
             <td>
@@ -30,7 +30,7 @@ export const User = ({ firstName, lastName, email, imageUrl, createdAt, phoneNum
                         ></path>
                     </svg>
                 </button>
-                <button className='btn delete-btn' title='Delete'>
+                <button className='btn delete-btn' title='Delete' onClick={() => onDeleteClick(_id)}>
                     <svg
                         aria-hidden='true'
                         focusable='false'
