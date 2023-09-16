@@ -29,13 +29,21 @@ function App() {
         await userService.remove(userId);
         setUsers((state) => state.filter((x) => x._id !== userId));
     };
+
+    const onUserUpdateSubmit = async (e, userId) => {
+        e.preventDefault();
+        const formData = new FormData(e.currentTarget);
+        const data = Object.fromEntries(formData);
+        const updatedUser = await userService.updateUser(userId, data);
+        setUsers((state) => state.map((x) => (x._id === userId ? updatedUser : x)));
+    };
     return (
         <>
             <Header />
             <main className='main'>
                 <section className='card users-container'>
                     <Search />
-                    <UserList users={users} onUserCreateSubmit={onUserCreateSubmit} onUserDelete={onUserDelete} />
+                    <UserList users={users} onUserCreateSubmit={onUserCreateSubmit} onUserDelete={onUserDelete} onUserUpdateSubmit={onUserUpdateSubmit} />
                 </section>
             </main>
             <Footer />

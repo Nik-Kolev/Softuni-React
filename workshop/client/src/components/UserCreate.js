@@ -1,4 +1,4 @@
-export const UserCreate = ({ onInfoClose, onUserCreateSubmit }) => {
+export const UserCreate = ({ onInfoClose, onUserCreateSubmit, user }) => {
     return (
         <div className='overlay'>
             <div className='backdrop' onClick={onInfoClose}></div>
@@ -24,7 +24,7 @@ export const UserCreate = ({ onInfoClose, onUserCreateSubmit }) => {
                             </svg>
                         </button>
                     </header>
-                    <form onSubmit={onUserCreateSubmit}>
+                    <form onSubmit={(e) => onUserCreateSubmit(e, user?._id)}>
                         <div className='form-row'>
                             <div className='form-group'>
                                 <label htmlFor='firstName'>First name</label>
@@ -32,7 +32,7 @@ export const UserCreate = ({ onInfoClose, onUserCreateSubmit }) => {
                                     <span>
                                         <i className='fa-solid fa-user'></i>
                                     </span>
-                                    <input id='firstName' name='firstName' type='text' />
+                                    <input id='firstName' name='firstName' type='text' defaultValue={user?.firstName} />
                                 </div>
                                 <p className='form-error'>First name should be at least 3 characters long!</p>
                             </div>
@@ -42,7 +42,7 @@ export const UserCreate = ({ onInfoClose, onUserCreateSubmit }) => {
                                     <span>
                                         <i className='fa-solid fa-user'></i>
                                     </span>
-                                    <input id='lastName' name='lastName' type='text' />
+                                    <input id='lastName' name='lastName' type='text' defaultValue={user?.lastName} />
                                 </div>
                                 <p className='form-error'>Last name should be at least 3 characters long!</p>
                             </div>
@@ -55,7 +55,7 @@ export const UserCreate = ({ onInfoClose, onUserCreateSubmit }) => {
                                     <span>
                                         <i className='fa-solid fa-envelope'></i>
                                     </span>
-                                    <input id='email' name='email' type='text' />
+                                    <input id='email' name='email' type='text' defaultValue={user?.email} />
                                 </div>
                                 <p className='form-error'>Email is not valid!</p>
                             </div>
@@ -65,7 +65,7 @@ export const UserCreate = ({ onInfoClose, onUserCreateSubmit }) => {
                                     <span>
                                         <i className='fa-solid fa-phone'></i>
                                     </span>
-                                    <input id='phoneNumber' name='phoneNumber' type='text' />
+                                    <input id='phoneNumber' name='phoneNumber' type='text' defaultValue={user?.phoneNumber} />
                                 </div>
                                 <p className='form-error'>Phone number is not valid!</p>
                             </div>
@@ -77,7 +77,7 @@ export const UserCreate = ({ onInfoClose, onUserCreateSubmit }) => {
                                 <span>
                                     <i className='fa-solid fa-image'></i>
                                 </span>
-                                <input id='imageUrl' name='imageUrl' type='text' />
+                                <input id='imageUrl' name='imageUrl' type='text' defaultValue={user?.imageUrl} />
                             </div>
                             <p className='form-error'>ImageUrl is not valid!</p>
                         </div>
@@ -89,7 +89,7 @@ export const UserCreate = ({ onInfoClose, onUserCreateSubmit }) => {
                                     <span>
                                         <i className='fa-solid fa-map'></i>
                                     </span>
-                                    <input id='country' name='country' type='text' />
+                                    <input id='country' name='country' type='text' defaultValue={user?.address.country} />
                                 </div>
                                 <p className='form-error'>Country should be at least 2 characters long!</p>
                             </div>
@@ -99,7 +99,7 @@ export const UserCreate = ({ onInfoClose, onUserCreateSubmit }) => {
                                     <span>
                                         <i className='fa-solid fa-city'></i>
                                     </span>
-                                    <input id='city' name='city' type='text' />
+                                    <input id='city' name='city' type='text' defaultValue={user?.address.city} />
                                 </div>
                                 <p className='form-error'>City should be at least 3 characters long!</p>
                             </div>
@@ -112,7 +112,7 @@ export const UserCreate = ({ onInfoClose, onUserCreateSubmit }) => {
                                     <span>
                                         <i className='fa-solid fa-map'></i>
                                     </span>
-                                    <input id='street' name='street' type='text' />
+                                    <input id='street' name='street' type='text' defaultValue={user?.address.street} />
                                 </div>
                                 <p className='form-error'>Street should be at least 3 characters long!</p>
                             </div>
@@ -122,7 +122,7 @@ export const UserCreate = ({ onInfoClose, onUserCreateSubmit }) => {
                                     <span>
                                         <i className='fa-solid fa-house-chimney'></i>
                                     </span>
-                                    <input id='streetNumber' name='streetNumber' type='text' />
+                                    <input id='streetNumber' name='streetNumber' type='text' defaultValue={user?.address.streetNumber} />
                                 </div>
                                 <p className='form-error'>Street number should be a positive number!</p>
                             </div>

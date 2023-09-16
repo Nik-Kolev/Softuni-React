@@ -1,6 +1,6 @@
 import { convertDate } from '../utils/dateUtils';
 
-export const User = ({ firstName, lastName, email, imageUrl, createdAt, phoneNumber, _id, onInfoClick, onDeleteClick }) => {
+export const User = ({ firstName, lastName, email, imageUrl, createdAt, phoneNumber, _id, onInfoClick, onDeleteClick, onEdit }) => {
     return (
         <tr>
             <td>
@@ -13,7 +13,7 @@ export const User = ({ firstName, lastName, email, imageUrl, createdAt, phoneNum
             <td>{convertDate(createdAt)}</td>
 
             <td className='actions'>
-                <button className='btn edit-btn' title='Edit'>
+                <button className='btn edit-btn' title='Edit' onClick={() => onEdit(_id)}>
                     <svg
                         aria-hidden='true'
                         focusable='false'

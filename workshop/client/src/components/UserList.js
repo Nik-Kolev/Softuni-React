@@ -5,7 +5,7 @@ import * as userService from '../services/userService';
 import { UserCreate } from './UserCreate';
 import { DeleteUser } from './DeleteUser';
 
-export const UserList = ({ users, onUserCreateSubmit, onUserDelete }) => {
+export const UserList = ({ users, onUserCreateSubmit, onUserDelete, onUserUpdateSubmit }) => {
     const [selectedUser, setSelectedUser] = useState(null);
     const [showAddUser, setShowAddUser] = useState(false);
     const [showDeleteUserModal, setShowDeleteUserModal] = useState(null);
@@ -21,6 +21,7 @@ export const UserList = ({ users, onUserCreateSubmit, onUserDelete }) => {
         setSelectedUser(null);
         setShowAddUser(false);
         setShowDeleteUserModal(null);
+        setShowEditUser(null);
     };
 
     const onUserAddClick = () => {
@@ -31,15 +32,6 @@ export const UserList = ({ users, onUserCreateSubmit, onUserDelete }) => {
         onUserCreateSubmit(e);
         setShowAddUser(false);
     };
-    // const onDeleteClick = (userId) => {
-    //     console.log(userId);
-    //     setShowDeleteUserModal(userId);
-    // };
-    // const onDeleteHandler = () => {
-    //     console.log('asd');
-    //     onDeleteUser(showDeleteUserModal);
-    //     onInfoClose();
-    // };
 
     const onDeleteClick = (userId) => {
         setShowDeleteUserModal(userId);
@@ -49,11 +41,21 @@ export const UserList = ({ users, onUserCreateSubmit, onUserDelete }) => {
         onUserDelete(showDeleteUserModal);
         onInfoClose();
     };
+    const onEditClick = async (userId) => {
+        const user = await userService.getOne(userId);
+        setShowEditUser(user);
+    };
+
+    const onUserUpdateSubmitHandler = (e, userId) => {
+        onUserUpdateSubmit(e, userId);
+        setShowEditUser(null);
+    };
     return (
         <>
             {selectedUser && <UserDetails {...selectedUser} onInfoClose={onInfoClose} />}
             {showAddUser && <UserCreate onInfoClose={onInfoClose} onUserCreateSubmit={onUserCreateSubmitHandler} />}
             {showDeleteUserModal && <DeleteUser onInfoClose={onInfoClose} onDelete={onDeleteHandler} />}
+            {showEditUser && <UserCreate onInfoClose={onInfoClose} onUserCreateSubmit={onUserUpdateSubmitHandler} user={showEditUser} />}
             <div className='table-wrapper'>
                 {/* Overlap components   */}
 
@@ -224,7 +226,7 @@ export const UserList = ({ users, onUserCreateSubmit, onUserDelete }) => {
                     </thead>
                     <tbody>
                         {users.map((x) => (
-                            <User key={x._id} {...x} onInfoClick={onInfoClick} onInfoClose={onInfoClose} onDeleteClick={onDeleteClick} />
+                            <User key={x._id} {...x} onInfoClick={onInfoClick} onInfoClose={onInfoClose} onDeleteClick={onDeleteClick} onEdit={onEditClick} />
                         ))}
                     </tbody>
                 </table>
