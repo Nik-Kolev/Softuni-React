@@ -5,7 +5,7 @@ import * as userService from '../services/userService';
 import { UserCreate } from './UserCreate';
 import { DeleteUser } from './DeleteUser';
 
-export const UserList = ({ users, onUserCreateSubmit, onUserDelete, onUserUpdateSubmit }) => {
+export const UserList = ({ users, onUserCreateSubmit, onUserDelete, onUserUpdateSubmit, formValues, formChangeHandler, formErrors }) => {
     const [selectedUser, setSelectedUser] = useState(null);
     const [showAddUser, setShowAddUser] = useState(false);
     const [showDeleteUserModal, setShowDeleteUserModal] = useState(null);
@@ -53,9 +53,26 @@ export const UserList = ({ users, onUserCreateSubmit, onUserDelete, onUserUpdate
     return (
         <>
             {selectedUser && <UserDetails {...selectedUser} onInfoClose={onInfoClose} />}
-            {showAddUser && <UserCreate onInfoClose={onInfoClose} onUserCreateSubmit={onUserCreateSubmitHandler} />}
+            {showAddUser && (
+                <UserCreate
+                    onInfoClose={onInfoClose}
+                    onUserCreateSubmit={onUserCreateSubmitHandler}
+                    formValues={formValues}
+                    formChangeHandler={formChangeHandler}
+                    formErrors={formErrors}
+                />
+            )}
             {showDeleteUserModal && <DeleteUser onInfoClose={onInfoClose} onDelete={onDeleteHandler} />}
-            {showEditUser && <UserCreate onInfoClose={onInfoClose} onUserCreateSubmit={onUserUpdateSubmitHandler} user={showEditUser} />}
+            {showEditUser && (
+                <UserCreate
+                    onInfoClose={onInfoClose}
+                    onUserCreateSubmit={onUserUpdateSubmitHandler}
+                    user={showEditUser}
+                    formValues={formValues}
+                    formChangeHandler={formChangeHandler}
+                    formErrors={formErrors}
+                />
+            )}
             <div className='table-wrapper'>
                 {/* Overlap components   */}
 
