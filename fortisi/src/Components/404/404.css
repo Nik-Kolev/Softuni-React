@@ -1,0 +1,46 @@
+.notFound {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 12vw 12px;
+}
+
+.notFound_Error,
+p.notFound_Error {
+    color: #2e2f30;
+    opacity: .7;
+    letter-spacing: .15em;
+    font-size: 18px;
+    line-height: 1.22;
+}
+
+.notFound_Big,
+p.notFound_Big {
+    font-size: 80px;
+    font-weight: 700;
+    line-height: 1.21;
+    color: #2e2f30;
+    opacity: .7;
+    letter-spacing: -0.07em;
+}
+
+.notFound_Descr,
+p.notFound_Descr {
+    color: #2e2f30;
+    letter-spacing: -0.02em;
+    font-size: 26px;
+    line-height: 1.23;
+    margin-bottom: 37px;
+    opacity: .7;
+}
+
+a{
+    color: #0058a3;
+    text-decoration: none;
+    outline: none;
+}
+
+.notFound_Left, .notFound_Right {
+    padding-left: 20px;
+    padding-right: 20px;
+}

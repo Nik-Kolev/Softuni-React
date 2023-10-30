@@ -10,11 +10,13 @@ import Testimonials from './Components/Testimonials/Testimonials';
 import Blog from './Components/Blog/Blog';
 import Register from './Components/Authentication/Register/Register';
 import Login from './Components/Authentication/Login/Login';
+import SomethingWentWrong from './Components/404/404';
 
 function App() {
     return (
         <>
             <Header />
+            <SomethingWentWrong />
             <Register />
             <Login />
             <WeWillSee />
