@@ -8,11 +8,15 @@ import WeHelp from './Components/WeHelp/WeHelp';
 import PopularProducts from './Components/PopularProducts/PopularProducts';
 import Testimonials from './Components/Testimonials/Testimonials';
 import Blog from './Components/Blog/Blog';
+import Register from './Components/Authentication/Register/Register';
+import Login from './Components/Authentication/Login/Login';
 
 function App() {
     return (
         <>
             <Header />
+            <Register />
+            <Login />
             <WeWillSee />
             <GameArea />
             <WhyUs />
