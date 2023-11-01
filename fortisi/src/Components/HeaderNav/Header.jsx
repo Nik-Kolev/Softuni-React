@@ -4,7 +4,7 @@ export default function Header() {
         //arial-label='Furni navigation bar'//
         <nav className='custom-navbar navbar navbar navbar-expand-md navbar-dark bg-dark'>
             <div className='container'>
-                <a className='navbar-brand' href='/'>
+                <a className='brand-name' href='/'>
                     <p>Fortisi</p>
                     <img src='images/ftslogo.png' className='small-logo' />
                 </a>

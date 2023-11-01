@@ -1,4 +1,5 @@
 import './App.css';
+import { Routes, Route } from 'react-router-dom';
 import Footer from './Components/Footer/Footer';
 import Header from './Components/HeaderNav/Header';
 import GameArea from './Components/GameArea/GameArea';
@@ -16,16 +17,28 @@ function App() {
     return (
         <>
             <Header />
-            <SomethingWentWrong />
-            <Register />
-            <Login />
-            <WeWillSee />
-            <GameArea />
-            <WhyUs />
-            <WeHelp />
-            <PopularProducts />
-            <Testimonials />
-            <Blog />
+
+            <Routes>
+                <Route path='/login' element={<Login />} />
+                <Route path='/register' element={<Register />} />
+                <Route
+                    path='/'
+                    element={
+                        <>
+                            <WeWillSee />
+                            <GameArea />
+                        </>
+                    }
+                />
+                {/* <Route path='/we-will-see' element={} /> */}
+                <Route path='/game-area' element={<GameArea />} />
+                <Route path='/why-us' element={<WhyUs />} />
+                <Route path='/we-help' element={<WeHelp />} />
+                <Route path='/popular-products' element={<PopularProducts />} />
+                <Route path='/testimonials' element={<Testimonials />} />
+                <Route path='/blog' element={<Blog />} />
+                <Route path='*' element={<SomethingWentWrong />} />
+            </Routes>
             <Footer />
         </>
     );

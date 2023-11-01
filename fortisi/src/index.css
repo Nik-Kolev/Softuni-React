@@ -84,3 +84,19 @@ a.more {
 .section-title {
     color: #2f2f2f;
 }
+.brand-name p {
+    font-family: 'Indie Flower', cursive;
+    margin-top: 1rem;
+    margin-bottom: 0;
+}
+.brand-name {
+    display: flex;
+    align-items: center;
+    font-size: 36px;
+    font-weight: 600;
+    color: #ffffff;
+    text-decoration: none;
+}
+.brand-name > span {
+    opacity: 0.4;
+}

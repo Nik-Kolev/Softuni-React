@@ -63,7 +63,7 @@
 }
 .footer-section .sofa-img {
     position: absolute;
-    top: -200px;
+    top: 0px;
     z-index: 1;
     right: 0;
 }
@@ -110,4 +110,7 @@
 }
 .footer-section .border-top.copyright {
     font-size: 14px !important;
+}
+.brand-name {
+    max-width: 155px;
 }

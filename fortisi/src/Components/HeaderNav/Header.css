@@ -3,7 +3,7 @@
     padding-top: 5px;
     padding-bottom: 20px;
 }
-.custom-navbar .navbar-brand p {
+/* .custom-navbar .navbar-brand p {
     font-family: 'Indie Flower', cursive;
     margin-top: 1rem;
     margin-bottom: 0;
@@ -16,7 +16,7 @@
 }
 .custom-navbar .navbar-brand > span {
     opacity: 0.4;
-}
+} */
 .custom-navbar .navbar-toggler {
     border-color: transparent;
 }

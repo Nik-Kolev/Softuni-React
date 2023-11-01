@@ -7,7 +7,7 @@ export default function Footer() {
                     <img src='images/sofa.png' alt='Image' className='img-fluid' />
                 </div>
 
-                <div className='row'>
+                {/* <div className='row'>
                     <div className='col-lg-8'>
                         <div className='subscription-form'>
                             <h3 className='d-flex align-items-center'>
@@ -32,13 +32,14 @@ export default function Footer() {
                             </form>
                         </div>
                     </div>
-                </div>
+                </div> */}
 
                 <div className='row g-5 mb-5'>
                     <div className='col-lg-4'>
                         <div className='mb-4 footer-logo-wrap'>
-                            <a href='#' className='footer-logo'>
-                                Furni<span>.</span>
+                            <a className='brand-name' href='/'>
+                                <p>Fortisi</p>
+                                <img src='images/ftslogo.png' className='small-logo' />
                             </a>
                         </div>
                         <p className='mb-4'>
@@ -89,7 +90,7 @@ export default function Footer() {
                                 </ul>
                             </div>
 
-                            <div className='col-6 col-sm-6 col-md-3'>
+                            {/* <div className='col-6 col-sm-6 col-md-3'>
                                 <ul className='list-unstyled'>
                                     <li>
                                         <a href='#'>Support</a>
@@ -101,7 +102,7 @@ export default function Footer() {
                                         <a href='#'>Live chat</a>
                                     </li>
                                 </ul>
-                            </div>
+                            </div> */}
 
                             <div className='col-6 col-sm-6 col-md-3'>
                                 <ul className='list-unstyled'>
@@ -120,7 +121,7 @@ export default function Footer() {
                                 </ul>
                             </div>
 
-                            <div className='col-6 col-sm-6 col-md-3'>
+                            {/* <div className='col-6 col-sm-6 col-md-3'>
                                 <ul className='list-unstyled'>
                                     <li>
                                         <a href='#'>Nordic Chair</a>
@@ -132,7 +133,7 @@ export default function Footer() {
                                         <a href='#'>Ergonomic Chair</a>
                                     </li>
                                 </ul>
-                            </div>
+                            </div> */}
                         </div>
                     </div>
                 </div>
