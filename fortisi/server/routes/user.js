@@ -9,4 +9,6 @@ router.post('', controller.addUser);
 router.put('/:userId', controller.updateUser);
 router.delete('/:userId', controller.deleteUser);
 
+router.post('/quote', controller.addQuotes)
+
 module.exports = router;

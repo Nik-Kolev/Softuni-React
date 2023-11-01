@@ -3,7 +3,9 @@ const whitelist = ['http://localhost:3000', 'https://user-list-demo-react.heroku
 
 module.exports = (app, express) => {
   app.use(express.static('public'));
-  app.use(cors({ origin: whitelist, credentials: true }));
+  // app.use(cors({ origin: whitelist, credentials: true }));
+  app.use(cors());
+
   app.use(express.json());
 
   app.use((error, req, res, next) => {

@@ -2,7 +2,7 @@ import './App.css';
 import { Routes, Route } from 'react-router-dom';
 import Footer from './Components/Footer/Footer';
 import Header from './Components/HeaderNav/Header';
-import GameArea from './Components/GameArea/GameArea';
+import ProductSection from './Components/ProductSection/ProductSection';
 import WeWillSee from './Components/WeWillSee/WeWillSee';
 import WhyUs from './Components/WhyUs/WhyUs';
 import WeHelp from './Components/WeHelp/WeHelp';
@@ -26,12 +26,10 @@ function App() {
                     element={
                         <>
                             <WeWillSee />
-                            <GameArea />
+                            <ProductSection />
                         </>
                     }
                 />
-                {/* <Route path='/we-will-see' element={} /> */}
-                <Route path='/game-area' element={<GameArea />} />
                 <Route path='/why-us' element={<WhyUs />} />
                 <Route path='/we-help' element={<WeHelp />} />
                 <Route path='/popular-products' element={<PopularProducts />} />

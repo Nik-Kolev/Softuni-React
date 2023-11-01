@@ -15,18 +15,18 @@ const userSchema = new Schema(
     email: {
       type: String,
       required: true,
-      match: [/^[A-Za-z0-9_\.]+@[A-Za-z]+\.[A-Za-z]{2,3}$/, 'Email is not valid!'],
+      // match: [/^[A-Za-z0-9_\.]+@[A-Za-z]+\.[A-Za-z]{2,3}$/, 'Email is not valid!'],
     },
     imageUrl: {
       type: String,
       required: true,
       match: [/^https?:\/\/.+/, 'ImageUrl is not valid!'],
     },
-    phoneNumber: {
-      type: String,
-      required: true,
-      match: [/^0[1-9]{1}[0-9]{8}$/, 'Phone number is not valid!'],
-    },
+    // phoneNumber: {
+    //   type: String,
+    //   required: true,
+    //   match: [/^0[1-9]{1}[0-9]{8}$/, 'Phone number is not valid!'],
+    // },
     address: {
       country: {
         type: String,
