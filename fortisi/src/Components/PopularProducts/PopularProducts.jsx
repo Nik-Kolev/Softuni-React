@@ -1,3 +1,4 @@
+import './PopularProducts.css';
 export default function PopularProducts() {
     return (
         <div className='popular-product'>

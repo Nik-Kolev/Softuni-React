@@ -1,0 +1,49 @@
+.feature {
+    margin-bottom: 30px;
+}
+.feature .icon {
+    display: inline-block;
+    position: relative;
+    margin-bottom: 20px;
+}
+.feature .icon:before {
+    content: '';
+    width: 33px;
+    height: 33px;
+    position: absolute;
+    background: rgba(59, 93, 80, 0.2);
+    border-radius: 50%;
+    right: -8px;
+    bottom: 0;
+}
+.feature h3 {
+    font-size: 14px;
+    color: #2f2f2f;
+}
+.feature p {
+    font-size: 14px;
+    line-height: 22px;
+    color: #6a6a6a;
+}
+.why-choose-section {
+    padding: 7rem 0;
+}
+.why-choose-section .img-wrap {
+    position: relative;
+}
+.why-choose-section .img-wrap:before {
+    position: absolute;
+    content: '';
+    width: 255px;
+    height: 217px;
+    background-image: url('../images/dots-yellow.svg');
+    background-repeat: no-repeat;
+    background-size: contain;
+    -webkit-transform: translate(-40%, -40%);
+    -ms-transform: translate(-40%, -40%);
+    transform: translate(-40%, -40%);
+    z-index: -1;
+}
+.why-choose-section .img-wrap img {
+    border-radius: 20px;
+}

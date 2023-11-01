@@ -1,3 +1,5 @@
+import './WeWillSee.css';
+
 export default function WeWillSee() {
     return (
         <div className='hero'>

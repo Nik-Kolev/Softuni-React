@@ -1,3 +1,4 @@
+import './Header.css';
 export default function Header() {
     return (
         //arial-label='Furni navigation bar'//

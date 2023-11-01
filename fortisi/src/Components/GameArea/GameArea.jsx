@@ -1,3 +1,4 @@
+import './ProductSection.css';
 export default function Main() {
     return (
         <div className='product-section'>

@@ -1,3 +1,4 @@
+import './WeHelp.css';
 export default function WeHelp() {
     return (
         <div className='we-help-section'>
@@ -31,7 +32,7 @@ export default function WeHelp() {
                             <li>Donec vitae odio quis nisl dapibus malesuada</li>
                         </ul>
                         <p>
-                            <a herf='#' className='btn'>
+                            <a href='#' className='btn'>
                                 Explore
                             </a>
                         </p>

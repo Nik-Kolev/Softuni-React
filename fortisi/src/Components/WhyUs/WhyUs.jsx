@@ -1,3 +1,4 @@
+import './WhyUs.css';
 export default function WhyUs() {
     return (
         <div className='why-choose-section'>
