@@ -1,19 +1,6 @@
 const { userModel } = require('../models/User');
-const Quote = require('../models/Quote')
 const { errorHandler } = require('../utils/errorHandler');
 const { ValidationError } = require('../utils/createValidationError');
-
-const addQuotes = async (req, res) => {
-  const { quote, value } = req.body
-  const data = { quote, value }
-  try {
-    const createQuote = await Quote.create({ data });
-
-    res.status(200).json({ createQuote });
-  } catch (error) {
-    errorHandler(error, res, req);
-  }
-}
 
 const getUser = async (req, res) => {
   const { userId } = req.params;
@@ -119,5 +106,4 @@ module.exports = {
   updateUser,
   deleteUser,
   getUsers,
-  addQuotes
 };

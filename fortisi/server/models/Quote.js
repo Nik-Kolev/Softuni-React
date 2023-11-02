@@ -6,10 +6,16 @@ const quoteSchema = new mongoose.Schema({
         required: true
     },
     value: {
-        type: String
-    }
+        type: String,
+        required: true,
+    },
+    imageUrl: {
+        type: String,
+        required: true,
+        // match: [/^https?:\/\/.+/, 'ImageUrl is not valid!'],
+    },
 })
 
 const Quote = mongoose.model('Quote', quoteSchema)
 
-module.exports = Quote
+module.exports = { Quote }
