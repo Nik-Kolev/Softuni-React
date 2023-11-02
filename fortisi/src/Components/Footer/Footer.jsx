@@ -1,4 +1,5 @@
 import './Footer.css';
+import { Link } from 'react-router-dom';
 export default function Footer() {
     return (
         <footer className='footer-section'>
@@ -37,10 +38,10 @@ export default function Footer() {
                 <div className='row g-5 mb-5'>
                     <div className='col-lg-4'>
                         <div className='mb-4 footer-logo-wrap'>
-                            <a className='brand-name' href='/'>
+                            <Link to={'/'} className='brand-name'>
                                 <p>Fortisi</p>
                                 <img src='images/ftslogo.png' className='small-logo' />
-                            </a>
+                            </Link>
                         </div>
                         <p className='mb-4'>
                             Donec facilisis quam ut purus rutrum lobortis. Donec vitae odio quis nisl dapibus malesuada. Nullam ac aliquet

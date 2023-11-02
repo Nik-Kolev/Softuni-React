@@ -1,13 +1,14 @@
 import './Header.css';
+import { Link } from 'react-router-dom';
 export default function Header() {
     return (
         //arial-label='Furni navigation bar'//
         <nav className='custom-navbar navbar navbar navbar-expand-md navbar-dark bg-dark'>
             <div className='container'>
-                <a className='brand-name' href='/'>
+                <Link to={'/'} className='brand-name'>
                     <p>Fortisi</p>
                     <img src='images/ftslogo.png' className='small-logo' />
-                </a>
+                </Link>
 
                 <button
                     className='navbar-toggler'
@@ -23,34 +24,34 @@ export default function Header() {
                 <div className='collapse navbar-collapse' id='navbarsFurni'>
                     <ul className='custom-navbar-nav navbar-nav ms-auto mb-2 mb-md-0'>
                         <li className='nav-item active'>
-                            <a className='nav-link' href='/'>
+                            <Link to={'/'} className='nav-link'>
                                 Home
-                            </a>
+                            </Link>
                         </li>
                         <li>
-                            <a className='nav-link' href='shop.html'>
+                            <Link to={'/shop'} className='nav-link'>
                                 Shop
-                            </a>
+                            </Link>
                         </li>
                         <li>
-                            <a className='nav-link' href='about.html'>
+                            <Link to={'/about-us'} className='nav-link'>
                                 About us
-                            </a>
+                            </Link>
                         </li>
                         <li>
-                            <a className='nav-link' href='services.html'>
+                            <Link to={'/services'} className='nav-link'>
                                 Services
-                            </a>
+                            </Link>
                         </li>
                         <li>
-                            <a className='nav-link' href='blog.html'>
+                            <Link to={'/blog'} className='nav-link'>
                                 Blog
-                            </a>
+                            </Link>
                         </li>
                         <li>
-                            <a className='nav-link' href='contact.html'>
+                            <Link to={'/contact'} className='nav-link'>
                                 Contact us
-                            </a>
+                            </Link>
                         </li>
                     </ul>
 

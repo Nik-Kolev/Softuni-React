@@ -58,10 +58,10 @@
         transition: 0.15s all ease-out;
     }
 }
-.custom-navbar .custom-navbar-nav li a:hover {
+.custom-navbar .custom-navbar-nav :link:hover {
     opacity: 1;
 }
-.custom-navbar .custom-navbar-nav li a:hover:before {
+.custom-navbar .custom-navbar-nav :link:hover:before {
     width: calc(100% - 16px);
 }
 .custom-navbar .custom-navbar-nav li.active a {
