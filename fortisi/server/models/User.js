@@ -1,4 +1,5 @@
 const { Schema, model } = require('mongoose');
+const bcrypt = require('bcrypt')
 
 const userSchema = new Schema(
   {
@@ -17,47 +18,63 @@ const userSchema = new Schema(
       required: true,
       // match: [/^[A-Za-z0-9_\.]+@[A-Za-z]+\.[A-Za-z]{2,3}$/, 'Email is not valid!'],
     },
-    imageUrl: {
+    password: {
       type: String,
       required: true,
-      match: [/^https?:\/\/.+/, 'ImageUrl is not valid!'],
     },
-    // phoneNumber: {
-    //   type: String,
-    //   required: true,
-    //   match: [/^0[1-9]{1}[0-9]{8}$/, 'Phone number is not valid!'],
-    // },
+    phoneNumber: {
+      type: String,
+      required: true,
+      // match: [/^0[1-9]{1}[0-9]{8}$/, 'Phone number is not valid!'],
+    },
     address: {
       country: {
         type: String,
-        required: true,
-        minLength: [2, 'Country should be at least 2 characters long!'],
+        // required: true,
+        // minLength: [2, 'Country should be at least 2 characters long!'],
       },
       city: {
         type: String,
-        required: true,
-        minLength: [3, 'City should be at least 3 characters long!'],
+        // required: true,
+        // minLength: [3, 'City should be at least 3 characters long!'],
       },
       street: {
         type: String,
-        required: true,
-        minLength: [3, 'Street should be at least 3 characters long!'],
+        // required: true,
+        // minLength: [3, 'Street should be at least 3 characters long!'],
       },
       streetNumber: {
         type: Number,
-        required: true,
-        min: [1, 'Street number should be a positive number!'],
+        // required: true,
+        // min: [1, 'Street number should be a positive number!'],
       },
-    },
-    isDeleted: {
-      type: Boolean,
-      default: false,
+      buildingInformation: {
+        type: String
+      },
+      extraInformation: {
+        type: String
+      }
     },
   },
   { timestamps: true }
 );
 
+
+userSchema.virtual('rePassword').set(function (value) {
+  if (value.length == 0 && this.password.length > 0 && this.email.length > 0) {
+    throw new Error('Repeat password is required !')
+  }
+  if (this.password && this.email && value != this.password) {
+    throw new Error('Email or password is invalid !')
+  }
+})
+
+userSchema.pre('save', async function () {
+  this.password = await bcrypt.hash(this.password, 10)
+})
+
 const userModel = model('User', userSchema);
+
 module.exports = {
   userModel,
 };
