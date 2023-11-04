@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import './WeWillSee.css';
+import './Carousel.css';
 
 export default function WeWillSee() {
     const [quote, setQuote] = useState([]);
@@ -20,14 +20,14 @@ export default function WeWillSee() {
                                 <span className='d-block'>{quote.quote}</span>
                             </h1>
                             <p className='mb-4'>{quote.value}</p>
-                            <p>
+                            {/* <p>
                                 <a href='' className='btn btn-secondary me-2'>
                                     Shop Now
                                 </a>
                                 <a href='#' className='btn btn-white-outline'>
                                     Explore
                                 </a>
-                            </p>
+                            </p> */}
                         </div>
                     </div>
                     <div className='col-lg-7'>

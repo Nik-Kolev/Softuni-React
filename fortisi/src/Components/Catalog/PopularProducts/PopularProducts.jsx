@@ -1,19 +1,17 @@
-import './ProductSection.css';
+import './PopularProducts.css';
 export default function Main() {
     return (
         <div className='product-section'>
             <div className='container'>
                 <div className='row'>
                     {/* <!-- Start Column 1 --> */}
+                    {/* TODO: A little bit of work is needed on the title + positioning */}
                     <div className='col-md-12 col-lg-3 mb-5 mb-lg-0'>
-                        <h2 className='mb-4 section-title'>Crafted with excellent material.</h2>
-                        <p className='mb-4'>
-                            Donec vitae odio quis nisl dapibus malesuada. Nullam ac aliquet velit. Aliquam vulputate velit imperdiet dolor
-                            tempor tristique.
-                        </p>
+                        <h2 className='mb-4 section-title'>Find the perfect furniture for your style and comfort.</h2>
+                        <p className='mb-4'>Click below to explore our furniture collection.</p>
                         <p>
-                            <a href='shop.html' className='btn'>
-                                Explore
+                            <a href='/catalog' className='btn'>
+                                Explore More
                             </a>
                         </p>
                     </div>
@@ -34,6 +32,7 @@ export default function Main() {
                     {/* <!-- End Column 2 -->
 
                     <!-- Start Column 3 --> */}
+                    {/* TODO: List 3 of the most popular products */}
                     <div className='col-12 col-md-4 col-lg-3 mb-5 mb-md-0'>
                         <a className='product-item' href='cart.html'>
                             <img src='images/product-2.png' className='img-fluid product-thumbnail' />

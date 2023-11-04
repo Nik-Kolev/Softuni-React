@@ -1,6 +1,6 @@
-import './Header.css';
+import './NavigationBar.css';
 import { Link } from 'react-router-dom';
-export default function Header() {
+export default function NavBar() {
     return (
         //arial-label='Furni navigation bar'//
         <nav className='custom-navbar navbar navbar navbar-expand-md navbar-dark bg-dark'>
@@ -23,24 +23,19 @@ export default function Header() {
 
                 <div className='collapse navbar-collapse' id='navbarsFurni'>
                     <ul className='custom-navbar-nav navbar-nav ms-auto mb-2 mb-md-0'>
-                        <li className='nav-item active'>
+                        {/* <li className='nav-item active'>
                             <Link to={'/'} className='nav-link'>
                                 Home
                             </Link>
-                        </li>
+                        </li> */}
                         <li>
-                            <Link to={'/shop'} className='nav-link'>
-                                Shop
+                            <Link to={'/catalog'} className='nav-link'>
+                                Catalog
                             </Link>
                         </li>
                         <li>
                             <Link to={'/about-us'} className='nav-link'>
                                 About us
-                            </Link>
-                        </li>
-                        <li>
-                            <Link to={'/services'} className='nav-link'>
-                                Services
                             </Link>
                         </li>
                         <li>
@@ -51,6 +46,21 @@ export default function Header() {
                         <li>
                             <Link to={'/contact'} className='nav-link'>
                                 Contact us
+                            </Link>
+                        </li>
+                        <li>
+                            <Link to={'/login'} className='nav-link'>
+                                Login
+                            </Link>
+                        </li>
+                        <li>
+                            <Link to={'/register'} className='nav-link'>
+                                Register
+                            </Link>
+                        </li>
+                        <li>
+                            <Link to={'/logout'} className='nav-link'>
+                                Logout
                             </Link>
                         </li>
                     </ul>

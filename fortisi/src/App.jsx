@@ -1,40 +1,37 @@
 import './App.css';
 import { Routes, Route } from 'react-router-dom';
 import Footer from './Components/Footer/Footer';
-import Header from './Components/HeaderNav/Header';
-import ProductSection from './Components/ProductSection/ProductSection';
-import WeWillSee from './Components/WeWillSee/WeWillSee';
-import WhyUs from './Components/WhyUs/WhyUs';
-import WeHelp from './Components/WeHelp/WeHelp';
-import PopularProducts from './Components/PopularProducts/PopularProducts';
-import Testimonials from './Components/Testimonials/Testimonials';
+import NavBar from './Components/NavigationBar/NavigationBar';
+import Carousel from './Components/Carousel/Carousel';
 import Blog from './Components/Blog/Blog';
 import Register from './Components/Authentication/Register/Register';
 import Login from './Components/Authentication/Login/Login';
 import SomethingWentWrong from './Components/404/404';
+import PopularProducts from './Components/Catalog/PopularProducts/PopularProducts';
 
 function App() {
     return (
         <>
-            <Header />
+            <NavBar />
 
             <Routes>
-                <Route path='/login' element={<Login />} />
-                <Route path='/register' element={<Register />} />
                 <Route
                     path='/'
                     element={
                         <>
-                            <WeWillSee />
-                            <ProductSection />
+                            <Carousel />
+                            <PopularProducts />
                         </>
                     }
                 />
-                <Route path='/why-us' element={<WhyUs />} />
-                <Route path='/we-help' element={<WeHelp />} />
-                <Route path='/popular-products' element={<PopularProducts />} />
-                <Route path='/testimonials' element={<Testimonials />} />
+                {/* <Route path='/catalog' element={<Catalog />} /> */}
+                {/* <Route path='/about-us' element={<AboutUs />} /> */}
                 <Route path='/blog' element={<Blog />} />
+                <Route path='/login' element={<Login />} />
+                <Route path='/register' element={<Register />} />
+                {/* <Route path='/logout' element={<Logout />} /> */}
+                {/* <Route path='/profile' element={<Profile />} /> */}
+                {/* <Route path='/shop' element={<ShopCart />} /> */}
                 <Route path='*' element={<SomethingWentWrong />} />
             </Routes>
             <Footer />
