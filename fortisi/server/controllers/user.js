@@ -19,8 +19,8 @@ const getUser = async (req, res) => {
 };
 
 const addUser = async (req, res) => {
-  const { firstName, lastName, email, imageUrl, phoneNumber, address } = req.body;
-  const data = { firstName, lastName, email, imageUrl, phoneNumber };
+  const { firstName, lastName, email, phoneNumber, address } = req.body;
+  const data = { firstName, lastName, email, phoneNumber };
 
   try {
     const createdUser = await userModel.create({ ...data, address });
