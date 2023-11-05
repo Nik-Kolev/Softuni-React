@@ -1,26 +1,35 @@
 function createErrorMessage(error) {
-  console.log(error)
-  return error.message.includes('Path')
-    ? getMissingPropertiesErrorMessage(error?.errors || {})
-    : Object.values(error.errors)[0]?.properties?.message;
-}
+  if (error.message.includes('Path')) {
+    const missingPropertiesMessage = getMissingPropertiesErrorMessage(error?.errors || {});
+    return missingPropertiesMessage;
+  } else {
+    const validationErrors = Object.values(error.errors)
+      .filter((err) => err.properties && err.properties.message)
+      .map((err) => err.properties.message);
 
+    return validationErrors.join(', ');
+  }
+}
 function errorHandler(error, res, req) {
   let message = 'Something went wrong!';
+  let statusCode = 400;
+
   if (error.name === 'CustomValidationError') {
     message = error.message;
-    res.status(error.code).json({ message });
+    statusCode = error.code;
   } else if (error instanceof TypeError || error.name == 'MongoError' || error.name == 'ObjectParameterError') {
     message = error?.message;
-    res.status(500).json({ message });
+    statusCode = 500;
   } else if (error.name === 'CastError') {
     message = error.message;
-    res.status(500).json({ message });
+    statusCode = 500;
   } else {
     message = createErrorMessage(error);
-    res.status(400).json({ message });
   }
+
   console.error(`Error: ${req.method} >> ${req.baseUrl}: ${message}`);
+
+  res.status(statusCode).json({ error: message });
 }
 
 function getMissingPropertiesErrorMessage(errors) {

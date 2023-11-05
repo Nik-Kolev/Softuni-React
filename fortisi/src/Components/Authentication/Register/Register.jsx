@@ -19,7 +19,8 @@ export default function Register() {
     const onSubmitHandler = async (e) => {
         e.preventDefault();
         try {
-            await register(values);
+            const response = await register(values);
+            console.log(response);
         } catch (err) {
             console.log(err);
         }
