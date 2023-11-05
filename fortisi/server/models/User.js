@@ -1,5 +1,4 @@
 const { Schema, model } = require('mongoose');
-const bcrypt = require('bcrypt')
 
 const userSchema = new Schema(
   {
@@ -31,47 +30,38 @@ const userSchema = new Schema(
       country: {
         type: String,
         // required: true,
+        default: ''
         // minLength: [2, 'Country should be at least 2 characters long!'],
       },
       city: {
         type: String,
+        default: ''
         // required: true,
         // minLength: [3, 'City should be at least 3 characters long!'],
       },
       street: {
         type: String,
+        default: ''
         // required: true,
         // minLength: [3, 'Street should be at least 3 characters long!'],
       },
       streetNumber: {
         type: Number,
+        default: 0
         // required: true,
         // min: [1, 'Street number should be a positive number!'],
       },
       buildingInformation: {
-        type: String
+        type: String,
+        default: ''
       },
       extraInformation: {
-        type: String
+        type: String,
+        default: ''
       }
     },
   },
-  { timestamps: true }
 );
-
-
-userSchema.virtual('rePassword').set(function (value) {
-  if (value.length == 0 && this.password.length > 0 && this.email.length > 0) {
-    throw new Error('Repeat password is required !')
-  }
-  if (this.password && this.email && value != this.password) {
-    throw new Error('Email or password is invalid !')
-  }
-})
-
-userSchema.pre('save', async function () {
-  this.password = await bcrypt.hash(this.password, 10)
-})
 
 const userModel = model('User', userSchema);
 

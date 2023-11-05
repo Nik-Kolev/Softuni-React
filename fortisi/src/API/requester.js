@@ -1,6 +1,6 @@
-const baseUrl = 'http://localhost:3005/'
+const baseUrl = 'http://localhost:3005'
 
-import { getUserData, clearUserData } from "../Utils/userLocaleStorage"
+import { getUserData, clearUserData } from "../utils/userLocaleStorage"
 
 async function request(method, endpoint, params) {
     const options = {
@@ -20,6 +20,7 @@ async function request(method, endpoint, params) {
     }
 
     try {
+
         let response = await fetch(baseUrl + endpoint, options);
 
         let data = null;
