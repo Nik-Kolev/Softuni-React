@@ -6,14 +6,13 @@ function createErrorMessage(error) {
     const validationErrors = Object.values(error.errors)
       .filter((err) => err.properties && err.properties.message)
       .map((err) => err.properties.message);
-
+    console.log(validationErrors)
     return validationErrors.join(', ');
   }
 }
 function errorHandler(error, res, req) {
   let message = 'Something went wrong!';
   let statusCode = 400;
-
   if (error.name === 'CustomValidationError') {
     message = error.message;
     statusCode = error.code;
@@ -40,12 +39,14 @@ function getMissingPropertiesErrorMessage(errors) {
     }
     return { ...a, ...{ [b]: null } };
   }, {});
+  const result = Object.keys(missingProperties).map((x) => {
+    if (Array.isArray(missingProperties[x])) {
+      return { [x]: missingProperties[x] };
+    }
+    return x;
+  });
 
-  const result = Object.keys(missingProperties)
-    .map((x) => (Array.isArray(missingProperties[x]) ? `{ ${x}: { ${missingProperties[x].join(', ')} }` : x))
-    .join(', ');
-
-  return `Missing properties! You should send a request body like this example: { ${result} }`;
+  return result;
 }
 
 module.exports = {

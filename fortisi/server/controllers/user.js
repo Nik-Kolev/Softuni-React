@@ -1,35 +1,67 @@
 const { userModel } = require('../models/User');
 const { errorHandler } = require('../utils/errorHandler');
 const { ValidationError } = require('../utils/createValidationError');
+const { SECRET } = process.env
+const { tokenCreator } = require('../utils/tokenCreator')
+const bcrypt = require('bcrypt')
 
-const getUser = async (req, res) => {
-  const { userId } = req.params;
+const login = async (req, res) => {
+
+  const { email, password } = req.body;
 
   try {
-    const user = await userModel.findById(userId, '-__v -isDeleted');
 
-    if (!user) {
-      throw new ValidationError('There is no such user with provided id.', 404);
+    const user = await userModel.findOne({ email });
+    const isValid = await bcrypt.compare(password, user.password)
+
+    if (!isValid) {
+      return res.status(404).json({ error: 'Email or password is incorrect !' })
     }
 
-    res.status(200).json({ user: user.toObject() });
+    if (!user) {
+      return res.status(404).json({ error: 'Email or password is incorrect !' })
+    }
+
+    const token = await tokenCreator(user)
+    const data = { firstName: user.firstName, lastName: user.lastName, _id: user._id, email: user.email, token }
+    res.status(200).json(data);
   } catch (error) {
     errorHandler(error, res, req);
   }
 };
 
-const addUser = async (req, res) => {
+const register = async (req, res) => {
   const { firstName, lastName, email, phoneNumber, password, rePass } = req.body;
-  const data = { firstName, lastName, email, phoneNumber, password };
 
   try {
-    await userModel.create(data);
 
-    res.status(200).json({ firstName, lastName, email, phoneNumber });
+    if (password !== rePass) {
+      return res.status(401).json({ error: 'Passwords don`t match' })
+    }
+
+    const user = await userModel.exists({ email })
+
+    if (user) {
+      return res.status(409).json({ error: 'Email is already taken!' })
+    }
+
+    const hashedPass = await bcrypt.hash(password, 10)
+
+    const newUser = await userModel.create({ firstName, lastName, email, phoneNumber, password: hashedPass });
+
+    const token = await tokenCreator(newUser)
+
+    const data = { firstName: user.firstName, lastName: user.lastName, _id: user._id, email: user.email, token }
+
+    res.status(200).json(data);
   } catch (error) {
     errorHandler(error, res, req);
   }
 };
+
+const logout = (req, res) => {
+  res.status(200).json({ Success: 'User logged out.' })
+}
 
 const updateUser = async (req, res) => {
   const { userId } = req.params;
@@ -100,8 +132,9 @@ const getUsers = async (req, res) => {
 };
 
 module.exports = {
-  getUser,
-  addUser,
+  login,
+  register,
+  logout,
   updateUser,
   deleteUser,
   getUsers,
