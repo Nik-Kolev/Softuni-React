@@ -12,6 +12,7 @@ const login = async (req, res) => {
   try {
 
     const user = await userModel.findOne({ email });
+
     const isValid = await bcrypt.compare(password, user.password)
 
     if (!isValid) {
@@ -63,17 +64,36 @@ const logout = (req, res) => {
   res.status(200).json({ Success: 'User logged out.' })
 }
 
-const updateUser = async (req, res) => {
-  const { userId } = req.params;
-  const { firstName, lastName, email, imageUrl, phoneNumber, address } = req.body;
-  const data = { firstName, lastName, email, imageUrl, phoneNumber, address };
-
+const updatePassword = async (req, res) => {
+  const { email, password, newPassword } = req.body;
+  if (!email) {
+    return res.status(404).json({ error: 'Email is required' })
+  }
+  if (!password) {
+    return res.status(404).json({ error: 'Password is required' })
+  }
+  if (!newPassword) {
+    return res.status(404).json({ error: 'New Password is required' })
+  }
   try {
-    const user = await userModel
-      .findByIdAndUpdate(userId, data, { runValidators: true, new: true })
-      .select('firstName lastName email imageUrl phoneNumber createdAt updatedAt');
+    const user = await userModel.findOne({ email });
 
-    res.status(200).json({ user: user.toObject() });
+    const isValid = await bcrypt.compare(password, user.password)
+
+    if (!isValid) {
+      return res.status(404).json({ error: 'Email or password is incorrect !' })
+    }
+
+    if (!user) {
+      return res.status(404).json({ error: 'Email or password is incorrect !' })
+    }
+
+    const newHashedPassword = await bcrypt.hash(newPassword, 10)
+
+    const updatedUser = await userModel.findByIdAndUpdate({ _id: user._id }, { password: newHashedPassword }, { new: true })
+    const token = await tokenCreator(updatedUser)
+    const data = { firstName: user.firstName, lastName: user.lastName, _id: user._id, email: user.email, token }
+    res.status(200).json(data);
   } catch (error) {
     errorHandler(error, res, req);
   }
@@ -135,7 +155,7 @@ module.exports = {
   login,
   register,
   logout,
-  updateUser,
+  updatePassword,
   deleteUser,
   getUsers,
 };
