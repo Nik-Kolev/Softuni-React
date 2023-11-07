@@ -19,7 +19,6 @@ async function request(method, endpoint, params) {
     }
 
     try {
-
         let response = await fetch(baseUrl + endpoint, options);
 
         let data = null;

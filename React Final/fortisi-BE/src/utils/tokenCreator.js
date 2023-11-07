@@ -7,5 +7,5 @@ module.exports.tokenCreator = async (payloadData) => {
         email: payloadData.email,
     }
 
-    return jwt.sign(payload, SECRET, { expiresIn: '2d' })
+    return jwt.sign(payload, SECRET, { expiresIn: '1d' })
 }

@@ -1,5 +1,5 @@
-const { Quote } = require('../models/Quote');
 const quoteController = require('express').Router()
+const quoteModel = require('../models/Quote');
 const { errorHandler } = require('../utils/errorHandler');
 
 // const addQuote = async (req, res) => {
@@ -18,7 +18,7 @@ const { errorHandler } = require('../utils/errorHandler');
 quoteController.get('/getSingleQuote', async (req, res) => {
 
     try {
-        const quote = await Quote.aggregate([{ $sample: { size: 1 } }])
+        const quote = await quoteModel.aggregate([{ $sample: { size: 1 } }])
 
         res.status(200).json(quote);
     } catch (error) {

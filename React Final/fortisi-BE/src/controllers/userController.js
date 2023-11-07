@@ -6,9 +6,8 @@ const { tokenCreator } = require('../utils/tokenCreator')
 const { isAuthorized, isGuest } = require('../middlewares/guards')
 
 userController.post('/login', isGuest, async (req, res) => {
-
     const { email, password } = req.body;
-    console.log(req.user)
+
     try {
 
         const user = await userModel.findOne({ email });

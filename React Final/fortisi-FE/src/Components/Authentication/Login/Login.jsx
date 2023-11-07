@@ -15,8 +15,7 @@ export default function Login() {
     const onSubmitHandler = async (e) => {
         e.preventDefault();
         try {
-            const asd = await login(values);
-            console.log(asd);
+            await login(values);
         } catch (err) {
             console.log(err);
         }
