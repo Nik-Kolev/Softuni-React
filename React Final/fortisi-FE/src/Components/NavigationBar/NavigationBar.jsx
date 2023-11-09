@@ -1,5 +1,7 @@
 import './NavigationBar.css';
 import { Link } from 'react-router-dom';
+import UserDropDown from './Dropdowns/UserDropDown';
+import CartDropDown from './Dropdowns/CardDropDown';
 export default function NavBar() {
     return (
         //arial-label='Furni navigation bar'//
@@ -48,7 +50,7 @@ export default function NavBar() {
                                 Contact us
                             </Link>
                         </li>
-                        <li>
+                        {/* <li>
                             <Link to={'/login'} className='nav-link'>
                                 Login
                             </Link>
@@ -62,20 +64,22 @@ export default function NavBar() {
                             <Link to={'/logout'} className='nav-link'>
                                 Logout
                             </Link>
-                        </li>
+                        </li> */}
                     </ul>
 
                     <ul className='custom-navbar-cta navbar-nav mb-2 mb-md-0 ms-5'>
-                        <li>
+                        <UserDropDown />
+                        <CartDropDown />
+                        {/* <li>
                             <a className='nav-link' href='#'>
                                 <img src='images/user.svg' />
                             </a>
-                        </li>
-                        <li>
+                        </li> */}
+                        {/* <li>
                             <a className='nav-link' href='cart.html'>
                                 <img src='images/cart.svg' />
                             </a>
-                        </li>
+                        </li> */}
                     </ul>
                 </div>
             </div>

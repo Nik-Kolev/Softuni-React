@@ -1,0 +1,38 @@
+.user-container {
+    position: relative;
+    cursor: pointer;
+}
+
+.user-container:hover .dropdown-menu {
+    display: block;
+    padding: 10px;
+    text-decoration: none;
+}
+
+.dropdown-menu {
+    background: #3b5d50;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s ease;
+    border-radius: 10px;
+}
+
+.dropdown-link {
+    display: block;
+    padding: 10px;
+    text-decoration: none;
+    color: #ffffff;
+    opacity: 1;
+    transition: opacity 0.3s ease;
+    transition: transform 0.3s ease;
+    transform: scale(1);
+}
+
+.dropdown-link:hover {
+    background-color: #ffffff;
+    border-radius: 10px;
+    transform: scale(1.07);
+}
