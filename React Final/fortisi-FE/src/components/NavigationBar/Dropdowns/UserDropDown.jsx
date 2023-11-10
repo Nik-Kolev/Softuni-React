@@ -12,6 +12,7 @@ export default function UserDropDown() {
         setDropdownVisible(false);
     };
     return (
+        //TODO: Add useRef when loggin/register etc to redirect the cursor to the 1st field!
         <li className='user-container' onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
             <Link to={'/profile'} className='nav-link user-icon'>
                 <img src='images/user.svg' />
