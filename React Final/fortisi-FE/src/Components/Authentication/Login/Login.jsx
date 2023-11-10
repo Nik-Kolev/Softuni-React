@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import { login } from '../../../services/user';
 import '../Auth.css';
 
@@ -7,6 +7,14 @@ export default function Login() {
         email: '',
         password: '',
     });
+
+    const emailInputRef = useRef(null);
+
+    useEffect(() => {
+        if (emailInputRef.current) {
+            emailInputRef.current.focus();
+        }
+    }, []);
 
     const onChangeHandler = (e) => {
         setValues((state) => ({ ...state, [e.target.name]: e.target.value }));
@@ -39,6 +47,7 @@ export default function Login() {
                                         name='email'
                                         value={values.email}
                                         onChange={onChangeHandler}
+                                        ref={emailInputRef}
                                     />
                                 </div>
 

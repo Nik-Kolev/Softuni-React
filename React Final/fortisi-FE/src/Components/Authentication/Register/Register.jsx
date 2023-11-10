@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import { register } from '../../../services/user';
 import '../Auth.css';
 
@@ -11,6 +11,14 @@ export default function Register() {
         password: '',
         rePass: '',
     });
+
+    const firstNameInputRef = useRef(null);
+
+    useEffect(() => {
+        if (firstNameInputRef.current) {
+            firstNameInputRef.current.focus();
+        }
+    }, []);
 
     const onChangeHandler = (e) => {
         setValues((state) => ({ ...state, [e.target.name]: e.target.value }));
@@ -46,6 +54,7 @@ export default function Register() {
                                                 name='firstName'
                                                 value={values.firstName}
                                                 onChange={onChangeHandler}
+                                                ref={firstNameInputRef}
                                             />
                                         </div>
                                     </div>

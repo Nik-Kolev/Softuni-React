@@ -3,7 +3,7 @@
 }
 
 .form-control {
-    height: 50px;
+    height: 40px;
     border-radius: 10px;
     font-family: 'Inter', sans-serif;
 }
@@ -27,4 +27,8 @@
 }
 .form-control:-moz-placeholder {
     font-size: 14px;
+}
+
+.untree_co-section {
+    margin-top: 20px;
 }

@@ -4,21 +4,20 @@ import './UserDropDown.css';
 export default function UserDropDown() {
     const [isDropdownVisible, setDropdownVisible] = useState(false);
 
-    const handleMouseEnter = () => {
+    const showDropdownHandler = () => {
         setDropdownVisible(true);
     };
 
-    const handleMouseLeave = () => {
+    const hideDropdownHandler = () => {
         setDropdownVisible(false);
     };
     return (
-        //TODO: Add useRef when loggin/register etc to redirect the cursor to the 1st field!
-        <li className='user-container' onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
+        <li className='user-container' onMouseEnter={showDropdownHandler} onMouseLeave={hideDropdownHandler}>
             <Link to={'/profile'} className='nav-link user-icon'>
                 <img src='images/user.svg' />
             </Link>
             {isDropdownVisible && (
-                <div className='dropdown-menu'>
+                <div className='dropdown-menu' onClick={hideDropdownHandler}>
                     <Link to={'/login'} className='dropdown-link'>
                         Login
                     </Link>
