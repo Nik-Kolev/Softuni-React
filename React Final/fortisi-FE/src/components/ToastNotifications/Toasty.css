@@ -1,0 +1,47 @@
+.toast-container {
+    background-color: #3b5d50;
+    color: white;
+    position: fixed;
+    top: 100px;
+    padding: 10px;
+    border-radius: 15px;
+    animation: slideInOut 3s forwards;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    border-radius: 15px;
+}
+
+.animate {
+    animation: fadeInOut 3s forwards;
+}
+
+@keyframes slideInOut {
+    0% {
+        right: -100%;
+    }
+    25% {
+        right: 40px;
+    }
+    75% {
+        right: 40px;
+    }
+    100% {
+        right: -100%;
+    }
+}
+
+@keyframes fadeInOut {
+    0% {
+        opacity: 0;
+        right: -100%;
+    }
+    10% {
+        opacity: 1;
+    }
+    90% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+        right: -100%;
+    }
+}
