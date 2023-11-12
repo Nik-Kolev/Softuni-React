@@ -13,32 +13,33 @@ import { ErrorProvider } from './context/ErrorContext';
 
 function App() {
     return (
-        <ErrorProvider>
+        <>
             <NavBar />
-
-            <Routes>
-                <Route
-                    path='/'
-                    element={
-                        <>
-                            <Carousel />
-                            <PopularProducts />
-                        </>
-                    }
-                />
-                {/* <Route path='/catalog' element={<Catalog />} /> */}
-                {/* <Route path='/about-us' element={<AboutUs />} /> */}
-                <Route path='/blog' element={<Blog />} />
-                <Route path='/login' element={<Login />} />
-                <Route path='/register' element={<Register />} />
-                {/* <Route path='/logout' element={<Logout />} /> */}
-                {/* <Route path='/profile' element={<Profile />} /> */}
-                {/* <Route path='/shop' element={<ShopCart />} /> */}
-                <Route path='*' element={<SomethingWentWrong />} />
-            </Routes>
-            <Toasty />
+            <ErrorProvider>
+                <Routes>
+                    <Route
+                        path='/'
+                        element={
+                            <>
+                                <Carousel />
+                                <PopularProducts />
+                            </>
+                        }
+                    />
+                    {/* <Route path='/catalog' element={<Catalog />} /> */}
+                    {/* <Route path='/about-us' element={<AboutUs />} /> */}
+                    <Route path='/blog' element={<Blog />} />
+                    <Route path='/login' element={<Login />} />
+                    <Route path='/register' element={<Register />} />
+                    {/* <Route path='/logout' element={<Logout />} /> */}
+                    {/* <Route path='/profile' element={<Profile />} /> */}
+                    {/* <Route path='/shop' element={<ShopCart />} /> */}
+                    <Route path='*' element={<SomethingWentWrong />} />
+                </Routes>
+                <Toasty />
+            </ErrorProvider>
             <Footer />
-        </ErrorProvider>
+        </>
     );
 }
 

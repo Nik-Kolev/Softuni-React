@@ -19,5 +19,16 @@ export default function Toasty() {
             };
         }
     }, [errors, clearErrors]);
-    return isToastVisible && <div className='toast-container'>{errors.message}</div>;
+    console.log(errors);
+    return (
+        isToastVisible && (
+            <div className='toast-container'>
+                {Object.entries(errors).map(([field, message]) => (
+                    <div key={field} className='error-message'>
+                        <p>{`${field} ${message}`}</p>
+                    </div>
+                ))}
+            </div>
+        )
+    );
 }

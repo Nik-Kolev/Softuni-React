@@ -14,7 +14,19 @@ export const ErrorProvider = ({ children }) => {
     };
 
     const setError = (message) => {
-        setErrors((state) => ({ ...state, message }));
+        let msg = message.split(', ');
+        console.log(message);
+        let newErrors = msg.reduce((acc, errorMsg) => {
+            const [field, error] = errorMsg.split(': ');
+            if (error == undefined) {
+                acc[field] = '';
+                return acc;
+            }
+            acc[field] = error;
+            return acc;
+        }, {});
+        console.log(newErrors);
+        setErrors((state) => ({ ...state, ...newErrors }));
     };
 
     return <ErrorContext.Provider value={{ errors, clearErrors, setError }}>{children}</ErrorContext.Provider>;

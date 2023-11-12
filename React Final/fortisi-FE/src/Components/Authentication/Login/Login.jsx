@@ -54,7 +54,7 @@ export default function Login() {
                                         onChange={handleChange}
                                         ref={emailInputRef}
                                     />
-                                    {errors.email && <span>{errors.email}</span>}
+                                    {/* {errors.email && <span>{errors.email}</span>} */}
                                 </div>
 
                                 <div className='form-group'>
@@ -69,7 +69,7 @@ export default function Login() {
                                         value={values.password || ''}
                                         onChange={handleChange}
                                     />
-                                    {errors.password && <span>{errors.password}</span>}
+                                    {/* {errors.password && <span>{errors.password}</span>} */}
                                 </div>
 
                                 <button type='submit' className='btn btn-primary-hover-outline'>
