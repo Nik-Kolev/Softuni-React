@@ -1,5 +1,6 @@
 import { useRef, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useErrorContext } from '../../../context/ErrorContext';
 import { useForm } from '../../../hooks/useForm';
 import { login } from '../../../services/user';
 import '../Auth.css';
@@ -7,6 +8,7 @@ import '../Auth.css';
 export default function Login() {
     const emailInputRef = useRef(null);
     const navigate = useNavigate();
+    const { setError } = useErrorContext();
     const { values, handleChange, handleSubmit, errors } = useForm({
         email: '',
         password: '',
@@ -25,9 +27,10 @@ export default function Login() {
     const onSubmitHandler = async (data) => {
         try {
             await login(data);
+
             // navigate('/');
         } catch (err) {
-            console.log(err);
+            setError(err.message);
         }
     };
 
