@@ -1,14 +1,16 @@
-import { useState, useRef, useEffect } from 'react';
+import { useRef, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { useForm } from '../../../hooks/useForm';
 import { login } from '../../../services/user';
 import '../Auth.css';
 
 export default function Login() {
-    const [values, setValues] = useState({
+    const emailInputRef = useRef(null);
+    const navigate = useNavigate();
+    const { values, handleChange, handleSubmit, errors } = useForm({
         email: '',
         password: '',
     });
-
-    const emailInputRef = useRef(null);
 
     useEffect(() => {
         if (emailInputRef.current) {
@@ -16,14 +18,14 @@ export default function Login() {
         }
     }, []);
 
-    const onChangeHandler = (e) => {
-        setValues((state) => ({ ...state, [e.target.name]: e.target.value }));
-    };
+    // useEffect(() => {
+    //     console.log(errors);
+    // }, [errors]);
 
-    const onSubmitHandler = async (e) => {
-        e.preventDefault();
+    const onSubmitHandler = async (data) => {
         try {
-            await login(values);
+            await login(data);
+            // navigate('/');
         } catch (err) {
             console.log(err);
         }
@@ -35,7 +37,7 @@ export default function Login() {
                 <div className='block'>
                     <div className='row justify-content-center'>
                         <div className='col-md-8 col-lg-8 pb-4'>
-                            <form onSubmit={onSubmitHandler}>
+                            <form onSubmit={handleSubmit(onSubmitHandler)}>
                                 <div className='form-group'>
                                     <label className='text-black' htmlFor='email'>
                                         Email address
@@ -45,10 +47,11 @@ export default function Login() {
                                         className='form-control'
                                         id='email'
                                         name='email'
-                                        value={values.email}
-                                        onChange={onChangeHandler}
+                                        value={values.email || ''}
+                                        onChange={handleChange}
                                         ref={emailInputRef}
                                     />
+                                    {errors.email && <span>{errors.email}</span>}
                                 </div>
 
                                 <div className='form-group'>
@@ -60,9 +63,10 @@ export default function Login() {
                                         className='form-control'
                                         id='password'
                                         name='password'
-                                        value={values.password}
-                                        onChange={onChangeHandler}
+                                        value={values.password || ''}
+                                        onChange={handleChange}
                                     />
+                                    {errors.password && <span>{errors.password}</span>}
                                 </div>
 
                                 <button type='submit' className='btn btn-primary-hover-outline'>
