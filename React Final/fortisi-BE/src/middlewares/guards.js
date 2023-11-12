@@ -14,10 +14,10 @@ module.exports.isGuest = async (req, res, next) => {
         try {
             const decodedToken = await jwt.verify(token, secret);
             if (decodedToken) {
-                return res.status(403).json({ error: 'Already logged in' });
+                return res.status(403).json('Already logged in');
             }
         } catch (err) {
-            return res.status(403).json({ error: err });
+            return res.status(403).json(err);
         }
     } else {
         next();

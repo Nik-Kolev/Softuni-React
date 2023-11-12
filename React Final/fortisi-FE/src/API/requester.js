@@ -28,16 +28,16 @@ async function request(method, endpoint, params) {
         }
 
         if (!response.ok) {
-            if (response.status == 403) {
+            if (response.status === 403 && data != 'Already logged in') {
                 clearUserData();
             }
             let error = data;
-            return error;
+            throw new Error(error);
         }
 
         return data;
     } catch (err) {
-        throw new Error(err)
+        throw new Error(err.message)
     }
 }
 

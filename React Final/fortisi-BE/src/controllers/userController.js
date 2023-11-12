@@ -7,19 +7,23 @@ const { isAuthorized, isGuest } = require('../middlewares/guards')
 
 userController.post('/login', isGuest, async (req, res) => {
     const { email, password } = req.body;
-
+    if (!email) {
+        return res.status(404).json('Email is required')
+    }
+    if (!password) {
+        return res.status(404).json('Password is required')
+    }
     try {
-
         const user = await userModel.findOne({ email });
 
         const isValid = await bcrypt.compare(password, user.password)
 
         if (!isValid) {
-            return res.status(404).json({ error: 'Email or password is incorrect !' })
+            return res.status(404).json('Email or password is incorrect !')
         }
 
         if (!user) {
-            return res.status(404).json({ error: 'Email or password is incorrect !' })
+            return res.status(404).json('Email or password is incorrect !')
         }
 
         const token = await tokenCreator(user)
