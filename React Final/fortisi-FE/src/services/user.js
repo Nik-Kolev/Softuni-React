@@ -11,6 +11,7 @@ export async function register(userData) {
 export async function login(userData) {
     const user = await post(userEndpoints.login, userData)
     setUserData(user)
+    return user
 }
 
 export async function logout() {

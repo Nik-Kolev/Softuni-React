@@ -1,15 +1,18 @@
 import { useRef, useEffect } from 'react';
+import { toast } from 'react-toastify';
 import { useNavigate } from 'react-router-dom';
-import { useErrorContext } from '../../../context/ErrorContext';
 import { useForm } from '../../../hooks/useForm';
 import { login } from '../../../services/user';
+import { useErrorStore } from '../../../store/Errors';
+import { userStore } from '../../../store/User';
 import '../Auth.css';
 
 export default function Login() {
+    const { errors, setError, clearErrors } = useErrorStore();
+    const { setUserData } = userStore();
     const emailInputRef = useRef(null);
-    const navigate = useNavigate();
-    const { setError } = useErrorContext();
-    const { values, handleChange, handleSubmit, errors } = useForm({
+    const navigateTo = useNavigate();
+    const { values, handleChange, handleSubmit } = useForm({
         email: '',
         password: '',
     });
@@ -18,17 +21,24 @@ export default function Login() {
         if (emailInputRef.current) {
             emailInputRef.current.focus();
         }
+        return () => {
+            toast.dismiss();
+        };
     }, []);
 
-    // useEffect(() => {
-    //     console.log(errors);
-    // }, [errors]);
+    useEffect(() => {
+        if (errors.length > 0) {
+            toast.dismiss();
+            errors.forEach((error) => toast.error(error));
+            clearErrors();
+        }
+    }, [errors, clearErrors]);
 
     const onSubmitHandler = async (data) => {
         try {
-            await login(data);
-
-            // navigate('/');
+            const user = await login(data);
+            setUserData(user);
+            navigateTo('/');
         } catch (err) {
             setError(err.message);
         }

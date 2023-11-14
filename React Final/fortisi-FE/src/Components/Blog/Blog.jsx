@@ -1,5 +1,8 @@
 import './Blog.css';
+import { userStore } from '../../store/User';
 export default function Blog() {
+    const { user } = userStore();
+    console.log(user);
     return (
         <div className='blog-section'>
             <div className='container'>
