@@ -13,12 +13,12 @@ userController.post('/login', isGuest, async (req, res) => {
     Object.entries(req.body).forEach(([fieldName, value]) => {
         if (value === '') {
             let errorName = fieldName.charAt(0).toUpperCase() + fieldName.slice(1)
-            errors.push(`${errorName}: is required.`);
+            errors.push(`${errorName} is required.`);
         }
 
     });
     if (errors.length > 0) {
-        return res.status(400).json(errors.join(', '));
+        return res.status(400).json(errors);
     }
     // if (!email && !password) {
     //     return res.status(400).json('Email and Password are required.')
