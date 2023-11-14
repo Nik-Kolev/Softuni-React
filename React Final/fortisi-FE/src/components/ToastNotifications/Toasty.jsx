@@ -1,11 +1,12 @@
 import './Toasty.css';
 import { useEffect, useState } from 'react';
-import { useErrorContext } from '../../context/ErrorContext';
+// import { useErrorContext } from '../../context/ErrorContext';
+import { useErrorStore } from '../../store/Errors';
 
 export default function Toasty() {
     const [isToastVisible, setToastIsVisible] = useState(false);
-    const { errors, clearErrors } = useErrorContext();
-
+    // const { errors, clearErrors } = useErrorContext();
+    const { errors, clearErrors } = useErrorStore();
     useEffect(() => {
         const hasErrors = Object.keys(errors).length > 0;
         setToastIsVisible(hasErrors);
@@ -19,7 +20,7 @@ export default function Toasty() {
             };
         }
     }, [errors, clearErrors]);
-    console.log(errors);
+
     return (
         isToastVisible && (
             <div className='toast-container'>
