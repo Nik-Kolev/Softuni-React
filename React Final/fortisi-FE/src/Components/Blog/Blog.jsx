@@ -1,7 +1,9 @@
+import { useContext } from 'react';
+import { UserContext } from '../../context/UserContext';
 import './Blog.css';
-import { userStore } from '../../store/User';
+
 export default function Blog() {
-    const { user } = userStore();
+    const { user } = useContext(UserContext);
     console.log(user);
     return (
         <div className='blog-section'>

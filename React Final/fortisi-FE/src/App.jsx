@@ -8,50 +8,38 @@ import Register from './Components/Authentication/Register/Register';
 import Login from './Components/Authentication/Login/Login';
 import SomethingWentWrong from './Components/404/404';
 import PopularProducts from './Components/Catalog/PopularProducts/PopularProducts';
-import { ToastContainer } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
-// import Toasty from './components/ToastNotifications/Toasty';
-// import { ErrorProvider } from './context/ErrorContext';
+import Toasty from './components/ToastNotifications/Toasty';
+import { NotificationProvider } from './context/NotificationContext';
+import { UserProvider } from './context/UserContext';
 
 function App() {
     return (
         <>
-            <NavBar />
-            {/* <ErrorProvider> */}
-            <Routes>
-                <Route
-                    path='/'
-                    element={
-                        <>
-                            <Carousel />
-                            <PopularProducts />
-                        </>
-                    }
-                />
-                {/* <Route path='/catalog' element={<Catalog />} /> */}
-                {/* <Route path='/about-us' element={<AboutUs />} /> */}
-                <Route path='/blog' element={<Blog />} />
-                <Route path='/login' element={<Login />} />
-                <Route path='/register' element={<Register />} />
-                {/* <Route path='/logout' element={<Logout />} /> */}
-                {/* <Route path='/profile' element={<Profile />} /> */}
-                {/* <Route path='/shop' element={<ShopCart />} /> */}
-                <Route path='*' element={<SomethingWentWrong />} />
-            </Routes>
-            {/* <Toasty /> */}
-            {/* </ErrorProvider> */}
-            <ToastContainer
-                position='top-right'
-                autoClose={2000}
-                hideProgressBar={false}
-                newestOnTop={false}
-                closeOnClick
-                rtl={false}
-                pauseOnFocusLoss
-                draggable
-                pauseOnHover
-                theme='dark'
-            />
+            <NotificationProvider>
+                <UserProvider>
+                    <NavBar />
+                    <Routes>
+                        <Route
+                            path='/'
+                            element={
+                                <>
+                                    <Carousel />
+                                    <PopularProducts />
+                                </>
+                            }
+                        />
+                        {/* <Route path='/catalog' element={<Catalog />} /> */}
+                        {/* <Route path='/about-us' element={<AboutUs />} /> */}
+                        <Route path='/blog' element={<Blog />} />
+                        <Route path='/login' element={<Login />} />
+                        <Route path='/register' element={<Register />} />
+                        {/* <Route path='/profile' element={<Profile />} /> */}
+                        {/* <Route path='/shop' element={<ShopCart />} /> */}
+                        <Route path='*' element={<SomethingWentWrong />} />
+                    </Routes>
+                    <Toasty />
+                </UserProvider>
+            </NotificationProvider>
             <Footer />
         </>
     );

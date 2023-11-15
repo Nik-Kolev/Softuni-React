@@ -1,5 +1,5 @@
 import { userEndpoints } from '../API/endpoints'
-import { post } from '../API/requester'
+import { post, get } from '../API/requester'
 import { clearUserData, setUserData } from '../Utils/userLocaleStorage'
 
 
@@ -15,5 +15,7 @@ export async function login(userData) {
 }
 
 export async function logout() {
+    const user = await get(userEndpoints.logout)
     clearUserData()
+    return user
 }

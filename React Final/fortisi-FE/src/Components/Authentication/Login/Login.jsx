@@ -1,46 +1,35 @@
-import { useRef, useEffect } from 'react';
-import { toast } from 'react-toastify';
+import { useRef, useEffect, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useForm } from '../../../hooks/useForm';
 import { login } from '../../../services/user';
-import { useErrorStore } from '../../../store/Errors';
-import { userStore } from '../../../store/User';
+import { NotificationContext } from '../../../context/NotificationContext';
+import { UserContext } from '../../../context/UserContext';
 import '../Auth.css';
 
 export default function Login() {
-    const { errors, setError, clearErrors } = useErrorStore();
-    const { setUserData } = userStore();
+    //TODO Handle form errors !
+    const { setNotification } = useContext(NotificationContext);
+    const { setUser } = useContext(UserContext);
     const emailInputRef = useRef(null);
     const navigateTo = useNavigate();
     const { values, handleChange, handleSubmit } = useForm({
         email: '',
         password: '',
     });
-
     useEffect(() => {
         if (emailInputRef.current) {
             emailInputRef.current.focus();
         }
-        return () => {
-            toast.dismiss();
-        };
     }, []);
-
-    useEffect(() => {
-        if (errors.length > 0) {
-            toast.dismiss();
-            errors.forEach((error) => toast.error(error));
-            clearErrors();
-        }
-    }, [errors, clearErrors]);
 
     const onSubmitHandler = async (data) => {
         try {
             const user = await login(data);
-            setUserData(user);
+            setUser(user);
+            setNotification('Logged in successfully');
             navigateTo('/');
         } catch (err) {
-            setError(err.message);
+            setNotification(err.message);
         }
     };
 

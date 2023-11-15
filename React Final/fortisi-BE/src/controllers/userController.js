@@ -15,20 +15,11 @@ userController.post('/login', isGuest, async (req, res) => {
             let errorName = fieldName.charAt(0).toUpperCase() + fieldName.slice(1)
             errors.push(`${errorName} is required.`);
         }
-
     });
     if (errors.length > 0) {
         return res.status(400).json(errors);
     }
-    // if (!email && !password) {
-    //     return res.status(400).json('Email and Password are required.')
-    // }
-    // if (!email) {
-    //     return res.status(404).json('Email is required.')
-    // }
-    // if (!password) {
-    //     return res.status(404).json('Password is required.')
-    // }
+
     try {
         const user = await userModel.findOne({ email });
 
@@ -54,14 +45,16 @@ userController.post('/login', isGuest, async (req, res) => {
 userController.post('/register', isGuest, async (req, res) => {
     const { firstName, lastName, email, phoneNumber, password, rePass } = req.body;
 
-    if (!email && !password) {
-        return res.status(400).json('Email and Password are required.')
-    }
-    if (!email) {
-        return res.status(404).json('Email is required.')
-    }
-    if (!password) {
-        return res.status(404).json('Password is required.')
+    let errors = [];
+
+    Object.entries(req.body).forEach(([fieldName, value]) => {
+        if (value === '') {
+            let errorName = fieldName.charAt(0).toUpperCase() + fieldName.slice(1)
+            errors.push(`${errorName} is required.`);
+        }
+    });
+    if (errors.length > 0) {
+        return res.status(400).json(errors);
     }
 
     try {
@@ -91,20 +84,22 @@ userController.post('/register', isGuest, async (req, res) => {
 });
 
 userController.get('/logout', isAuthorized, (req, res) => {
-    res.status(200).json({ Success: 'User logged out.' })
+    res.status(200).json('User logged out.')
 })
 
 
 userController.post('/resetPassword', isAuthorized, async (req, res) => {
     const { email, password, newPassword } = req.body;
-    if (!email) {
-        return res.status(404).json({ error: 'Email is required' })
-    }
-    if (!password) {
-        return res.status(404).json({ error: 'Password is required' })
-    }
-    if (!newPassword) {
-        return res.status(404).json({ error: 'New Password is required' })
+    let errors = [];
+
+    Object.entries(req.body).forEach(([fieldName, value]) => {
+        if (value === '') {
+            let errorName = fieldName.charAt(0).toUpperCase() + fieldName.slice(1)
+            errors.push(`${errorName} is required.`);
+        }
+    });
+    if (errors.length > 0) {
+        return res.status(400).json(errors);
     }
 
     try {
