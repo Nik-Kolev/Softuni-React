@@ -83,7 +83,7 @@ userController.post('/register', isGuest, async (req, res) => {
     }
 });
 
-userController.get('/logout', isAuthorized, (req, res) => {
+userController.get('/logout', (req, res) => {
     res.status(200).json('User logged out.')
 })
 
