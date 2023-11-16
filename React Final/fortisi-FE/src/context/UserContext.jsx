@@ -1,22 +1,39 @@
-import { createContext, useState } from 'react';
+import { createContext } from 'react';
+import { useLocaleStorage } from '../hooks/useLocalStorage';
+import * as userServices from '../services/user';
 
 const UserContext = createContext();
 
 const UserProvider = ({ children }) => {
-    const [user, setUser] = useState([]);
+    const [user, setUser] = useLocaleStorage();
 
-    // const setUserData = (userData) => {
-    //     setUser();
-    // };
-    const clearUserData = () => {
-        setUser([]);
+    const onLoginHandler = async (userData) => {
+        const user = await userServices.login(userData);
+        if (!user) {
+            throw user;
+        }
+        setUser(user);
+        console.log(user);
+        return user;
+    };
+
+    const onRegisterHandler = async (userData) => {
+        const user = await userServices.register(userData);
+        setUser(user);
+    };
+
+    const onLogoutHandler = async () => {
+        const response = await userServices.logout();
+        setUser('clear');
+        return response;
     };
 
     const contextValues = {
         user,
-        setUser,
-        isAuthenticated: !!user.token,
-        clearUserData,
+        isAuthenticated: !!user?.token,
+        onLoginHandler,
+        onRegisterHandler,
+        onLogoutHandler,
     };
 
     return <UserContext.Provider value={contextValues}>{children}</UserContext.Provider>;
