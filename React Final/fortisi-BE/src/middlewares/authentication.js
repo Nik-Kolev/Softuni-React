@@ -2,8 +2,7 @@ const jwt = require('../utils/jwtPromisify')
 const { secret } = require('../config/config')
 
 module.exports.authentication = async (req, res, next) => {
-    const token = req.headers['x-authorization']
-
+    const token = req.headers['X-Authorization']
     if (token) {
         try {
             const decodedToken = await jwt.verify(token, secret)
