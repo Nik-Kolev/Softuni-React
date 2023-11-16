@@ -1,13 +1,12 @@
 import { useContext, useState } from 'react';
 import { Link } from 'react-router-dom';
 import './UserDropDown.css';
-import { logout } from '../../../services/user';
 import { NotificationContext } from '../../../context/NotificationContext';
 import { UserContext } from '../../../context/UserContext';
 export default function UserDropDown() {
     const [isDropdownVisible, setDropdownVisible] = useState(false);
     const { setNotification } = useContext(NotificationContext);
-    const { clearUserData, isAuthenticated } = useContext(UserContext);
+    const { onLogoutHandler, isAuthenticated } = useContext(UserContext);
 
     const showDropdownHandler = () => {
         setDropdownVisible(true);
@@ -17,12 +16,17 @@ export default function UserDropDown() {
         setDropdownVisible(false);
     };
 
-    const onLogoutHandler = async () => {
-        const user = await logout();
-        setNotification(user);
-        clearUserData();
+    const onSubmitHandler = async () => {
+        try {
+            const user = await onLogoutHandler();
+            console.log(user);
+            setNotification(user);
+        } catch (err) {
+            console.log(err);
+            setNotification(err.message);
+        }
     };
-
+    console.log(isAuthenticated);
     return (
         <li className='user-container' onMouseEnter={showDropdownHandler} onMouseLeave={hideDropdownHandler}>
             <Link to={'/profile'} className='nav-link user-icon'>
@@ -31,7 +35,7 @@ export default function UserDropDown() {
             {isDropdownVisible && (
                 <div className='dropdown-menu' onClick={hideDropdownHandler}>
                     {isAuthenticated ? (
-                        <Link to={'/'} className='dropdown-link' onClick={onLogoutHandler}>
+                        <Link to={'/'} className='dropdown-link' onClick={onSubmitHandler}>
                             Logout
                         </Link>
                     ) : (
