@@ -1,25 +1,21 @@
-import { useRef, useEffect, useContext } from 'react';
+import { useContext } from 'react';
+import { useFieldSelector } from '../../../hooks/useFieldSelector';
 import { useNavigate } from 'react-router-dom';
 import { useForm } from '../../../hooks/useForm';
 import { NotificationContext } from '../../../context/NotificationContext';
-import { UserContext } from '../../../context/UserContext';
+import { useUserContext } from '../../../context/UserContext';
 import '../Auth.css';
 
 export default function Login() {
     //TODO Handle form errors !
     const { setNotification } = useContext(NotificationContext);
-    const { onLoginHandler } = useContext(UserContext);
-    const emailInputRef = useRef(null);
+    const { onLoginHandler } = useUserContext();
+    const { selectorRef } = useFieldSelector();
     const navigateTo = useNavigate();
     const { values, handleChange, handleSubmit } = useForm({
         email: '',
         password: '',
     });
-    useEffect(() => {
-        if (emailInputRef.current) {
-            emailInputRef.current.focus();
-        }
-    }, []);
 
     const onSubmitHandler = async (data) => {
         try {
@@ -49,7 +45,7 @@ export default function Login() {
                                         name='email'
                                         value={values.email || ''}
                                         onChange={handleChange}
-                                        ref={emailInputRef}
+                                        ref={selectorRef}
                                     />
                                     {/* {errors.email && <span>{errors.email}</span>} */}
                                 </div>

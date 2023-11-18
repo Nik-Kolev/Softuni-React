@@ -1,13 +1,14 @@
 import { useContext } from 'react';
 import { Link } from 'react-router-dom';
-import { UserContext } from '../../../context/UserContext';
+// import { UserContext } from '../../../context/UserContext';
+import { useUserContext } from '../../../context/UserContext';
 import { DropdownMenu } from '../../../hooks/useDropdownMenu';
 import Logout from '../../Authentication/Logout/Logout';
 import './UserDropDown.css';
 
 export default function UserDropDown() {
     const { showDropdown, hideDropdown, isDropdownVisible } = DropdownMenu();
-    const { isAuthenticated } = useContext(UserContext);
+    const { isAuthenticated } = useUserContext();
 
     return (
         <li className='user-container' onMouseEnter={showDropdown} onMouseLeave={hideDropdown}>

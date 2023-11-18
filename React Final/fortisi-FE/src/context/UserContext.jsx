@@ -1,10 +1,10 @@
-import { createContext } from 'react';
+import { createContext, useContext } from 'react';
 import { useLocaleStorage } from '../hooks/useLocalStorage';
 import * as userServices from '../services/user';
 
 const UserContext = createContext();
 
-const UserProvider = ({ children }) => {
+export const UserProvider = ({ children }) => {
     const [user, setUser] = useLocaleStorage();
 
     const onLoginHandler = async (userData) => {
@@ -38,4 +38,6 @@ const UserProvider = ({ children }) => {
     return <UserContext.Provider value={contextValues}>{children}</UserContext.Provider>;
 };
 
-export { UserContext, UserProvider };
+export const useUserContext = () => {
+    return useContext(UserContext);
+};

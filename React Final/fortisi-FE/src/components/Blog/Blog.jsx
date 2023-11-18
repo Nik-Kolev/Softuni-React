@@ -1,10 +1,10 @@
-import { useContext } from 'react';
-import { UserContext } from '../../context/UserContext';
+// import { useContext } from 'react';
+// import { UserContext } from '../../context/UserContext';
 import './Blog.css';
 
 export default function Blog() {
-    const { user } = useContext(UserContext);
-    console.log(user);
+    // const { user } = useContext(UserContext);
+    // console.log(user);
     return (
         <div className='blog-section'>
             <div className='container'>
