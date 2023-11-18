@@ -1,9 +1,16 @@
-import { useState, useRef, useEffect } from 'react';
-import { register } from '../../../services/user';
+import { useNavigate } from 'react-router-dom';
+import { useNotificationContext } from '../../../context/NotificationContext';
+import { useUserContext } from '../../../context/UserContext';
+import { useFieldSelector } from '../../../hooks/useFieldSelector';
+import { useForm } from '../../../hooks/useForm';
 import '../Auth.css';
 
 export default function Register() {
-    const [values, setValues] = useState({
+    const { selectorRef } = useFieldSelector();
+    const { setNotification } = useNotificationContext();
+    const { onRegisterHandler } = useUserContext();
+    const navigateTo = useNavigate();
+    const { values, handleChange, handleSubmit } = useForm({
         firstName: '',
         lastName: '',
         email: '',
@@ -12,25 +19,15 @@ export default function Register() {
         rePass: '',
     });
 
-    const firstNameInputRef = useRef(null);
-
-    useEffect(() => {
-        if (firstNameInputRef.current) {
-            firstNameInputRef.current.focus();
-        }
-    }, []);
-
-    const onChangeHandler = (e) => {
-        setValues((state) => ({ ...state, [e.target.name]: e.target.value }));
-    };
-
-    const onSubmitHandler = async (e) => {
-        e.preventDefault();
+    const onSubmitHandler = async (data) => {
         try {
-            const response = await register(values);
-            console.log(response);
+            await onRegisterHandler(data);
+            setNotification('Successfully registered!');
+            navigateTo('/');
         } catch (err) {
             console.log(err);
+            console.log(err.message);
+            setNotification(err.message);
         }
     };
 
@@ -40,7 +37,7 @@ export default function Register() {
                 <div className='block'>
                     <div className='row justify-content-center'>
                         <div className='col-md-8 col-lg-8 pb-4'>
-                            <form onSubmit={onSubmitHandler}>
+                            <form onSubmit={handleSubmit(onSubmitHandler)}>
                                 <div className='row'>
                                     <div className='col-6'>
                                         <div className='form-group'>
@@ -52,9 +49,9 @@ export default function Register() {
                                                 className='form-control'
                                                 id='firstName'
                                                 name='firstName'
-                                                value={values.firstName}
-                                                onChange={onChangeHandler}
-                                                ref={firstNameInputRef}
+                                                value={values.firstName || ''}
+                                                onChange={handleChange}
+                                                ref={selectorRef}
                                             />
                                         </div>
                                     </div>
@@ -69,7 +66,7 @@ export default function Register() {
                                                 id='lastName'
                                                 name='lastName'
                                                 value={values.lastName}
-                                                onChange={onChangeHandler}
+                                                onChange={handleChange}
                                             />
                                         </div>
                                     </div>
@@ -86,7 +83,7 @@ export default function Register() {
                                                 id='email'
                                                 name='email'
                                                 value={values.email}
-                                                onChange={onChangeHandler}
+                                                onChange={handleChange}
                                             />
                                         </div>
                                     </div>
@@ -101,7 +98,7 @@ export default function Register() {
                                                 id='phoneNumber'
                                                 name='phoneNumber'
                                                 value={values.phoneNumber}
-                                                onChange={onChangeHandler}
+                                                onChange={handleChange}
                                             />
                                         </div>
                                     </div>
@@ -118,7 +115,7 @@ export default function Register() {
                                                 id='password'
                                                 name='password'
                                                 value={values.password}
-                                                onChange={onChangeHandler}
+                                                onChange={handleChange}
                                             />
                                         </div>
                                     </div>
@@ -133,7 +130,7 @@ export default function Register() {
                                                 id='rePass'
                                                 name='rePass'
                                                 value={values.rePass}
-                                                onChange={onChangeHandler}
+                                                onChange={handleChange}
                                             />
                                         </div>
                                     </div>
