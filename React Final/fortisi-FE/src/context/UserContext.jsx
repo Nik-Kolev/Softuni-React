@@ -13,8 +13,6 @@ const UserProvider = ({ children }) => {
             throw user;
         }
         setUser(user);
-        console.log(user);
-        return user;
     };
 
     const onRegisterHandler = async (userData) => {
@@ -25,6 +23,7 @@ const UserProvider = ({ children }) => {
     const onLogoutHandler = async () => {
         const response = await userServices.logout();
         setUser('clear');
+        //TODO: Change user logged out message
         return response;
     };
 

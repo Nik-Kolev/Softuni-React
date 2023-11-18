@@ -3,8 +3,6 @@ import { getUserData, setUserData, clearUserData } from '../utils/userLocaleStor
 
 export const useLocaleStorage = (initialValue) => {
     const [state, setState] = useState(() => {
-        console.log(!getUserData())
-        console.log(initialValue)
         if (!getUserData()) {
             return initialValue
         }

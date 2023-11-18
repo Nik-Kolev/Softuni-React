@@ -27,7 +27,6 @@ export default function Login() {
             setNotification('Logged in successfully!');
             navigateTo('/');
         } catch (err) {
-            console.log(err.message);
             setNotification(err.message);
         }
     };
