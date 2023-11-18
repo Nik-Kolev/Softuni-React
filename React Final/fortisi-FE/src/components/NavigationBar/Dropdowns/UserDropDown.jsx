@@ -1,36 +1,23 @@
 import { useContext } from 'react';
 import { Link } from 'react-router-dom';
-import './UserDropDown.css';
-import { NotificationContext } from '../../../context/NotificationContext';
 import { UserContext } from '../../../context/UserContext';
 import { DropdownMenu } from '../../../hooks/useDropdownMenu';
+import Logout from '../../Authentication/Logout/Logout';
+import './UserDropDown.css';
+
 export default function UserDropDown() {
     const { showDropdown, hideDropdown, isVisible } = DropdownMenu();
+    const { isAuthenticated } = useContext(UserContext);
 
-    const { setNotification } = useContext(NotificationContext);
-    const { onLogoutHandler, isAuthenticated } = useContext(UserContext);
-
-    const onSubmitHandler = async () => {
-        try {
-            const user = await onLogoutHandler();
-            setNotification(user);
-        } catch (err) {
-            setNotification(err.message);
-        }
-    };
-    console.log(isAuthenticated);
-    //TODO: Make Logout component with useEffect to logout on mount
     return (
         <li className='user-container' onMouseEnter={showDropdown} onMouseLeave={hideDropdown}>
             <Link to={'/profile'} className='nav-link user-icon'>
-                <img src='images/user.svg' />
+                <img src='images/user.svg' alt='User icon' />
             </Link>
             {isVisible && (
                 <div className='dropdown-menu' onClick={hideDropdown}>
                     {isAuthenticated ? (
-                        <Link to={'/'} className='dropdown-link' onClick={onSubmitHandler}>
-                            Logout
-                        </Link>
+                        <Logout />
                     ) : (
                         <>
                             <Link to={'/login'} className='dropdown-link'>
