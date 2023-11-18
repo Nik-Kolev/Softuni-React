@@ -23,13 +23,13 @@ userController.post('/login', isGuest, async (req, res) => {
     try {
         const user = await userModel.findOne({ email });
 
-        const isValid = await bcrypt.compare(password, user.password)
-
-        if (!isValid) {
+        if (!user) {
             return res.status(404).json('Email or password is incorrect.')
         }
 
-        if (!user) {
+        const isValid = await bcrypt.compare(password, user.password)
+
+        if (!isValid) {
             return res.status(404).json('Email or password is incorrect.')
         }
 
