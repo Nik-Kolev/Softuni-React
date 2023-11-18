@@ -1,7 +1,7 @@
 import './NavigationBar.css';
 import { Link } from 'react-router-dom';
-import UserDropDown from './Dropdowns/UserDropDown';
-import CartDropDown from './Dropdowns/CardDropDown';
+import UserDropDown from './UserDropdown/UserDropDown';
+import CartDropDown from './CartDropdown/CardDropDown';
 export default function NavBar() {
     return (
         //arial-label='Furni navigation bar'//
@@ -25,11 +25,6 @@ export default function NavBar() {
 
                 <div className='collapse navbar-collapse' id='navbarsFurni'>
                     <ul className='custom-navbar-nav navbar-nav ms-auto mb-2 mb-md-0'>
-                        {/* <li className='nav-item active'>
-                            <Link to={'/'} className='nav-link'>
-                                Home
-                            </Link>
-                        </li> */}
                         <li>
                             <Link to={'/catalog'} className='nav-link'>
                                 Catalog
@@ -50,36 +45,11 @@ export default function NavBar() {
                                 Contact us
                             </Link>
                         </li>
-                        {/* <li>
-                            <Link to={'/login'} className='nav-link'>
-                                Login
-                            </Link>
-                        </li>
-                        <li>
-                            <Link to={'/register'} className='nav-link'>
-                                Register
-                            </Link>
-                        </li>
-                        <li>
-                            <Link to={'/logout'} className='nav-link'>
-                                Logout
-                            </Link>
-                        </li> */}
                     </ul>
 
                     <ul className='custom-navbar-cta navbar-nav mb-2 mb-md-0 ms-5'>
                         <UserDropDown />
                         <CartDropDown />
-                        {/* <li>
-                            <a className='nav-link' href='#'>
-                                <img src='images/user.svg' />
-                            </a>
-                        </li> */}
-                        {/* <li>
-                            <a className='nav-link' href='cart.html'>
-                                <img src='images/cart.svg' />
-                            </a>
-                        </li> */}
                     </ul>
                 </div>
             </div>
