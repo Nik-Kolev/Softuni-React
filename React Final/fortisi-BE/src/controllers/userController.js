@@ -53,6 +53,7 @@ userController.post('/register', isGuest, async (req, res) => {
             errors.push(`${errorName} is required.`);
         }
     });
+
     if (errors.length > 0) {
         return res.status(400).json(errors);
     }
@@ -60,13 +61,13 @@ userController.post('/register', isGuest, async (req, res) => {
     try {
 
         if (password !== rePass) {
-            return res.status(401).json({ error: 'Passwords don`t match' })
+            return res.status(404).json('Passwords don`t match')
         }
 
         const user = await userModel.exists({ email })
 
         if (user) {
-            return res.status(409).json({ error: 'Email is already taken!' })
+            return res.status(409).json('Email is already taken!')
         }
 
         const hashedPass = await bcrypt.hash(password, 10)
@@ -75,7 +76,7 @@ userController.post('/register', isGuest, async (req, res) => {
 
         const token = await tokenCreator(newUser)
 
-        const data = { firstName: user.firstName, lastName: user.lastName, _id: user._id, email: user.email, token }
+        const data = { firstName: newUser.firstName, lastName: newUser.lastName, _id: newUser._id, email: newUser.email, token }
 
         res.status(200).json(data);
     } catch (error) {

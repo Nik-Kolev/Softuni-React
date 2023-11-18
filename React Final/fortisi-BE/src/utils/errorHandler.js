@@ -27,10 +27,11 @@ module.exports = function errorHandler(error, res, req) {
 
     console.error(`Error: ${req.method} >> ${req.baseUrl}: ${message}`);
 
-    res.status(statusCode).json({ error: message });
+    res.status(statusCode).json(message);
 }
 
 function getMissingPropertiesErrorMessage(errors) {
+    // console.log(errors)
     const missingProperties = Object.keys(errors).reduce((a, b) => {
         if (b.includes('.')) {
             const [mainProp, nestedProp] = b.split('.');
