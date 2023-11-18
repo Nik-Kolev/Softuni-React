@@ -1,8 +1,8 @@
-import { createContext, useState } from 'react';
+import { createContext, useContext, useState } from 'react';
 
 const NotificationContext = createContext();
 
-const NotificationProvider = ({ children }) => {
+export const NotificationProvider = ({ children }) => {
     const [notifications, setNotifications] = useState([]);
 
     const setNotification = (message) => {
@@ -22,4 +22,6 @@ const NotificationProvider = ({ children }) => {
     return <NotificationContext.Provider value={contextValues}>{children}</NotificationContext.Provider>;
 };
 
-export { NotificationContext, NotificationProvider };
+export const useNotificationContext = () => {
+    return useContext(NotificationContext);
+};

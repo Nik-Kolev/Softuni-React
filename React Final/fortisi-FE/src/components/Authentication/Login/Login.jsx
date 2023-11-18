@@ -1,14 +1,13 @@
-import { useContext } from 'react';
 import { useFieldSelector } from '../../../hooks/useFieldSelector';
 import { useNavigate } from 'react-router-dom';
 import { useForm } from '../../../hooks/useForm';
-import { NotificationContext } from '../../../context/NotificationContext';
+import { useNotificationContext } from '../../../context/NotificationContext';
 import { useUserContext } from '../../../context/UserContext';
 import '../Auth.css';
 
 export default function Login() {
     //TODO Handle form errors !
-    const { setNotification } = useContext(NotificationContext);
+    const { setNotification } = useNotificationContext();
     const { onLoginHandler } = useUserContext();
     const { selectorRef } = useFieldSelector();
     const navigateTo = useNavigate();
