@@ -1,19 +1,19 @@
 import { useState } from "react";
 
 export const DropdownMenu = () => {
-    const [isVisible, setIsVisible] = useState(false)
+    const [isDropdownVisible, setIsDropdownVisible] = useState(false)
 
     const showDropdown = () => {
-        setIsVisible(true)
+        setIsDropdownVisible(true)
     }
 
     const hideDropdown = () => {
-        setIsVisible(false)
+        setIsDropdownVisible(false)
     }
 
     return {
         showDropdown,
         hideDropdown,
-        isVisible
+        isDropdownVisible
     }
 }

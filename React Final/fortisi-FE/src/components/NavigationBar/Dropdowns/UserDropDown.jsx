@@ -6,7 +6,7 @@ import Logout from '../../Authentication/Logout/Logout';
 import './UserDropDown.css';
 
 export default function UserDropDown() {
-    const { showDropdown, hideDropdown, isVisible } = DropdownMenu();
+    const { showDropdown, hideDropdown, isDropdownVisible } = DropdownMenu();
     const { isAuthenticated } = useContext(UserContext);
 
     return (
@@ -14,7 +14,7 @@ export default function UserDropDown() {
             <Link to={'/profile'} className='nav-link user-icon'>
                 <img src='images/user.svg' alt='User icon' />
             </Link>
-            {isVisible && (
+            {isDropdownVisible && (
                 <div className='dropdown-menu' onClick={hideDropdown}>
                     {isAuthenticated ? (
                         <Logout />
