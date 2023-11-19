@@ -4,9 +4,10 @@
 
 .form-control {
     height: 40px;
-    border-radius: 10px;
+    border-radius: 0.3rem;
     font-family: 'Inter', sans-serif;
 }
+
 .form-control:active,
 .form-control:focus {
     outline: none;
@@ -36,7 +37,47 @@ body {
     margin: 0;
 }
 
+.form-group {
+    line-height: 2;
+    font-size: 17px;
+    margin-bottom: 7px;
+}
+
 .untree_co-section {
     margin-top: 20px;
     min-height: 42.5vh;
+}
+
+.form-group > span {
+    display: flex;
+    align-items: center;
+    margin-top: 7px;
+    height: 20px;
+}
+.form-error {
+    color: red;
+    font-family: roboto regular, sans-serif;
+}
+
+.input-error {
+    border-bottom: 4px solid red;
+}
+
+.input-error:focus {
+    border-bottom: 1px solid;
+}
+
+.btn {
+    display: block;
+    margin: 50px auto;
+}
+
+input:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0 50px white inset;
+    -webkit-text-fill-color: #333;
+}
+
+input:-webkit-autofill:focus {
+    -webkit-box-shadow: 0 0 0 50px white inset;
+    -webkit-text-fill-color: #333;
 }
