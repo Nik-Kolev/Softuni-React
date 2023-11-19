@@ -1,20 +1,29 @@
-import { useFieldSelector } from '../../../hooks/useFieldSelector';
-import { useNavigate } from 'react-router-dom';
-import { useForm } from '../../../hooks/useForm';
+import { useEffect } from 'react';
 import { useNotificationContext } from '../../../context/NotificationContext';
 import { useUserContext } from '../../../context/UserContext';
+import { useNavigate } from 'react-router-dom';
+import { useForm } from 'react-hook-form';
+import { yupResolver } from '@hookform/resolvers/yup';
+import { loginSchema } from '../../../validations/loginValidations';
 import '../Auth.css';
 
 export default function Login() {
-    //TODO Handle form errors !
     const { setNotification } = useNotificationContext();
     const { onLoginHandler } = useUserContext();
-    const { selectorRef } = useFieldSelector();
     const navigateTo = useNavigate();
-    const { values, handleChange, handleSubmit } = useForm({
-        email: '',
-        password: '',
+    const {
+        register,
+        handleSubmit,
+        formState: { errors },
+        setFocus,
+    } = useForm({
+        resolver: yupResolver(loginSchema),
+        mode: 'onBlur',
     });
+
+    useEffect(() => {
+        setFocus('email');
+    }, [setFocus]);
 
     const onSubmitHandler = async (data) => {
         try {
@@ -39,14 +48,12 @@ export default function Login() {
                                     </label>
                                     <input
                                         type='email'
-                                        className='form-control'
+                                        className={`form-control ${errors?.email ? 'input-error' : ''}`}
                                         id='email'
                                         name='email'
-                                        value={values.email || ''}
-                                        onChange={handleChange}
-                                        ref={selectorRef}
+                                        {...register('email')}
                                     />
-                                    {/* {errors.email && <span>{errors.email}</span>} */}
+                                    <span className={errors?.email ? 'form-error' : ''}>{errors?.email?.message}</span>
                                 </div>
 
                                 <div className='form-group'>
@@ -55,13 +62,12 @@ export default function Login() {
                                     </label>
                                     <input
                                         type='password'
-                                        className='form-control'
+                                        className={`form-control ${errors?.password ? 'input-error' : ''}`}
                                         id='password'
                                         name='password'
-                                        value={values.password || ''}
-                                        onChange={handleChange}
+                                        {...register('password')}
                                     />
-                                    {/* {errors.password && <span>{errors.password}</span>} */}
+                                    <span className={errors?.password ? 'form-error' : ''}>{errors?.password?.message}</span>
                                 </div>
 
                                 <button type='submit' className='btn btn-primary-hover-outline'>
