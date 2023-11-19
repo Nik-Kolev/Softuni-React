@@ -11,6 +11,7 @@ export default function Login() {
     const { setNotification } = useNotificationContext();
     const { onLoginHandler } = useUserContext();
     const navigateTo = useNavigate();
+
     const {
         register,
         handleSubmit,

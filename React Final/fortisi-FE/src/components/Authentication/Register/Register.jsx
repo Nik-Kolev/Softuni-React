@@ -1,32 +1,33 @@
-import { useNavigate } from 'react-router-dom';
+import { useEffect } from 'react';
 import { useNotificationContext } from '../../../context/NotificationContext';
 import { useUserContext } from '../../../context/UserContext';
-import { useFieldSelector } from '../../../hooks/useFieldSelector';
-import { useForm } from '../../../hooks/useForm';
+import { useNavigate } from 'react-router-dom';
+import { useForm } from 'react-hook-form';
+import { yupResolver } from '@hookform/resolvers/yup';
+import { registerSchema } from '../../../validations/registerValidations';
 import '../Auth.css';
 
 export default function Register() {
-    const { selectorRef } = useFieldSelector();
     const { setNotification } = useNotificationContext();
     const { onRegisterHandler } = useUserContext();
     const navigateTo = useNavigate();
-    const { values, handleChange, handleSubmit } = useForm({
-        firstName: '',
-        lastName: '',
-        email: '',
-        phoneNumber: '',
-        password: '',
-        rePass: '',
-    });
+    const {
+        register,
+        handleSubmit,
+        formState: { errors },
+        setFocus,
+    } = useForm({ resolver: yupResolver(registerSchema), mode: 'onBlur' });
+
+    useEffect(() => {
+        setFocus('firstName');
+    }, [setFocus]);
 
     const onSubmitHandler = async (data) => {
         try {
             await onRegisterHandler(data);
-            setNotification('Successfully registered!');
+            setNotification('Successfully registered.');
             navigateTo('/');
         } catch (err) {
-            console.log(err);
-            console.log(err.message);
             setNotification(err.message);
         }
     };
@@ -46,13 +47,12 @@ export default function Register() {
                                             </label>
                                             <input
                                                 type='text'
-                                                className='form-control'
+                                                className={`form-control ${errors?.firstName ? 'input-error' : ''}`}
                                                 id='firstName'
                                                 name='firstName'
-                                                value={values.firstName || ''}
-                                                onChange={handleChange}
-                                                ref={selectorRef}
+                                                {...register('firstName')}
                                             />
+                                            <span className={errors?.firstName ? 'form-error' : ''}>{errors?.firstName?.message}</span>
                                         </div>
                                     </div>
                                     <div className='col-6'>
@@ -62,12 +62,12 @@ export default function Register() {
                                             </label>
                                             <input
                                                 type='text'
-                                                className='form-control'
+                                                className={`form-control ${errors?.lastName ? 'input-error' : ''}`}
                                                 id='lastName'
                                                 name='lastName'
-                                                value={values.lastName}
-                                                onChange={handleChange}
+                                                {...register('lastName')}
                                             />
+                                            <span className={errors?.lastName ? 'form-error' : ''}>{errors?.lastName?.message}</span>
                                         </div>
                                     </div>
                                 </div>
@@ -79,12 +79,12 @@ export default function Register() {
                                             </label>
                                             <input
                                                 type='email'
-                                                className='form-control'
+                                                className={`form-control ${errors?.email ? 'input-error' : ''}`}
                                                 id='email'
                                                 name='email'
-                                                value={values.email}
-                                                onChange={handleChange}
+                                                {...register('email')}
                                             />
+                                            <span className={errors?.email ? 'form-error' : ''}>{errors?.email?.message}</span>
                                         </div>
                                     </div>
                                     <div className='col-6'>
@@ -94,12 +94,12 @@ export default function Register() {
                                             </label>
                                             <input
                                                 type='text'
-                                                className='form-control'
+                                                className={`form-control ${errors?.phoneNumber ? 'input-error' : ''}`}
                                                 id='phoneNumber'
                                                 name='phoneNumber'
-                                                value={values.phoneNumber}
-                                                onChange={handleChange}
+                                                {...register('phoneNumber')}
                                             />
+                                            <span className={errors?.phoneNumber ? 'form-error' : ''}>{errors?.phoneNumber?.message}</span>
                                         </div>
                                     </div>
                                 </div>
@@ -111,27 +111,27 @@ export default function Register() {
                                             </label>
                                             <input
                                                 type='password'
-                                                className='form-control'
+                                                className={`form-control ${errors?.password ? 'input-error' : ''}`}
                                                 id='password'
                                                 name='password'
-                                                value={values.password}
-                                                onChange={handleChange}
+                                                {...register('password')}
                                             />
+                                            <span className={errors?.password ? 'form-error' : ''}>{errors?.password?.message}</span>
                                         </div>
                                     </div>
                                     <div className='col-6'>
                                         <div className='form-group'>
                                             <label className='text-black' htmlFor='rePass'>
-                                                Repeat Password
+                                                Confirm Password
                                             </label>
                                             <input
-                                                type='rePass'
-                                                className='form-control'
+                                                type='password'
+                                                className={`form-control ${errors?.rePass ? 'input-error' : ''}`}
                                                 id='rePass'
                                                 name='rePass'
-                                                value={values.rePass}
-                                                onChange={handleChange}
+                                                {...register('rePass')}
                                             />
+                                            <span className={errors?.rePass ? 'form-error' : ''}>{errors?.rePass?.message}</span>
                                         </div>
                                     </div>
                                 </div>
