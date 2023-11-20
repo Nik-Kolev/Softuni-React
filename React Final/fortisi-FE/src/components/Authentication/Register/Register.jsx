@@ -25,7 +25,7 @@ export default function Register() {
     const onSubmitHandler = async (data) => {
         try {
             await onRegisterHandler(data);
-            setNotification('Successfully registered.');
+            setNotification('Register successful.');
             navigateTo('/');
         } catch (err) {
             setNotification(err.message);

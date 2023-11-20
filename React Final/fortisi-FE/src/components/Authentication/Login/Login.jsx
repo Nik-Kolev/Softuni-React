@@ -29,7 +29,7 @@ export default function Login() {
     const onSubmitHandler = async (data) => {
         try {
             await onLoginHandler(data);
-            setNotification('Logged in successfully!');
+            setNotification('Login successful.');
             navigateTo('/');
         } catch (err) {
             setNotification(err.message);

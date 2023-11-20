@@ -15,9 +15,8 @@ async function request(method, endpoint, params) {
 
     let user = getUserData()
     if (user) {
-        options.headers['X-Authorization'] = user.token
+        options.headers['auth'] = user.token
     }
-
     try {
         let response = await fetch(baseUrl + endpoint, options);
 

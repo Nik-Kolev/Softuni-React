@@ -21,7 +21,7 @@ export const UserProvider = ({ children }) => {
     };
 
     const onLogoutHandler = async () => {
-        const response = await userServices.logout();
+        const response = await userServices.logout(user);
         setUser('clear');
         //TODO: Change user logged out message
         return response;
