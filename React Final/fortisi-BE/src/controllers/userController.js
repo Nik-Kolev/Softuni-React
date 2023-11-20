@@ -61,13 +61,13 @@ userController.post('/register', isGuest, async (req, res) => {
     try {
 
         if (password !== rePass) {
-            return res.status(404).json('Passwords don`t match')
+            return res.status(404).json('Passwords don`t match.')
         }
 
         const user = await userModel.exists({ email })
 
         if (user) {
-            return res.status(409).json('Email is already taken!')
+            return res.status(409).json('Email is already taken.')
         }
 
         const hashedPass = await bcrypt.hash(password, 10)
@@ -84,8 +84,13 @@ userController.post('/register', isGuest, async (req, res) => {
     }
 });
 
-userController.get('/logout', (req, res) => {
-    res.status(200).json('User logged out.')
+userController.post('/logout', (req, res) => {
+    //Simple check if there is a token - blacklist or other shit I don`t know is needed for further implementation xD
+    if (req.headers.auth) {
+        res.status(200).json('Logout successful.')
+    } else {
+        res.status(404).json('Invalid Token!')
+    }
 })
 
 
