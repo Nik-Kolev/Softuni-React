@@ -1,12 +1,8 @@
 import { useState } from 'react'
 import { getUserData, setUserData, clearUserData } from '../utils/userLocaleStorage'
 
-export const useLocaleStorage = (initialValue) => {
-    const [state, setState] = useState(() => {
-        if (!getUserData()) {
-            return initialValue
-        }
-    })
+export const useLocaleStorage = () => {
+    const [state, setState] = useState(getUserData)
 
     const updateLocaleState = (value) => {
         if (value == 'clear') {
