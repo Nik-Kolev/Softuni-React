@@ -7,11 +7,11 @@ import Blog from './Components/Blog/Blog';
 import Register from './Components/Authentication/Register/Register';
 import Login from './Components/Authentication/Login/Login';
 import SomethingWentWrong from './Components/404/404';
-import PopularProducts from './Components/Catalog/PopularProducts/PopularProducts';
+import PopularProducts from './components/CatalogOld/PopularProducts/PopularProducts';
 import Toasty from './components/ToastNotifications/Toasty';
 import { NotificationProvider } from './context/NotificationContext';
 import { UserProvider } from './context/UserContext';
-
+import Catalog from './components/Catalog/Catalog';
 function App() {
     return (
         <>
@@ -28,7 +28,7 @@ function App() {
                                 </>
                             }
                         />
-                        {/* <Route path='/catalog' element={<Catalog />} /> */}
+                        <Route path='/catalog' element={<Catalog />} />
                         {/* <Route path='/about-us' element={<AboutUs />} /> */}
                         <Route path='/blog' element={<Blog />} />
                         <Route path='/login' element={<Login />} />

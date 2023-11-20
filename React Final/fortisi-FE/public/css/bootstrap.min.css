@@ -530,18 +530,18 @@ progress {
 .blockquote-footer::before {
     content: '— ';
 }
-.img-fluid {
+/* .img-fluid {
     max-width: 100%;
     height: auto;
-}
-.img-thumbnail {
+} */
+/* .img-thumbnail {
     padding: 0.25rem;
     background-color: #fff;
     border: 1px solid #dee2e6;
     border-radius: 0.25rem;
     max-width: 100%;
     height: auto;
-}
+} */
 .figure {
     display: inline-block;
 }
@@ -1147,7 +1147,7 @@ progress {
     }
     .row-cols-lg-4 > * {
         flex: 0 0 auto;
-        width: 25%;
+        /* width: 25%; */
     }
     .row-cols-lg-5 > * {
         flex: 0 0 auto;
