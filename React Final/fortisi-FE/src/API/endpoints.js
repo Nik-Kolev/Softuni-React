@@ -3,3 +3,7 @@ export const userEndpoints = {
     register: '/users/register',
     logout: '/users/logout'
 }
+
+export const productEndpoints = {
+    create: '/product/create'
+}

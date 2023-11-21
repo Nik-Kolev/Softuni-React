@@ -11,6 +11,7 @@ import PopularProducts from './components/CatalogOld/PopularProducts/PopularProd
 import Toasty from './components/ToastNotifications/Toasty';
 import { NotificationProvider } from './context/NotificationContext';
 import { UserProvider } from './context/UserContext';
+import { ProductProvider } from './context/ProductContext';
 import Catalog from './components/Catalog/Catalog';
 import CreateProduct from './components/Products/CreateProducts/CreateProduct';
 function App() {
@@ -18,29 +19,31 @@ function App() {
         <>
             <NotificationProvider>
                 <UserProvider>
-                    <NavBar />
-                    <Routes>
-                        <Route
-                            path='/'
-                            element={
-                                <>
-                                    <CreateProduct />
-                                    <Carousel />
-                                    <PopularProducts />
-                                </>
-                            }
-                        />
-                        <Route path='/catalog' element={<Catalog />} />
-                        {/* <Route path='/createProduct' element={<CreateProduct />} /> */}
-                        {/* <Route path='/about-us' element={<AboutUs />} /> */}
-                        <Route path='/blog' element={<Blog />} />
-                        <Route path='/login' element={<Login />} />
-                        <Route path='/register' element={<Register />} />
-                        {/* <Route path='/profile' element={<Profile />} /> */}
-                        {/* <Route path='/shop' element={<ShopCart />} /> */}
-                        <Route path='*' element={<SomethingWentWrong />} />
-                    </Routes>
-                    <Toasty />
+                    <ProductProvider>
+                        <NavBar />
+                        <Routes>
+                            <Route
+                                path='/'
+                                element={
+                                    <>
+                                        <CreateProduct />
+                                        <Carousel />
+                                        <PopularProducts />
+                                    </>
+                                }
+                            />
+                            <Route path='/catalog' element={<Catalog />} />
+                            {/* <Route path='/createProduct' element={<CreateProduct />} /> */}
+                            {/* <Route path='/about-us' element={<AboutUs />} /> */}
+                            <Route path='/blog' element={<Blog />} />
+                            <Route path='/login' element={<Login />} />
+                            <Route path='/register' element={<Register />} />
+                            {/* <Route path='/profile' element={<Profile />} /> */}
+                            {/* <Route path='/shop' element={<ShopCart />} /> */}
+                            <Route path='*' element={<SomethingWentWrong />} />
+                        </Routes>
+                        <Toasty />
+                    </ProductProvider>
                 </UserProvider>
             </NotificationProvider>
             <Footer />

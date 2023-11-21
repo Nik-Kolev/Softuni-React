@@ -2,8 +2,12 @@ import './CreateProduct.css';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { productSchema } from '../../../validations/createProductValidations';
+import { useNotificationContext } from '../../../context/NotificationContext';
+import { useProductContext } from '../../../context/ProductContext';
 
 export default function CreateProduct() {
+    const { setNotification } = useNotificationContext();
+    const { onCreateProductHandler } = useProductContext();
     const {
         register,
         handleSubmit,
@@ -12,6 +16,12 @@ export default function CreateProduct() {
 
     const onSubmitHandler = async (data) => {
         console.log(data);
+        try {
+            await onCreateProductHandler(data);
+        } catch (err) {
+            console.log(err);
+            setNotification(err.message);
+        }
     };
 
     return (
@@ -101,10 +111,10 @@ export default function CreateProduct() {
                                                 Advantages:
                                             </label>
                                             <input
-                                                type='email'
+                                                type='text'
                                                 className={`form-control ${errors?.advantages ? 'input-error' : ''}`}
-                                                id='email'
-                                                name='email'
+                                                id='advantages'
+                                                name='advantages'
                                                 {...register('advantages')}
                                             />
                                             <span className={errors?.advantages ? 'form-error' : ''}>{errors?.advantages?.message}</span>
@@ -148,8 +158,8 @@ export default function CreateProduct() {
                                             <input
                                                 type='text'
                                                 className={`form-control ${errors?.materials ? 'input-error' : ''}`}
-                                                id='phoneNumber'
-                                                name='phoneNumber'
+                                                id='materials'
+                                                name='materials'
                                                 {...register('materials')}
                                             />
                                             <span className={errors?.materials ? 'form-error' : ''}>{errors?.materials?.message}</span>

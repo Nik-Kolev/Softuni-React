@@ -10,5 +10,5 @@ export const productSchema = yup.object().shape({
     size: yup.string().trim().required(),
     materials: yup.string().trim().required(),
     quantity: yup.string().trim().required(),
-    description: yup.string().trim().required()
+    // description: yup.string().trim().required()
 })
