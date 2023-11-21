@@ -12,6 +12,7 @@ import Toasty from './components/ToastNotifications/Toasty';
 import { NotificationProvider } from './context/NotificationContext';
 import { UserProvider } from './context/UserContext';
 import Catalog from './components/Catalog/Catalog';
+import CreateProduct from './components/Products/CreateProducts/CreateProduct';
 function App() {
     return (
         <>
@@ -23,12 +24,14 @@ function App() {
                             path='/'
                             element={
                                 <>
+                                    <CreateProduct />
                                     <Carousel />
                                     <PopularProducts />
                                 </>
                             }
                         />
                         <Route path='/catalog' element={<Catalog />} />
+                        {/* <Route path='/createProduct' element={<CreateProduct />} /> */}
                         {/* <Route path='/about-us' element={<AboutUs />} /> */}
                         <Route path='/blog' element={<Blog />} />
                         <Route path='/login' element={<Login />} />
