@@ -1,73 +1,167 @@
+import './CreateProduct.css';
+import { useForm } from 'react-hook-form';
+import { yupResolver } from '@hookform/resolvers/yup';
+import { productSchema } from '../../../validations/createProductValidations';
+
 export default function CreateProduct() {
+    const {
+        register,
+        handleSubmit,
+        formState: { errors },
+    } = useForm({ resolver: yupResolver(productSchema), mode: 'onBlur' });
+
+    const onSubmitHandler = async (data) => {
+        console.log(data);
+    };
+
     return (
         <div className='untree_co-section'>
             <div className='container'>
                 <div className='block'>
+                    {/*TODO: to add nice background pic and style the fields*/}
+                    {/* <img src='src/components/Products/CreateProducts/asd.jpg' alt='' /> */}
                     <div className='row justify-content-center'>
-                        <div className='col-md-8 col-lg-8 pb-4'>
-                            {/* <form onSubmit={handleSubmit(onSubmitHandler)}> */}
-                            <form>
+                        <div className='col-md-8 col-lg-6 pb-4'>
+                            <form onSubmit={handleSubmit(onSubmitHandler)}>
                                 <div className='row'>
+                                    <h5 className='text-black'>General Information:</h5>
+                                    <br />
+                                    <br />
                                     <div className='col-6'>
                                         <div className='form-group'>
-                                            <label className='text-black' htmlFor='firstName'>
-                                                First name
+                                            <label className='text-black' htmlFor='productType'>
+                                                Product Type:
                                             </label>
                                             <input
                                                 type='text'
-                                                // className={`form-control ${errors?.firstName ? 'input-error' : ''}`}
-                                                id='firstName'
-                                                name='firstName'
-                                                // {...register('firstName')}
+                                                className={`form-control ${errors?.productType ? 'input-error' : ''}`}
+                                                id='productType'
+                                                name='productType'
+                                                {...register('productType')}
                                             />
-                                            {/* <span className={errors?.firstName ? 'form-error' : ''}>{errors?.firstName?.message}</span> */}
+                                            <span className={errors?.productType ? 'form-error' : ''}>{errors?.productType?.message}</span>
                                         </div>
                                     </div>
                                     <div className='col-6'>
                                         <div className='form-group'>
-                                            <label className='text-black' htmlFor='lastName'>
-                                                Last name
+                                            <label className='text-black' htmlFor='name'>
+                                                Name:
                                             </label>
                                             <input
                                                 type='text'
-                                                // className={`form-control ${errors?.lastName ? 'input-error' : ''}`}
-                                                id='lastName'
-                                                name='lastName'
-                                                // {...register('lastName')}
+                                                className={`form-control ${errors?.name ? 'input-error' : ''}`}
+                                                id='name'
+                                                name='name'
+                                                {...register('name')}
                                             />
-                                            {/* <span className={errors?.lastName ? 'form-error' : ''}>{errors?.lastName?.message}</span> */}
+                                            <span className={errors?.name ? 'form-error' : ''}>{errors?.name?.message}</span>
+                                        </div>
+                                    </div>
+                                    <div className='col-6'>
+                                        <div className='form-group'>
+                                            <label className='text-black' htmlFor='color'>
+                                                Color:
+                                            </label>
+                                            <input
+                                                type='text'
+                                                className={`form-control ${errors?.color ? 'input-error' : ''}`}
+                                                id='color'
+                                                name='color'
+                                                {...register('color')}
+                                            />
+                                            <span className={errors?.color ? 'form-error' : ''}>{errors?.color?.message}</span>
+                                        </div>
+                                    </div>
+                                    <div className='col-6'>
+                                        <div className='form-group'>
+                                            <label className='text-black' htmlFor='quantity'>
+                                                Quantity:
+                                            </label>
+                                            <input
+                                                type='text'
+                                                className={`form-control ${errors?.quantity ? 'input-error' : ''}`}
+                                                id='quantity'
+                                                name='quantity'
+                                                {...register('quantity')}
+                                            />
+                                            <span className={errors?.quantity ? 'form-error' : ''}>{errors?.quantity?.message}</span>
                                         </div>
                                     </div>
                                 </div>
+
                                 <div className='row'>
+                                    <h5 className='text-black' htmlFor='email'>
+                                        Details:
+                                    </h5>
+                                    <br />
+                                    <br />
                                     <div className='col-6'>
                                         <div className='form-group'>
-                                            <label className='text-black' htmlFor='email'>
-                                                Email address
+                                            <label className='text-black' htmlFor='advantages'>
+                                                Advantages:
                                             </label>
                                             <input
                                                 type='email'
-                                                // className={`form-control ${errors?.email ? 'input-error' : ''}`}
+                                                className={`form-control ${errors?.advantages ? 'input-error' : ''}`}
                                                 id='email'
                                                 name='email'
-                                                // {...register('email')}
+                                                {...register('advantages')}
                                             />
-                                            {/* <span className={errors?.email ? 'form-error' : ''}>{errors?.email?.message}</span> */}
+                                            <span className={errors?.advantages ? 'form-error' : ''}>{errors?.advantages?.message}</span>
                                         </div>
                                     </div>
                                     <div className='col-6'>
                                         <div className='form-group'>
-                                            <label className='text-black' htmlFor='phoneNumber'>
-                                                Phone Number
+                                            <label className='text-black' htmlFor='imageUrl'>
+                                                Image Url:
                                             </label>
                                             <input
                                                 type='text'
-                                                // className={`form-control ${errors?.phoneNumber ? 'input-error' : ''}`}
+                                                className={`form-control ${errors?.imageUrl ? 'input-error' : ''}`}
+                                                id='imageUrl'
+                                                name='imageUrl'
+                                                {...register('imageUrl')}
+                                            />
+                                            <span className={errors?.imageUrl ? 'form-error' : ''}>{errors?.imageUrl?.message}</span>
+                                        </div>
+                                    </div>
+                                    <div className='col-6'>
+                                        <div className='form-group'>
+                                            <label className='text-black' htmlFor='size'>
+                                                Size:
+                                            </label>
+                                            <input
+                                                type='text'
+                                                className={`form-control ${errors?.size ? 'input-error' : ''}`}
+                                                id='size'
+                                                name='size'
+                                                {...register('size')}
+                                            />
+                                            <span className={errors?.size ? 'form-error' : ''}>{errors?.size?.message}</span>
+                                        </div>
+                                    </div>
+                                    <div className='col-6'>
+                                        <div className='form-group'>
+                                            <label className='text-black' htmlFor='materials'>
+                                                Materials:
+                                            </label>
+                                            <input
+                                                type='text'
+                                                className={`form-control ${errors?.materials ? 'input-error' : ''}`}
                                                 id='phoneNumber'
                                                 name='phoneNumber'
-                                                // {...register('phoneNumber')}
+                                                {...register('materials')}
                                             />
-                                            {/* <span className={errors?.phoneNumber ? 'form-error' : ''}>{errors?.phoneNumber?.message}</span> */}
+                                            <span className={errors?.materials ? 'form-error' : ''}>{errors?.materials?.message}</span>
+                                        </div>
+                                    </div>
+
+                                    <div className='col-6'>
+                                        <div className='form-group'>
+                                            <label className='text-black' htmlFor='description'>
+                                                Short Description:
+                                            </label>
+                                            <textarea className='form-control' />
                                         </div>
                                     </div>
                                 </div>
@@ -119,7 +213,7 @@ export default function CreateProduct() {
                                     <input type='rePass' className='form-control' id='rePass' />
                                 </div> */}
                                 <button type='submit' className='btn btn-primary-hover-outline'>
-                                    Register
+                                    Create Product
                                 </button>
                             </form>
                         </div>
