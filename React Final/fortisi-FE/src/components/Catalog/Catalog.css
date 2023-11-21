@@ -28,11 +28,15 @@
 }
 .product-section .product-item .product-thumbnail {
     margin-bottom: 15px;
-    position: relative;
-    top: 0;
-    -webkit-transition: 0.3s all ease;
-    -o-transition: 0.3s all ease;
-    transition: 0.3s all ease;
+    -webkit-transition: 0.3s filter ease;
+    -o-transition: 0.3s filter ease;
+    transition: 0.3s filter ease;
+    filter: brightness(1);
+    border-radius: 10px;
+}
+
+.product-section .product-item:hover .product-thumbnail {
+    filter: brightness(0.75);
 }
 .product-section .product-item h3 {
     font-weight: 600;
