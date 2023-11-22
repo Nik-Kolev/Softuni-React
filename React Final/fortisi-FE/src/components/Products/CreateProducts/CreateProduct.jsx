@@ -1,6 +1,7 @@
 import './CreateProduct.css';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
+import { useNavigate } from 'react-router-dom';
 import { productSchema } from '../../../validations/createProductValidations';
 import { useNotificationContext } from '../../../context/NotificationContext';
 import { useProductContext } from '../../../context/ProductContext';
@@ -8,6 +9,7 @@ import { useProductContext } from '../../../context/ProductContext';
 export default function CreateProduct() {
     const { setNotification } = useNotificationContext();
     const { onCreateProductHandler } = useProductContext();
+    const navigateTo = useNavigate();
     const {
         register,
         handleSubmit,
@@ -15,11 +17,12 @@ export default function CreateProduct() {
     } = useForm({ resolver: yupResolver(productSchema), mode: 'onBlur' });
 
     const onSubmitHandler = async (data) => {
-        console.log(data);
+        const { productType, name, quantity, price, imageUrl, ...details } = data;
+
         try {
-            await onCreateProductHandler(data);
+            await onCreateProductHandler({ productType, name, quantity, price, imageUrl, details });
+            navigateTo('/');
         } catch (err) {
-            console.log(err);
             setNotification(err.message);
         }
     };
@@ -31,7 +34,7 @@ export default function CreateProduct() {
                     {/*TODO: to add nice background pic and style the fields*/}
                     {/* <img src='src/components/Products/CreateProducts/asd.jpg' alt='' /> */}
                     <div className='row justify-content-center'>
-                        <div className='col-md-8 col-lg-6 pb-4'>
+                        <div className='col-md-8 col-lg-8 pb-4'>
                             <form onSubmit={handleSubmit(onSubmitHandler)}>
                                 <div className='row'>
                                     <h5 className='text-black'>General Information:</h5>
@@ -69,20 +72,20 @@ export default function CreateProduct() {
                                     </div>
                                     <div className='col-6'>
                                         <div className='form-group'>
-                                            <label className='text-black' htmlFor='color'>
-                                                Color:
+                                            <label className='text-black' htmlFor='name'>
+                                                Category:
                                             </label>
                                             <input
                                                 type='text'
-                                                className={`form-control ${errors?.color ? 'input-error' : ''}`}
-                                                id='color'
-                                                name='color'
-                                                {...register('color')}
+                                                className={`form-control ${errors?.name ? 'input-error' : ''}`}
+                                                id='name'
+                                                name='name'
+                                                {...register('name')}
                                             />
-                                            <span className={errors?.color ? 'form-error' : ''}>{errors?.color?.message}</span>
+                                            <span className={errors?.name ? 'form-error' : ''}>{errors?.name?.message}</span>
                                         </div>
                                     </div>
-                                    <div className='col-6'>
+                                    <div className='col-3'>
                                         <div className='form-group'>
                                             <label className='text-black' htmlFor='quantity'>
                                                 Quantity:
@@ -97,6 +100,36 @@ export default function CreateProduct() {
                                             <span className={errors?.quantity ? 'form-error' : ''}>{errors?.quantity?.message}</span>
                                         </div>
                                     </div>
+                                    <div className='col-3'>
+                                        <div className='form-group'>
+                                            <label className='text-black' htmlFor='price'>
+                                                Price:
+                                            </label>
+                                            <input
+                                                type='text'
+                                                className={`form-control ${errors?.price ? 'input-error' : ''}`}
+                                                id='price'
+                                                name='price'
+                                                {...register('price')}
+                                            />
+                                            <span className={errors?.price ? 'form-error' : ''}>{errors?.price?.message}</span>
+                                        </div>
+                                    </div>
+                                    <div className='col-6'>
+                                        <div className='form-group'>
+                                            <label className='text-black' htmlFor='imageUrl'>
+                                                Image Url:
+                                            </label>
+                                            <input
+                                                type='text'
+                                                className={`form-control ${errors?.imageUrl ? 'input-error' : ''}`}
+                                                id='imageUrl'
+                                                name='imageUrl'
+                                                {...register('imageUrl')}
+                                            />
+                                            <span className={errors?.imageUrl ? 'form-error' : ''}>{errors?.imageUrl?.message}</span>
+                                        </div>
+                                    </div>
                                 </div>
 
                                 <div className='row'>
@@ -104,7 +137,18 @@ export default function CreateProduct() {
                                         Details:
                                     </h5>
                                     <br />
-                                    <br />
+                                    <div className='col-12'>
+                                        <div className='form-group'>
+                                            <label className='text-black' htmlFor='description'>
+                                                Short Description:
+                                            </label>
+                                            <textarea
+                                                className={`form-control ${errors?.description ? 'input-error' : ''}`}
+                                                {...register('description')}
+                                            />
+                                            <span className={errors?.description ? 'form-error' : ''}>{errors?.description?.message}</span>
+                                        </div>
+                                    </div>
                                     <div className='col-6'>
                                         <div className='form-group'>
                                             <label className='text-black' htmlFor='advantages'>
@@ -122,17 +166,17 @@ export default function CreateProduct() {
                                     </div>
                                     <div className='col-6'>
                                         <div className='form-group'>
-                                            <label className='text-black' htmlFor='imageUrl'>
-                                                Image Url:
+                                            <label className='text-black' htmlFor='color'>
+                                                Color:
                                             </label>
                                             <input
                                                 type='text'
-                                                className={`form-control ${errors?.imageUrl ? 'input-error' : ''}`}
-                                                id='imageUrl'
-                                                name='imageUrl'
-                                                {...register('imageUrl')}
+                                                className={`form-control ${errors?.color ? 'input-error' : ''}`}
+                                                id='color'
+                                                name='color'
+                                                {...register('color')}
                                             />
-                                            <span className={errors?.imageUrl ? 'form-error' : ''}>{errors?.imageUrl?.message}</span>
+                                            <span className={errors?.color ? 'form-error' : ''}>{errors?.color?.message}</span>
                                         </div>
                                     </div>
                                     <div className='col-6'>
@@ -165,63 +209,7 @@ export default function CreateProduct() {
                                             <span className={errors?.materials ? 'form-error' : ''}>{errors?.materials?.message}</span>
                                         </div>
                                     </div>
-
-                                    <div className='col-6'>
-                                        <div className='form-group'>
-                                            <label className='text-black' htmlFor='description'>
-                                                Short Description:
-                                            </label>
-                                            <textarea className='form-control' />
-                                        </div>
-                                    </div>
                                 </div>
-                                {/* <div className='row'>
-                                    <div className='col-6'>
-                                        <div className='form-group'>
-                                            <label className='text-black' htmlFor='password'>
-                                                Password
-                                            </label>
-                                            <input
-                                                type='password'
-                                                className={`form-control ${errors?.password ? 'input-error' : ''}`}
-                                                id='password'
-                                                name='password'
-                                                {...register('password')}
-                                            />
-                                            <span className={errors?.password ? 'form-error' : ''}>{errors?.password?.message}</span>
-                                        </div>
-                                    </div>
-                                    <div className='col-6'>
-                                        <div className='form-group'>
-                                            <label className='text-black' htmlFor='rePass'>
-                                                Confirm Password
-                                            </label>
-                                            <input
-                                                type='password'
-                                                className={`form-control ${errors?.rePass ? 'input-error' : ''}`}
-                                                id='rePass'
-                                                name='rePass'
-                                                {...register('rePass')}
-                                            />
-                                            <span className={errors?.rePass ? 'form-error' : ''}>{errors?.rePass?.message}</span>
-                                        </div>
-                                    </div>
-                                </div> */}
-                                {/* TODO : Terms of use perhaps with checkbox ? To be decided*/}
-                                {/* 
-                                <div className='form-group'>
-                                    <label className='text-black' htmlFor='password'>
-                                        Password
-                                    </label>
-                                    <input type='password' className='form-control' id='password' />
-                                </div>
-
-                                <div className='form-group'>
-                                    <label className='text-black' htmlFor='rePass'>
-                                        Repeat Password
-                                    </label>
-                                    <input type='rePass' className='form-control' id='rePass' />
-                                </div> */}
                                 <button type='submit' className='btn btn-primary-hover-outline'>
                                     Create Product
                                 </button>

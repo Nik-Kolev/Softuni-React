@@ -1,15 +1,15 @@
-import { createContext, useContext } from 'react';
+import { createContext, useContext, useState } from 'react';
 import { useLocaleStorage } from '../hooks/useLocalStorage';
 import * as productServices from '../services/product';
 
 const ProductContext = createContext();
 
 export const ProductProvider = ({ children }) => {
-    const [product, setProduct] = useLocaleStorage('product');
+    const [product, setProduct] = useState();
 
     const onCreateProductHandler = async (productData) => {
-        const product = await productServices.createProduct(productData);
-        setProduct(product);
+        const productId = await productServices.createProduct(productData);
+        setProduct(productId);
     };
 
     const contextValues = {

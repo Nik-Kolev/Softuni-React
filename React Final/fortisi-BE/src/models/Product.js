@@ -7,14 +7,23 @@ const productSchema = new mongoose.Schema({
     name: {
         type: String
     },
-    color: {
+    quantity: {
         type: String
     },
-    description: {
+    price: {
+        type: String
+    },
+    imageUrl: {
+        type: String
+    },
+    details: {
+        description: {
+            type: String
+        },
         advantages: {
             type: String
         },
-        text: {
+        color: {
             type: String
         },
         size: {
@@ -23,12 +32,7 @@ const productSchema = new mongoose.Schema({
         materials: {
             type: String
         },
-    },
-    availability: {
-        type: String
-    },
-    imageUrl: {
-        type: String
+
     },
     owner: {
         type: mongoose.Types.ObjectId,

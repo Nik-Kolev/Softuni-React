@@ -5,7 +5,7 @@ import * as userServices from '../services/user';
 const UserContext = createContext();
 
 export const UserProvider = ({ children }) => {
-    const [user, setUser] = useLocaleStorage('user');
+    const [user, setUser] = useLocaleStorage();
 
     const onLoginHandler = async (userData) => {
         const user = await userServices.login(userData);
