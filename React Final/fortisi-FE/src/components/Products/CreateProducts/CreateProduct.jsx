@@ -1,14 +1,16 @@
-import './CreateProduct.css';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useNavigate } from 'react-router-dom';
+import { useImagePreview } from '../../../hooks/useImagePreview';
 import { productSchema } from '../../../validations/createProductValidations';
 import { useNotificationContext } from '../../../context/NotificationContext';
 import { useProductContext } from '../../../context/ProductContext';
+import './CreateProduct.css';
 
 export default function CreateProduct() {
     const { setNotification } = useNotificationContext();
     const { onCreateProductHandler } = useProductContext();
+    const { previewImage, handleImage } = useImagePreview();
     const navigateTo = useNavigate();
     const {
         register,
@@ -72,17 +74,29 @@ export default function CreateProduct() {
                                     </div>
                                     <div className='col-6'>
                                         <div className='form-group'>
-                                            <label className='text-black' htmlFor='name'>
+                                            <label className='text-black' htmlFor='category'>
                                                 Category:
                                             </label>
-                                            <input
+                                            <select
+                                                name='category'
+                                                id='category'
+                                                className={`form-control ${errors?.category ? 'input-error' : ''}`}
+                                                {...register('category')}>
+                                                <option value='bedroom'>Bedroom</option>
+                                                <option value='livingRoom'>Living Room</option>
+                                                <option value='kitchen'>Kitchen</option>
+                                                <option value='children`sRoom'>Children`s Room</option>
+                                                <option value='entranceHall'>Entrance Hall</option>
+                                                <option value='office'>Office</option>
+                                            </select>
+                                            {/* <input
                                                 type='text'
-                                                className={`form-control ${errors?.name ? 'input-error' : ''}`}
-                                                id='name'
-                                                name='name'
-                                                {...register('name')}
-                                            />
-                                            <span className={errors?.name ? 'form-error' : ''}>{errors?.name?.message}</span>
+                                                className={`form-control ${errors?.category ? 'input-error' : ''}`}
+                                                id='category'
+                                                name='category'
+                                                {...register('category')}
+                                            /> */}
+                                            <span className={errors?.category ? 'form-error' : ''}>{errors?.category?.message}</span>
                                         </div>
                                     </div>
                                     <div className='col-3'>
@@ -115,21 +129,6 @@ export default function CreateProduct() {
                                             <span className={errors?.price ? 'form-error' : ''}>{errors?.price?.message}</span>
                                         </div>
                                     </div>
-                                    <div className='col-6'>
-                                        <div className='form-group'>
-                                            <label className='text-black' htmlFor='imageUrl'>
-                                                Image Url:
-                                            </label>
-                                            <input
-                                                type='text'
-                                                className={`form-control ${errors?.imageUrl ? 'input-error' : ''}`}
-                                                id='imageUrl'
-                                                name='imageUrl'
-                                                {...register('imageUrl')}
-                                            />
-                                            <span className={errors?.imageUrl ? 'form-error' : ''}>{errors?.imageUrl?.message}</span>
-                                        </div>
-                                    </div>
                                 </div>
 
                                 <div className='row'>
@@ -143,6 +142,7 @@ export default function CreateProduct() {
                                                 Short Description:
                                             </label>
                                             <textarea
+                                                style={{ minHeight: '65px' }}
                                                 className={`form-control ${errors?.description ? 'input-error' : ''}`}
                                                 {...register('description')}
                                             />
@@ -209,6 +209,53 @@ export default function CreateProduct() {
                                             <span className={errors?.materials ? 'form-error' : ''}>{errors?.materials?.message}</span>
                                         </div>
                                     </div>
+                                </div>
+                                <div className='row' style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+                                    <div className='col-9'>
+                                        <div className='form-group'>
+                                            <label className='text-black' htmlFor='imageUrl'>
+                                                Select an Image File:
+                                            </label>
+                                            <input
+                                                type='file'
+                                                className={`form-control`}
+                                                id='imageUrl'
+                                                name='imageUrl'
+                                                accept='image/*'
+                                                {...register('imageUrl')}
+                                                onChange={(e) => {
+                                                    handleImage(e);
+                                                }}
+                                            />
+                                            <span className={errors?.imageUrl ? 'form-error' : ''}>{errors?.imageUrl?.message}</span>
+                                        </div>
+                                    </div>
+                                    <div className='col-9' style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+                                        <div className='form-group'>
+                                            {previewImage ? (
+                                                <>
+                                                    <img
+                                                        src={previewImage}
+                                                        alt='preview'
+                                                        style={{
+                                                            maxHeight: '250px',
+                                                            maxWidth: '100%',
+                                                        }}
+                                                    />
+                                                </>
+                                            ) : (
+                                                <img
+                                                    src='src/components/Products/CreateProducts/imagePreview.jpg'
+                                                    alt='preview'
+                                                    style={{
+                                                        maxHeight: '250px',
+                                                        maxWidth: '100%',
+                                                        border: '1px solid black',
+                                                    }}></img>
+                                            )}
+                                        </div>
+                                    </div>
+                                    <span className={errors?.imageUrl ? 'form-error' : ''}>{errors?.imageUrl?.message}</span>
                                 </div>
                                 <button type='submit' className='btn btn-primary-hover-outline'>
                                     Create Product
