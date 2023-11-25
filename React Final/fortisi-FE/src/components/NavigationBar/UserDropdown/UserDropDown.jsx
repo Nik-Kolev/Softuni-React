@@ -16,7 +16,12 @@ export default function UserDropDown() {
             {isDropdownVisible && (
                 <div className='dropdown-menu' onClick={hideDropdown}>
                     {isAuthenticated ? (
-                        <Logout />
+                        <>
+                            <Link to={'/createProduct'} className='dropdown-link'>
+                                Create Product
+                            </Link>
+                            <Logout />
+                        </>
                     ) : (
                         <>
                             <Link to={'/login'} className='dropdown-link'>

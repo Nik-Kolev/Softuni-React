@@ -26,7 +26,6 @@ function App() {
                                 path='/'
                                 element={
                                     <>
-                                        <CreateProduct />
                                         <Carousel />
                                         <PopularProducts />
                                     </>
@@ -38,6 +37,7 @@ function App() {
                             <Route path='/blog' element={<Blog />} />
                             <Route path='/login' element={<Login />} />
                             <Route path='/register' element={<Register />} />
+                            <Route path='/createProduct' element={<CreateProduct />}></Route>
                             {/* <Route path='/profile' element={<Profile />} /> */}
                             {/* <Route path='/shop' element={<ShopCart />} /> */}
                             <Route path='*' element={<SomethingWentWrong />} />
