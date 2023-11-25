@@ -6,6 +6,7 @@ export const NotificationProvider = ({ children }) => {
     const [notifications, setNotifications] = useState([]);
 
     const setNotification = (message) => {
+        console.log(message);
         setNotifications(message.split(','));
     };
 

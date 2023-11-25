@@ -10,6 +10,9 @@ const productSchema = new mongoose.Schema({
     quantity: {
         type: String
     },
+    category: {
+        type: String
+    },
     price: {
         type: String
     },

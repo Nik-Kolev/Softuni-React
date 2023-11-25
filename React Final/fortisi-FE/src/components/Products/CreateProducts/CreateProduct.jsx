@@ -21,15 +21,16 @@ export default function CreateProduct() {
     } = useForm({ resolver: yupResolver(productSchema), mode: 'onBlur' });
 
     const onSubmitHandler = async (data) => {
-        await exchangeHandler(data.imageUrl, data.category);
-        const { productType, name, quantity, price, imageUrl, ...details } = data;
+        const { productType, name, quantity, price, imageUrl, category, ...details } = data;
 
-        // try {
-        //     await onCreateProductHandler({ productType, name, quantity, price, imageUrl, details });
-        //     navigateTo('/');
-        // } catch (err) {
-        //     setNotification(err.message);
-        // }
+        try {
+            await exchangeHandler(imageUrl[0], category);
+            await onCreateProductHandler({ productType, name, quantity, price, imageUrl: fileLink, category, details });
+            navigateTo('/');
+        } catch (err) {
+            console.log(err);
+            setNotification(err.message);
+        }
     };
 
     return (

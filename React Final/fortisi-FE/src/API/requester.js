@@ -19,7 +19,7 @@ async function request(method, endpoint, params) {
     }
     try {
         let response = await fetch(baseUrl + endpoint, options);
-
+        console.log(response)
         let data = null;
 
         if (response.status != 204) {
@@ -31,10 +31,12 @@ async function request(method, endpoint, params) {
                 clearUserData();
             }
             let error = data;
+            console.log(data)
             throw new Error(error);
         }
         return data;
     } catch (err) {
+        console.log(err)
         throw new Error(err.message)
     }
 }
