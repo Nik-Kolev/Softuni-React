@@ -6,11 +6,13 @@ import { productSchema } from '../../../validations/createProductValidations';
 import { useNotificationContext } from '../../../context/NotificationContext';
 import { useProductContext } from '../../../context/ProductContext';
 import './CreateProduct.css';
+import { DropBoxUploader } from '../../../hooks/useDropboxUpload';
 
 export default function CreateProduct() {
     const { setNotification } = useNotificationContext();
     const { onCreateProductHandler } = useProductContext();
     const { previewImage, handleImage } = useImagePreview();
+    const { fileLink, exchangeHandler } = DropBoxUploader();
     const navigateTo = useNavigate();
     const {
         register,
@@ -19,14 +21,15 @@ export default function CreateProduct() {
     } = useForm({ resolver: yupResolver(productSchema), mode: 'onBlur' });
 
     const onSubmitHandler = async (data) => {
+        await exchangeHandler(data.imageUrl, data.category);
         const { productType, name, quantity, price, imageUrl, ...details } = data;
 
-        try {
-            await onCreateProductHandler({ productType, name, quantity, price, imageUrl, details });
-            navigateTo('/');
-        } catch (err) {
-            setNotification(err.message);
-        }
+        // try {
+        //     await onCreateProductHandler({ productType, name, quantity, price, imageUrl, details });
+        //     navigateTo('/');
+        // } catch (err) {
+        //     setNotification(err.message);
+        // }
     };
 
     return (
@@ -89,13 +92,6 @@ export default function CreateProduct() {
                                                 <option value='entranceHall'>Entrance Hall</option>
                                                 <option value='office'>Office</option>
                                             </select>
-                                            {/* <input
-                                                type='text'
-                                                className={`form-control ${errors?.category ? 'input-error' : ''}`}
-                                                id='category'
-                                                name='category'
-                                                {...register('category')}
-                                            /> */}
                                             <span className={errors?.category ? 'form-error' : ''}>{errors?.category?.message}</span>
                                         </div>
                                     </div>
