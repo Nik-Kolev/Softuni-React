@@ -1,14 +1,14 @@
 import { useState } from "react";
 import { Dropbox } from 'dropbox';
-const temporaryToken = 'sl.Bqh9q6bilfQRD3zsxTyO_Q5ByyxsBN_eg7RuXtgTv34hfZdi-hIrFsqiC-ae9Wm7p1Vnxb_r4ZMtrGdbWK46AGKlkM6zGYO_OpcsOGzoYAgXB93xOTuwOeCXjoJ4BLUQBFnJMmsri2wLDgw'
-const clientId = '8dqijm81lgh5uab';
-const clientSecret = 'y1jud8rhuxnufa7y';
+const clientId = import.meta.env.VITE_CLIENT_ID;
+const clientSecret = import.meta.env.VITE_CLIENT_SECRET;
+const dropboxToken = import.meta.env.VITE_DROPBOX_TOKEN;
 export const DropBoxUploader = () => {
     const [fileLink, setFileLink] = useState()
 
     const exchangeHandler = async (file, category) => {
         try {
-            const dbx = new Dropbox({ clientId, clientSecret, accessToken: temporaryToken });
+            const dbx = new Dropbox({ clientId, clientSecret, accessToken: dropboxToken });
             const response = await dbx.filesUpload({
                 contents: file,
                 path: `/uploads/${category}/${file.name}`,
