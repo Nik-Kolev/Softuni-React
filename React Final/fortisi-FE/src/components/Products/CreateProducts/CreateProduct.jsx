@@ -5,14 +5,13 @@ import { useImagePreview } from '../../../hooks/useImagePreview';
 import { productSchema } from '../../../validations/createProductValidations';
 import { useNotificationContext } from '../../../context/NotificationContext';
 import { useProductContext } from '../../../context/ProductContext';
+import { DropBoxUploader } from '../../../utils/dropboxUploader';
 import './CreateProduct.css';
-import { DropBoxUploader } from '../../../hooks/useDropboxUpload';
 
 export default function CreateProduct() {
     const { setNotification } = useNotificationContext();
     const { onCreateProductHandler } = useProductContext();
     const { previewImage, handleImage } = useImagePreview();
-    const { fileLink, exchangeHandler } = DropBoxUploader();
     const navigateTo = useNavigate();
     const {
         register,
@@ -24,11 +23,10 @@ export default function CreateProduct() {
         const { productType, name, quantity, price, imageUrl, category, ...details } = data;
 
         try {
-            await exchangeHandler(imageUrl[0], category);
-            await onCreateProductHandler({ productType, name, quantity, price, imageUrl: fileLink, category, details });
+            const newLink = await DropBoxUploader(imageUrl[0], category);
+            await onCreateProductHandler({ productType, name, quantity, price, imageUrl: newLink, category, details });
             navigateTo('/');
         } catch (err) {
-            console.log(err);
             setNotification(err.message);
         }
     };
@@ -37,8 +35,6 @@ export default function CreateProduct() {
         <div className='untree_co-section'>
             <div className='container'>
                 <div className='block'>
-                    {/*TODO: to add nice background pic and style the fields*/}
-                    {/* <img src='src/components/Products/CreateProducts/asd.jpg' alt='' /> */}
                     <div className='row justify-content-center'>
                         <div className='col-md-8 col-lg-8 pb-4'>
                             <form onSubmit={handleSubmit(onSubmitHandler)}>
@@ -252,7 +248,6 @@ export default function CreateProduct() {
                                             )}
                                         </div>
                                     </div>
-                                    <span className={errors?.imageUrl ? 'form-error' : ''}>{errors?.imageUrl?.message}</span>
                                 </div>
                                 <button type='submit' className='btn btn-primary-hover-outline'>
                                     Create Product
