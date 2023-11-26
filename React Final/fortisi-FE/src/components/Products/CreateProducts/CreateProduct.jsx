@@ -5,7 +5,7 @@ import { useImagePreview } from '../../../hooks/useImagePreview';
 import { productSchema } from '../../../validations/createProductValidations';
 import { useNotificationContext } from '../../../context/NotificationContext';
 import { useProductContext } from '../../../context/ProductContext';
-import { DropBoxUploader } from '../../../utils/dropboxUploader';
+import { supabaseUploader } from '../../../API/supabase';
 import './CreateProduct.css';
 
 export default function CreateProduct() {
@@ -23,7 +23,7 @@ export default function CreateProduct() {
         const { productType, name, quantity, price, imageUrl, category, ...details } = data;
 
         try {
-            const newLink = await DropBoxUploader(imageUrl[0], category);
+            const newLink = await supabaseUploader(imageUrl[0], category);
             await onCreateProductHandler({ productType, name, quantity, price, imageUrl: newLink, category, details });
             navigateTo('/');
         } catch (err) {
