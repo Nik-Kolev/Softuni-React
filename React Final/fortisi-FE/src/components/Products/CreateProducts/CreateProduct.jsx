@@ -30,7 +30,7 @@ export default function CreateProduct() {
             setNotification(err.message);
         }
     };
-
+    //TODO: Image check !
     return (
         <div className='untree_co-section'>
             <div className='container'>
@@ -72,7 +72,7 @@ export default function CreateProduct() {
                                             <span className={errors?.name ? 'form-error' : ''}>{errors?.name?.message}</span>
                                         </div>
                                     </div>
-                                    <div className='col-6'>
+                                    <div className='col-4'>
                                         <div className='form-group'>
                                             <label className='text-black' htmlFor='category'>
                                                 Category:
@@ -92,7 +92,7 @@ export default function CreateProduct() {
                                             <span className={errors?.category ? 'form-error' : ''}>{errors?.category?.message}</span>
                                         </div>
                                     </div>
-                                    <div className='col-3'>
+                                    <div className='col-4'>
                                         <div className='form-group'>
                                             <label className='text-black' htmlFor='quantity'>
                                                 Quantity:
@@ -107,7 +107,7 @@ export default function CreateProduct() {
                                             <span className={errors?.quantity ? 'form-error' : ''}>{errors?.quantity?.message}</span>
                                         </div>
                                     </div>
-                                    <div className='col-3'>
+                                    <div className='col-4'>
                                         <div className='form-group'>
                                             <label className='text-black' htmlFor='price'>
                                                 Price:
