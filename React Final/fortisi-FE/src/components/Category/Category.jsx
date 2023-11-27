@@ -17,5 +17,11 @@ export default function Category() {
             .catch((err) => console.log(err));
     }, [category]);
     console.log(products);
-    return <>{products && products.map((x) => <ProductCard key={x._id} {...x} />)}</>;
+    return (
+        <div className='product-card'>
+            <div className='container'>
+                <div className='row'>{products && products.map((x) => <ProductCard key={x._id} {...x} />)}</div>
+            </div>
+        </div>
+    );
 }
