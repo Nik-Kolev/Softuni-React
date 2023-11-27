@@ -11,7 +11,7 @@ module.exports.isAuthorized = async (req, res, next) => {
 
 module.exports.isGuest = async (req, res, next) => {
     if (req.user) {
-        const token = req.get('X-Authorization');
+        const token = req.get('auth');
         try {
             const decodedToken = await jwt.verify(token, secret);
             if (decodedToken) {

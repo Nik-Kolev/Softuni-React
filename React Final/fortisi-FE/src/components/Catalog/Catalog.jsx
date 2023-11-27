@@ -1,4 +1,6 @@
+import { Link } from 'react-router-dom';
 import './Catalog.css';
+
 export default function Catalog() {
     //TODO - Hyperlinks below product title for different categories - example: standard kitchen, tables, chairs, etc
     return (
@@ -6,10 +8,10 @@ export default function Catalog() {
             <div className='container'>
                 <div className='row'>
                     <div className='col-12 col-md-4 col-lg-4 mb-5'>
-                        <a className='product-item' href='#'>
+                        <Link to={'/catalog/bedroom'} className='product-item'>
                             <img src='src/components/Catalog/CategoryPictures/bedroomCatalog.jpg' className='img-fluid product-thumbnail' />
                             <h3 className='product-title'>Bedroom</h3>
-                        </a>
+                        </Link>
                     </div>
 
                     <div className='col-12 col-md-4 col-lg-4 mb-5'>

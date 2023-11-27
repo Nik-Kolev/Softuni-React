@@ -27,6 +27,7 @@ export default function CreateProduct() {
             await onCreateProductHandler({ productType, name, quantity, price, imageUrl: newLink, category, details });
             navigateTo('/');
         } catch (err) {
+            console.log(err);
             setNotification(err.message);
         }
     };

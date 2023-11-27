@@ -9,7 +9,7 @@ export default function NavBar() {
             <div className='container'>
                 <Link to={'/'} className='brand-name'>
                     <p>Fortisi</p>
-                    <img src='images/ftslogo.png' className='small-logo' />
+                    <img src='/images/ftslogo.png' className='small-logo' />
                 </Link>
 
                 <button

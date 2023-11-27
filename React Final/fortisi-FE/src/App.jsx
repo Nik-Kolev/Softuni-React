@@ -14,6 +14,7 @@ import { UserProvider } from './context/UserContext';
 import { ProductProvider } from './context/ProductContext';
 import Catalog from './components/Catalog/Catalog';
 import CreateProduct from './components/Products/CreateProducts/CreateProduct';
+import Category from './components/Category/Category';
 function App() {
     return (
         <>
@@ -32,12 +33,16 @@ function App() {
                                 }
                             />
                             <Route path='/catalog' element={<Catalog />} />
-                            {/* <Route path='/createProduct' element={<CreateProduct />} /> */}
+                            {/* <Route path='/catalog' element={<Catalog />}> */}
+                            <Route path='/catalog/:category' element={<Category />} />
+                            {/* <Route path='/catalog/livingRoom' element={<Category />} />
+                            <Route path='/catalog/kitchen' element={<Category />} /> */}
+                            {/* </Route> */}
                             {/* <Route path='/about-us' element={<AboutUs />} /> */}
                             <Route path='/blog' element={<Blog />} />
                             <Route path='/login' element={<Login />} />
                             <Route path='/register' element={<Register />} />
-                            <Route path='/createProduct' element={<CreateProduct />}></Route>
+                            <Route path='/createProduct' element={<CreateProduct />} />
                             {/* <Route path='/profile' element={<Profile />} /> */}
                             {/* <Route path='/shop' element={<ShopCart />} /> */}
                             <Route path='*' element={<SomethingWentWrong />} />
