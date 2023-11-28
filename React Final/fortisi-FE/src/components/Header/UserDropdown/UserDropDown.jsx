@@ -11,7 +11,7 @@ export default function UserDropDown() {
     return (
         <li className='user-container' onMouseEnter={showDropdown} onMouseLeave={hideDropdown}>
             <Link to={'/profile'} className='nav-link user-icon'>
-                <img src='/images/user.svg' alt='User icon' />
+                <img src='/src/images/home/user.svg' alt='User icon' />
             </Link>
             {isDropdownVisible && (
                 <div className='dropdown-menu' onClick={hideDropdown}>

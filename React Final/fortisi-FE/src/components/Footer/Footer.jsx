@@ -5,14 +5,14 @@ export default function Footer() {
         <footer className='footer-section'>
             <div className='container relative'>
                 <div className='sofa-img'>
-                    <img src='/images/sofa.png' alt='Image' className='img-fluid' />
+                    <img src='/src/images/home/sofa.png' alt='Image' className='img-fluid' />
                 </div>
                 <div className='row g-5 mb-5'>
                     <div className='col-lg-4'>
                         <div className='mb-4 footer-logo-wrap'>
                             <Link to={'/'} className='brand-name'>
                                 <p>Fortisi</p>
-                                <img src='/images/ftslogo.png' className='small-logo' />
+                                <img src='/src/images/home/ftslogo.png' className='small-logo' />
                             </Link>
                         </div>
                         <p className='mb-4'>

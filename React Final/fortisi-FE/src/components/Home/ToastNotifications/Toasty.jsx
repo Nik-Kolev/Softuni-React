@@ -1,6 +1,6 @@
 import './Toasty.css';
 import { useEffect, useState } from 'react';
-import { useNotificationContext } from '../../context/NotificationContext';
+import { useNotificationContext } from '../../../context/NotificationContext';
 
 export default function Toasty() {
     const [isToastVisible, setToastIsVisible] = useState(false);

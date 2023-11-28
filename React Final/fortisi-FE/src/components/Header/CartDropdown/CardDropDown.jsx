@@ -8,7 +8,7 @@ export default function CartDropDown() {
         //TODO: Add a summery of the cart if possible
         <li className='user-container' onMouseEnter={showDropdown} onMouseLeave={hideDropdown}>
             <Link to={'/cart'} className='nav-link'>
-                <img src='/images/cart.svg' />
+                <img src='/src/images/home/cart.svg' />
             </Link>
             {isDropdownVisible && (
                 <div className='dropdown-menu'>

@@ -49,7 +49,7 @@ export default function ProductDetails() {
                                 <div className='details-name'>{itemDetails?.name}</div>
                                 <div className='details-type'>{itemDetails?.productType}</div>
                                 <div className='details-color'>
-                                    <img src='/images/color.png' className='color-icon' alt='Color icon' />
+                                    <img src='/src/images/catalog/ProductDetails/color.png' className='color-icon' alt='Color icon' />
                                     <span className='color-text'>{itemDetails?.details.color}</span>
                                 </div>
                                 <div className='details-total-likes'>В любими: 5</div>
@@ -90,7 +90,11 @@ export default function ProductDetails() {
                                 </div>
 
                                 <div className='details-purchase-button-wrapper'>
-                                    <img src='/images/shopping_cart.png' alt='shopping_cart_icon' className='details-purchase-icon' />
+                                    <img
+                                        src='/src/images/catalog/CategoryList/shopping_cart.png'
+                                        alt='shopping_cart_icon'
+                                        className='details-purchase-icon'
+                                    />
                                     <span>Добави в количка</span>
                                 </div>
                             </div>

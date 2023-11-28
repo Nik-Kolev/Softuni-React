@@ -1,7 +1,7 @@
 import { useState } from 'react';
-import { Link, useParams } from 'react-router-dom';
-import './ProductCard.css';
-export default function ProductCard({ imageUrl, productType, price, name }) {
+import { Link } from 'react-router-dom';
+import './CategoryListCard.css';
+export default function CategoryListCard({ imageUrl, productType, price, name }) {
     const [isLiked, setIsLiked] = useState(false);
     const handleLikeClick = (e) => {
         e.preventDefault();
@@ -40,7 +40,11 @@ export default function ProductCard({ imageUrl, productType, price, name }) {
                         </div>
                         <div className='purchase-button-wrapper'>
                             <div className='purchase-icon-container'>
-                                <img src='/images/shopping_cart.png' alt='shopping_cart_icon' className='purchase-icon' />
+                                <img
+                                    src='/src/images/catalog/CategoryList/shopping_cart.png'
+                                    alt='shopping_cart_icon'
+                                    className='purchase-icon'
+                                />
                             </div>
                         </div>
                     </div>

@@ -32,8 +32,8 @@ export default function WeWillSee() {
                     </div>
                     <div className='col-lg-7'>
                         <div className='hero-img-wrap'>
-                            <img src={`images/${quote.imageUrl}.png`} className='img-fluid' />
-                            {/* <img src='images/12.png' className='img-fluid' /> */}
+                            {/* <img src={`src/images/home/${quote.imageUrl}.png`} className='img-fluid' /> */}
+                            <img src={`src/images/home/couch.png`} className='img-fluid' />
                         </div>
                     </div>
                 </div>

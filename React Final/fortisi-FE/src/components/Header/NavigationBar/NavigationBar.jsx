@@ -1,15 +1,14 @@
 import './NavigationBar.css';
 import { Link } from 'react-router-dom';
-import UserDropDown from './UserDropdown/UserDropDown';
-import CartDropDown from './CartDropdown/CardDropDown';
-export default function NavBar() {
+import UserDropDown from '../UserDropdown/UserDropDown';
+import CartDropDown from '../CartDropdown/CardDropDown';
+export default function NavigationBar() {
     return (
-        //arial-label='Furni navigation bar'//
         <nav className='custom-navbar navbar navbar navbar-expand-md navbar-dark bg-dark'>
             <div className='container'>
                 <Link to={'/'} className='brand-name'>
                     <p>Fortisi</p>
-                    <img src='/images/ftslogo.png' className='small-logo' />
+                    <img src='/src/images/home/ftslogo.png' className='small-logo' />
                 </Link>
 
                 <button

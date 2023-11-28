@@ -4,7 +4,7 @@ export default function SomethingWentWrong() {
         <div className='notFound'>
             <div className='notFound_Left'>
                 <figure>
-                    <img src='images/image404.png' alt='error404' />
+                    <img src='src/images/home/image404.png' alt='error404' />
                 </figure>
             </div>
             <div className='notFound_Right'>
