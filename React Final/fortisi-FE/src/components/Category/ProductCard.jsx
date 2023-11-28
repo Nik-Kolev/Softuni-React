@@ -9,9 +9,12 @@ export default function ProductCard({ imageUrl, productType, price, name }) {
     return (
         <div className='col-12 col-md-4 col-lg-4 mb-5'>
             <div className='framework'>
-                <div className='product-item-card' href='#'>
+                <div className='product-item-card'>
                     <div className='image-container'>
-                        <img src={imageUrl} className='img-card-fluid product-card-thumbnail' />
+                        <img src={imageUrl} className='img-card-fluid product-card-thumbnail' alt={name} />
+                        <div className='labels'>
+                            <div className='label-promo'> -20%</div>
+                        </div>
                         <div className={`like-button ${isLiked ? 'liked' : ''}`} onClick={handleLikeClick}>
                             <div className='heart-container'>
                                 <div className='heart'></div>

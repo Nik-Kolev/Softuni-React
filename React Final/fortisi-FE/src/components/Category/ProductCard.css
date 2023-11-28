@@ -1,124 +1,28 @@
 @import url('https://fonts.googleapis.com/css2?family=Mulish&family=Raleway:wght@800&display=swap');
-.img-card-fluid .product-card-thumbnail {
-    height: 200px;
-    width: 100px;
-}
 .img-card-fluid {
     width: 100%;
     height: auto;
-    /* aspect-ratio: 1/1; */
-}
-.img-thumbnail {
-    padding: 0.25rem;
-    background-color: #fff;
-    border: 2px solid #dee2e6;
-    border-radius: 0.25rem;
-    max-width: 100%;
-    height: 100px;
+    border-radius: 10px;
+    margin-bottom: 15px;
 }
 
 .product-card {
     padding: 2rem 0;
 }
 
-.product-card .product-item-card {
-    text-align: center;
-    text-decoration: none;
-    display: block;
-    position: relative;
-    cursor: pointer;
-}
-.product-card .product-item-card .product-card-thumbnail {
-    margin-bottom: 15px;
-    -webkit-transition: 0.3s filter ease;
-    -o-transition: 0.3s filter ease;
-    transition: 0.3s filter ease;
-    filter: brightness(1);
-    border-radius: 10px;
-}
-
-.product-card .product-item-card:hover .product-card-thumbnail {
-    filter: brightness(0.75);
-}
-.product-card .product-item-card h3 {
-    font-weight: 600;
-    font-size: 16px;
-}
-.product-card .product-item-card strong {
-    font-weight: 800 !important;
-    font-size: 18px !important;
-}
-.product-card .product-item-card h3,
-.product-card .product-item-card strong {
-    color: #2f2f2f;
-    text-decoration: none;
-}
-.product-card .product-item-card .icon-cross {
-    position: absolute;
-    width: 35px;
-    height: 35px;
-    display: inline-block;
-    background: #2f2f2f;
-    bottom: 15px;
-    left: 50%;
-    -webkit-transform: translateX(-50%);
-    -ms-transform: translateX(-50%);
-    transform: translateX(-50%);
-    margin-bottom: -17.5px;
-    border-radius: 50%;
-    opacity: 0;
-    visibility: hidden;
-    -webkit-transition: 0.3s all ease;
-    -o-transition: 0.3s all ease;
-    transition: 0.3s all ease;
-}
-/* .product-card .product-item-card .icon-cross img {
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    -webkit-transform: translate(-50%, -50%);
-    -ms-transform: translate(-50%, -50%);
-    transform: translate(-50%, -50%);
-} */
-/* .product-card .product-item-card:before {
-    bottom: 0;
-    left: 0;
-    right: 0;
-    position: absolute;
-    background: #dce5e4;
-    height: 0%;
-    z-index: -1;
-    border-radius: 10px;
-    -webkit-transition: 0.3s all ease;
-    -o-transition: 0.3s all ease;
-    transition: 0.3s all ease;
-} */
-/* .product-card .product-item-card:hover .product-card-thumbnail {
-    top: -15px;
-} */
-/* .product-card .product-item-card:hover .icon-cross {
-    bottom: 0;
-    opacity: 1;
-    visibility: visible;
-} */
-/* .product-card .product-item-card:hover:before {
-    height: 70%;
-} */
-
 .framework {
-    /* border: 0.5px solid #3b5d50; */
+    cursor: pointer;
     border-radius: 15px;
     padding: 0.75rem;
     background-color: white;
     line-height: 22px;
     font-size: 16px;
     font-family: 'Mulish', sans-serif;
-    transition: box-shadow 0.3s ease; /* Add a transition for the box-shadow property */
+    transition: box-shadow 0.3s ease;
 }
 
 .framework:hover {
-    box-shadow: 0 0 15px rgba(59, 93, 80, 0.5); /* Add a subtle shadow on hover */
-    box-shadow: 0 0 10px #3b5d50; /* Add a subtle shadow on hover */
+    box-shadow: 0 0 10px #3b5d50;
 }
 
 .image-container {
@@ -243,9 +147,12 @@
     padding-right: 7px;
 }
 
+.purchase-button-wrapper:hover {
+    transform: scale(1.12);
+}
 .purchase-icon {
-    height: 22px;
-    width: 22px;
+    height: 24px;
+    width: 24px;
 }
 
 .purchase-icon-container {
@@ -256,4 +163,24 @@
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.labels {
+    position: absolute;
+    top: 7px;
+    left: 7px;
+}
+
+.label-promo {
+    display: inline-block;
+    padding: 3px 9px;
+    background: #f42843;
+    border-radius: 8px;
+    line-height: 32px;
+    color: #fff;
+    font-family: Mulish, sans-serif;
+    font-weight: 800;
+    font-size: 16px;
+    letter-spacing: normal;
+    line-height: 20px;
 }
