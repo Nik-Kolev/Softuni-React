@@ -64,7 +64,7 @@
 .footer-section .sofa-img {
     position: absolute;
     top: 0px;
-    z-index: 1;
+    z-index: 0;
     right: 0;
 }
 .footer-section .sofa-img img {

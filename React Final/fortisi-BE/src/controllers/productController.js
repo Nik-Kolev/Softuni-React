@@ -16,11 +16,20 @@ productController.post('/create', async (req, res) => {
 
 productController.get('/:category', async (req, res) => {
     const { category } = req.params
-    console.log(category)
     try {
         const products = await productModel.find({ category })
-        console.log(products)
         res.status(200).json(products)
+    } catch (err) {
+        console.log(err)
+    }
+})
+
+productController.get('/:category/:item', async (req, res) => {
+    const { category, item } = req.params
+    try {
+        const product = await productModel.findOne({ category, name: item })
+        console.log(product)
+        res.status(200).json(product)
     } catch (err) {
         console.log(err)
     }

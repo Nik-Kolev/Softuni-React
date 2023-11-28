@@ -10,7 +10,7 @@
     padding: 2rem 0;
 }
 
-.framework {
+.product-framework {
     cursor: pointer;
     border-radius: 15px;
     padding: 0.75rem;
@@ -21,7 +21,7 @@
     transition: box-shadow 0.3s ease;
 }
 
-.framework:hover {
+.product-framework:hover {
     box-shadow: 0 0 10px #3b5d50;
 }
 
@@ -183,4 +183,8 @@
     font-size: 16px;
     letter-spacing: normal;
     line-height: 20px;
+}
+
+.product-link {
+    text-decoration: none;
 }

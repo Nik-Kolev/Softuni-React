@@ -15,6 +15,7 @@ import { ProductProvider } from './context/ProductContext';
 import Catalog from './components/Catalog/Catalog';
 import CreateProduct from './components/Products/CreateProducts/CreateProduct';
 import Category from './components/Category/Category';
+import ProductDetails from './components/Category/ProductDetails';
 function App() {
     return (
         <>
@@ -35,6 +36,7 @@ function App() {
                             <Route path='/catalog' element={<Catalog />} />
                             {/* <Route path='/catalog' element={<Catalog />}> */}
                             <Route path='/catalog/:category' element={<Category />} />
+                            <Route path='/catalog/:category/:item' element={<ProductDetails />} />
                             {/* <Route path='/catalog/livingRoom' element={<Category />} />
                             <Route path='/catalog/kitchen' element={<Category />} /> */}
                             {/* </Route> */}
