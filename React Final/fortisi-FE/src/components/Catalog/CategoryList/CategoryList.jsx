@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
+import { getProductByCategory } from '../../../services/product';
 import CategoryListCard from './CategoryListCard';
 
 export default function CategoryList() {
@@ -7,12 +8,13 @@ export default function CategoryList() {
     const [products, setProducts] = useState(null);
 
     useEffect(() => {
-        fetch(`http://localhost:3000/product/${category}`)
-            .then((x) => x.json())
-            .then((x) => {
-                setProducts(x);
+        getProductByCategory(category)
+            .then((data) => {
+                setProducts(data);
             })
-            .catch((err) => console.log(err));
+            .catch((error) => {
+                console.error(error);
+            });
     }, [category]);
 
     return (

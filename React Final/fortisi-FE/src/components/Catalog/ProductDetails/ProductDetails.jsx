@@ -1,29 +1,38 @@
 import { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { useUserContext } from '../../../context/UserContext';
+import { deleteProductById, getSingleProductById } from '../../../services/product';
 import { discountPrice, discountSave } from '../../../utils/calculatePriceAfterDiscount';
-
 import './ProductDetails.css';
 
 export default function ProductDetails() {
     const [itemDetails, setItemDetails] = useState();
     const [isModalOpen, setIsModalOpen] = useState(false);
+    const navigateTo = useNavigate();
     const { user } = useUserContext();
-    const { category, item } = useParams();
-    console.log(user);
-    console.log(user.admin);
+    const { category, id } = useParams();
+
     useEffect(() => {
-        fetch(`http://localhost:3000/product/${category}/${item}`)
-            .then((x) => x.json())
-            .then((x) => setItemDetails(x))
-            .catch((err) => console.log(err));
-    }, [category, item]);
+        getSingleProductById(id)
+            .then((data) => {
+                setItemDetails(data);
+            })
+            .catch((error) => {
+                console.error(error);
+            });
+    }, [id]);
 
     const modalHandler = () => {
         setIsModalOpen(!isModalOpen);
     };
+
     let regularPrice = false;
     let isLiked = false;
+
+    const handleDelete = async () => {
+        await deleteProductById(id);
+        navigateTo(`/catalog/${category}`);
+    };
 
     return (
         <div className='product-card'>
@@ -115,7 +124,9 @@ export default function ProductDetails() {
             {user.admin && (
                 <div className='admin-control'>
                     <button className='admin-edit'>Edit</button>
-                    <button className='admin-delete'>Delete</button>
+                    <button className='admin-delete' onClick={handleDelete}>
+                        Delete
+                    </button>
                 </div>
             )}
         </div>

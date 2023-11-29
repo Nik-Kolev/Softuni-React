@@ -3,6 +3,7 @@ const baseUrl = 'http://localhost:3000'
 import { getUserData, clearUserData } from "../utils/userLocaleStorage"
 
 async function request(method, endpoint, params) {
+    console.log(endpoint, params)
     const options = {
         method,
         headers: {}
@@ -19,6 +20,7 @@ async function request(method, endpoint, params) {
     }
     try {
         let response = await fetch(baseUrl + endpoint, options);
+        console.log(response)
         let data = null;
 
         if (response.status != 204) {
@@ -32,6 +34,7 @@ async function request(method, endpoint, params) {
             let error = data;
             throw new Error(error);
         }
+        console.log(data)
         return data;
     } catch (err) {
         throw new Error(err.message)

@@ -5,5 +5,8 @@ export const userEndpoints = {
 }
 
 export const productEndpoints = {
-    create: '/product/create'
+    create: '/product/create',
+    getByCategory: (category) => `/product/getByCategory/${category}`,
+    getById: (id) => `/product/getSingleProductById/${id}`,
+    delProduct: (id) => `/product/delete/${id}`
 }

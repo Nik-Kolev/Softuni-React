@@ -13,7 +13,7 @@ productController.post('/create', async (req, res) => {
 
 })
 
-productController.get('/:category', async (req, res) => {
+productController.get('/getByCategory/:category', async (req, res) => {
     const { category } = req.params
     try {
         const products = await productModel.find({ category })
@@ -23,14 +23,24 @@ productController.get('/:category', async (req, res) => {
     }
 })
 
-productController.get('/:category/:item', async (req, res) => {
-    const { category, item } = req.params
+productController.get('/getSingleProductById/:id', async (req, res) => {
+    const { id } = req.params
+    console.log('asd')
     try {
-        const product = await productModel.findOne({ category, _id: item })
+        const product = await productModel.findOne({ _id: id })
         res.status(200).json(product)
     } catch (err) {
         console.log(err)
     }
+})
+
+productController.get('/delete/:id', async (req, res) => {
+    console.log('asd')
+    const { id } = req.params
+    console.log(id)
+    console.log('-----------------------------')
+    await productModel.findOneAndDelete({ _id: id })
+    res.status(200).json('Deleted')
 })
 
 module.exports = productController

@@ -23,7 +23,7 @@ function App() {
                         <Route path='/' element={<Carousel />} />
                         <Route path='/catalog' element={<CatalogOptions />} />
                         <Route path='/catalog/:category' element={<CategoryList />} />
-                        <Route path='/catalog/:category/:item' element={<ProductDetails />} />
+                        <Route path='/catalog/:category/:id' element={<ProductDetails />} />
                         <Route path='/blog' element={<Blog />} />
                         <Route path='/login' element={<Login />} />
                         <Route path='/register' element={<Register />} />
