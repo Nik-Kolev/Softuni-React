@@ -25,7 +25,6 @@ productController.get('/getByCategory/:category', async (req, res) => {
 
 productController.get('/getSingleProductById/:id', async (req, res) => {
     const { id } = req.params
-    console.log('asd')
     try {
         const product = await productModel.findOne({ _id: id })
         res.status(200).json(product)
@@ -35,12 +34,16 @@ productController.get('/getSingleProductById/:id', async (req, res) => {
 })
 
 productController.get('/delete/:id', async (req, res) => {
-    console.log('asd')
     const { id } = req.params
-    console.log(id)
-    console.log('-----------------------------')
     await productModel.findOneAndDelete({ _id: id })
     res.status(200).json('Deleted')
+})
+
+productController.post('/editProductById/:id', async (req, res) => {
+    const { id } = req.params
+    const data = req.body
+    const updatedProduct = await productModel.findOneAndUpdate({ _id: id }, data, { new: true })
+    res.status(200).json(updatedProduct)
 })
 
 module.exports = productController

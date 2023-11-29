@@ -9,6 +9,7 @@ import { NotificationProvider } from './context/NotificationContext';
 import { UserProvider } from './context/UserContext';
 import CatalogOptions from './components/Catalog/CatalogOptions/CatalogOptions';
 import CreateProduct from './components/Products/CreateProducts/CreateProduct';
+import EditProduct from './components/Products/EditProducts/EditProduct';
 import CategoryList from './components/Catalog/CategoryList/CategoryList';
 import ProductDetails from './components/Catalog/ProductDetails/ProductDetails';
 import Toasty from './components/Home/ToastNotifications/Toasty';
@@ -27,7 +28,8 @@ function App() {
                         <Route path='/blog' element={<Blog />} />
                         <Route path='/login' element={<Login />} />
                         <Route path='/register' element={<Register />} />
-                        <Route path='/createProduct' element={<CreateProduct />} />
+                        <Route path='/create-product' element={<CreateProduct />} />
+                        <Route path='/edit-product/:id' element={<EditProduct />} />
                         <Route path='*' element={<SomethingWentWrong />} />
                     </Routes>
                     <Toasty />

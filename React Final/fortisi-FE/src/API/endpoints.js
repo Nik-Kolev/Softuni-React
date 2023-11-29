@@ -8,5 +8,6 @@ export const productEndpoints = {
     create: '/product/create',
     getByCategory: (category) => `/product/getByCategory/${category}`,
     getById: (id) => `/product/getSingleProductById/${id}`,
+    editProduct: (id) => `/product/editProductById/${id}`,
     delProduct: (id) => `/product/delete/${id}`
 }
