@@ -27,7 +27,6 @@ export default function CreateProduct() {
             await onCreateProductHandler({ productType, name, quantity, price, imageUrl: newLink, category, details });
             navigateTo('/');
         } catch (err) {
-            console.log(err);
             setNotification(err.message);
         }
     };
@@ -37,16 +36,16 @@ export default function CreateProduct() {
             <div className='container'>
                 <div className='block'>
                     <div className='row justify-content-center'>
-                        <div className='col-md-8 col-lg-8 pb-4'>
+                        <div className='col-md-8 col-lg-10 pb-4'>
                             <form onSubmit={handleSubmit(onSubmitHandler)}>
                                 <div className='row'>
-                                    <h5 className='text-black'>General Information:</h5>
+                                    <h5 className='text-black'>Основна информация за продукта:</h5>
                                     <br />
                                     <br />
                                     <div className='col-6'>
                                         <div className='form-group'>
                                             <label className='text-black' htmlFor='productType'>
-                                                Product Type:
+                                                Тип на продукта:
                                             </label>
                                             <input
                                                 type='text'
@@ -61,7 +60,7 @@ export default function CreateProduct() {
                                     <div className='col-6'>
                                         <div className='form-group'>
                                             <label className='text-black' htmlFor='name'>
-                                                Name:
+                                                Име:
                                             </label>
                                             <input
                                                 type='text'
@@ -73,30 +72,30 @@ export default function CreateProduct() {
                                             <span className={errors?.name ? 'form-error' : ''}>{errors?.name?.message}</span>
                                         </div>
                                     </div>
-                                    <div className='col-4'>
+                                    <div className='col-3'>
                                         <div className='form-group'>
                                             <label className='text-black' htmlFor='category'>
-                                                Category:
+                                                Категория:
                                             </label>
                                             <select
                                                 name='category'
                                                 id='category'
                                                 className={`form-control ${errors?.category ? 'input-error' : ''}`}
                                                 {...register('category')}>
-                                                <option value='bedroom'>Bedroom</option>
-                                                <option value='livingRoom'>Living Room</option>
-                                                <option value='kitchen'>Kitchen</option>
-                                                <option value='children`sRoom'>Children`s Room</option>
-                                                <option value='entranceHall'>Entrance Hall</option>
-                                                <option value='office'>Office</option>
+                                                <option value='bedroom'>Спалня</option>
+                                                <option value='livingRoom'>Дневна</option>
+                                                <option value='kitchen'>Кухня</option>
+                                                <option value='children`sRoom'>Детска Стая</option>
+                                                <option value='entranceHall'>Антре</option>
+                                                <option value='office'>Офис</option>
                                             </select>
                                             <span className={errors?.category ? 'form-error' : ''}>{errors?.category?.message}</span>
                                         </div>
                                     </div>
-                                    <div className='col-4'>
+                                    <div className='col-3'>
                                         <div className='form-group'>
                                             <label className='text-black' htmlFor='quantity'>
-                                                Quantity:
+                                                Количество:
                                             </label>
                                             <input
                                                 type='text'
@@ -108,10 +107,10 @@ export default function CreateProduct() {
                                             <span className={errors?.quantity ? 'form-error' : ''}>{errors?.quantity?.message}</span>
                                         </div>
                                     </div>
-                                    <div className='col-4'>
+                                    <div className='col-3'>
                                         <div className='form-group'>
                                             <label className='text-black' htmlFor='price'>
-                                                Price:
+                                                Цена:
                                             </label>
                                             <input
                                                 type='text'
@@ -123,17 +122,32 @@ export default function CreateProduct() {
                                             <span className={errors?.price ? 'form-error' : ''}>{errors?.price?.message}</span>
                                         </div>
                                     </div>
+                                    <div className='col-3'>
+                                        <div className='form-group'>
+                                            <label className='text-black' htmlFor='discount'>
+                                                Отстъпка:
+                                            </label>
+                                            <input
+                                                type='text'
+                                                className={`form-control ${errors?.discount ? 'input-error' : ''}`}
+                                                id='discount'
+                                                name='discount'
+                                                {...register('discount')}
+                                            />
+                                            <span className={errors?.discount ? 'form-error' : ''}>{errors?.discount?.message}</span>
+                                        </div>
+                                    </div>
                                 </div>
 
                                 <div className='row'>
                                     <h5 className='text-black' htmlFor='email'>
-                                        Details:
+                                        Детайли:
                                     </h5>
                                     <br />
                                     <div className='col-12'>
                                         <div className='form-group'>
                                             <label className='text-black' htmlFor='description'>
-                                                Short Description:
+                                                Кратко описание:
                                             </label>
                                             <textarea
                                                 style={{ minHeight: '65px' }}
@@ -146,7 +160,7 @@ export default function CreateProduct() {
                                     <div className='col-6'>
                                         <div className='form-group'>
                                             <label className='text-black' htmlFor='advantages'>
-                                                Advantages:
+                                                Предимства:
                                             </label>
                                             <input
                                                 type='text'
@@ -161,7 +175,7 @@ export default function CreateProduct() {
                                     <div className='col-6'>
                                         <div className='form-group'>
                                             <label className='text-black' htmlFor='color'>
-                                                Color:
+                                                Цвят:
                                             </label>
                                             <input
                                                 type='text'
@@ -176,7 +190,7 @@ export default function CreateProduct() {
                                     <div className='col-6'>
                                         <div className='form-group'>
                                             <label className='text-black' htmlFor='size'>
-                                                Size:
+                                                Размер:
                                             </label>
                                             <input
                                                 type='text'
@@ -191,7 +205,7 @@ export default function CreateProduct() {
                                     <div className='col-6'>
                                         <div className='form-group'>
                                             <label className='text-black' htmlFor='materials'>
-                                                Materials:
+                                                Материали:
                                             </label>
                                             <input
                                                 type='text'
@@ -208,7 +222,7 @@ export default function CreateProduct() {
                                     <div className='col-9'>
                                         <div className='form-group'>
                                             <label className='text-black' htmlFor='imageUrl'>
-                                                Select an Image File:
+                                                Качи снимка:
                                             </label>
                                             <input
                                                 type='file'
@@ -239,7 +253,7 @@ export default function CreateProduct() {
                                                 </>
                                             ) : (
                                                 <img
-                                                    src='src/components/Products/CreateProducts/imagePreview.jpg'
+                                                    src='/src/components/Products/CreateProducts/imagePreview.jpg'
                                                     alt='preview'
                                                     style={{
                                                         maxHeight: '250px',
@@ -251,7 +265,7 @@ export default function CreateProduct() {
                                     </div>
                                 </div>
                                 <button type='submit' className='btn btn-primary-hover-outline'>
-                                    Create Product
+                                    Създай продукт
                                 </button>
                             </form>
                         </div>

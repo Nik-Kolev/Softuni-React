@@ -52,8 +52,10 @@ body {
 .form-group > span {
     display: flex;
     align-items: center;
-    margin-top: 7px;
+    margin-top: 12px;
     height: 20px;
+    font-size: 16px;
+    line-height: 20px;
 }
 .form-error {
     color: red;
