@@ -227,7 +227,8 @@
     justify-content: center;
 }
 
-.admin-control > button {
+.admin-edit,
+.admin-delete {
     width: 100px;
     margin-left: 20px;
     padding: 10px;
@@ -240,7 +241,8 @@
     font-family: 'Mulish', sans-serif;
 }
 
-.admin-control > button:hover {
+.admin-edit:hover,
+.admin-delete:hover {
     background-color: rgba(0, 0, 0, 0.4);
     color: white;
 }

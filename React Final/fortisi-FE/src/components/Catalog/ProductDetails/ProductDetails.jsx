@@ -3,6 +3,7 @@ import { useNavigate, useParams } from 'react-router-dom';
 import { useUserContext } from '../../../context/UserContext';
 import { deleteProductById, getSingleProductById } from '../../../services/product';
 import { discountPrice, discountSave } from '../../../utils/calculatePriceAfterDiscount';
+import { Link } from 'react-router-dom';
 import './ProductDetails.css';
 
 export default function ProductDetails() {
@@ -123,7 +124,10 @@ export default function ProductDetails() {
             </div>
             {user.admin && (
                 <div className='admin-control'>
-                    <button className='admin-edit'>Edit</button>
+                    <Link to={`/edit-product/${id}`} className='admin-edit-link'>
+                        <button className='admin-edit'>Edit</button>
+                    </Link>
+
                     <button className='admin-delete' onClick={handleDelete}>
                         Delete
                     </button>
