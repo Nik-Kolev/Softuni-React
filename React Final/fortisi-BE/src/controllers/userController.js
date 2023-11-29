@@ -34,7 +34,7 @@ userController.post('/login', isGuest, async (req, res) => {
         }
 
         const token = await tokenCreator(user)
-        const data = { firstName: user.firstName, lastName: user.lastName, _id: user._id, email: user.email, token }
+        const data = { firstName: user.firstName, lastName: user.lastName, _id: user._id, email: user.email, admin: user.admin, token }
         res.status(200).json(data);
     } catch (error) {
         console.log(error)

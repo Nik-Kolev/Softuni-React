@@ -27,7 +27,6 @@ productController.get('/:category/:item', async (req, res) => {
     const { category, item } = req.params
     try {
         const product = await productModel.findOne({ category, _id: item })
-        console.log(product)
         res.status(200).json(product)
     } catch (err) {
         console.log(err)

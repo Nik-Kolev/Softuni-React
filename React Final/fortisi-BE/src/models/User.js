@@ -25,6 +25,9 @@ const userSchema = new mongoose.Schema(
             required: true,
             // match: [/^0[1-9]{1}[0-9]{8}$/, 'Phone number is not valid!'],
         },
+        admin: {
+            type: String
+        },
         address: {
             country: {
                 type: String,

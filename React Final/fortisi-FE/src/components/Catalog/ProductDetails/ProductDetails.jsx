@@ -1,25 +1,23 @@
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
+import { useUserContext } from '../../../context/UserContext';
+import { discountPrice, discountSave } from '../../../utils/calculatePriceAfterDiscount';
+
 import './ProductDetails.css';
+
 export default function ProductDetails() {
     const [itemDetails, setItemDetails] = useState();
     const [isModalOpen, setIsModalOpen] = useState(false);
+    const { user } = useUserContext();
     const { category, item } = useParams();
-
+    console.log(user);
+    console.log(user.admin);
     useEffect(() => {
         fetch(`http://localhost:3000/product/${category}/${item}`)
             .then((x) => x.json())
             .then((x) => setItemDetails(x))
             .catch((err) => console.log(err));
     }, [category, item]);
-
-    const discountPrice = (regularPrice, discount) => {
-        return (regularPrice * ((100 - discount) / 100)).toFixed();
-    };
-
-    const discountSave = (regularPrice, discount) => {
-        return (regularPrice - regularPrice * ((100 - discount) / 100)).toFixed();
-    };
 
     const modalHandler = () => {
         setIsModalOpen(!isModalOpen);

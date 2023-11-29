@@ -1,7 +1,8 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { discountPrice } from '../../../utils/calculatePriceAfterDiscount';
 import './CategoryListCard.css';
-export default function CategoryListCard({ imageUrl, productType, price, name, _id }) {
+export default function CategoryListCard({ imageUrl, productType, price, name, _id, discount }) {
     const [isLiked, setIsLiked] = useState(false);
     const handleLikeClick = (e) => {
         e.preventDefault();
@@ -16,7 +17,7 @@ export default function CategoryListCard({ imageUrl, productType, price, name, _
                         <div className='image-container'>
                             <img src={imageUrl} className='img-card-fluid product-card-thumbnail' alt={name} />
                             <div className='labels'>
-                                <div className='label-promo'> -50%</div>
+                                <div className='label-promo'> - {discount}%</div>
                             </div>
                             <div className={`like-button ${isLiked ? 'liked' : ''}`} onClick={handleLikeClick}>
                                 <div className='heart-container'>
@@ -32,11 +33,11 @@ export default function CategoryListCard({ imageUrl, productType, price, name, _
                     <div className='bottom'>
                         <div className='options'>
                             <div className='prices'>
-                                <div className='promo-price'>{price} $</div>
-                                <div className='regular-price'>{price * 2} $</div>
+                                <div className='promo-price'>{discountPrice(price, discount)} лв.</div>
+                                <div className='regular-price'>{price} лв.</div>
                             </div>
                             <div className='delivery'>
-                                Free delivery in <strong>7 days</strong>
+                                Безплатна доставка до <strong>7 дни</strong>
                             </div>
                         </div>
                         <div className='purchase-button-wrapper'>
