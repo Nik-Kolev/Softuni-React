@@ -26,22 +26,22 @@ export default function NavigationBar() {
                     <ul className='custom-navbar-nav navbar-nav ms-auto mb-2 mb-md-0'>
                         <li>
                             <Link to={'/catalog'} className='nav-link'>
-                                Catalog
+                                Каталог
                             </Link>
                         </li>
                         <li>
                             <Link to={'/about-us'} className='nav-link'>
-                                About us
+                                За нас
                             </Link>
                         </li>
                         <li>
                             <Link to={'/blog'} className='nav-link'>
-                                Blog
+                                Блог
                             </Link>
                         </li>
                         <li>
                             <Link to={'/contact'} className='nav-link'>
-                                Contact us
+                                Контакти
                             </Link>
                         </li>
                     </ul>

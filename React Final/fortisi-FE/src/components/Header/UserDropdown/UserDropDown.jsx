@@ -18,17 +18,17 @@ export default function UserDropDown() {
                     {isAuthenticated ? (
                         <>
                             <Link to={'/createProduct'} className='dropdown-link'>
-                                Create Product
+                                Създай Продукт
                             </Link>
                             <Logout />
                         </>
                     ) : (
                         <>
                             <Link to={'/login'} className='dropdown-link'>
-                                Login
+                                Влизане
                             </Link>
                             <Link to={'/register'} className='dropdown-link'>
-                                Register
+                                Регистрация
                             </Link>
                         </>
                     )}

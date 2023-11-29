@@ -1,11 +1,14 @@
+.dropdown-menu {
+    min-width: 200px;
+}
+
 .dropdown-link {
     display: block;
     padding: 10px;
     text-decoration: none;
     color: #ffffff;
     opacity: 1;
-    transition: opacity 0.3s ease;
-    transition: transform 0.3s ease;
+    transition: opacity 0.3s ease, transform 0.3s ease;
     transform: scale(1);
 }
 

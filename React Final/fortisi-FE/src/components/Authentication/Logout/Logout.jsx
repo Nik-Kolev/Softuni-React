@@ -17,7 +17,7 @@ export default function Logout() {
 
     return (
         <Link to={'/'} className='dropdown-link' onClick={onSubmitHandler}>
-            Logout
+            Излез
         </Link>
     );
 }
