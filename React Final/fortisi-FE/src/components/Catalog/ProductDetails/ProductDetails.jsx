@@ -13,6 +13,14 @@ export default function ProductDetails() {
             .catch((err) => console.log(err));
     }, [category, item]);
 
+    const discountPrice = (regularPrice, discount) => {
+        return (regularPrice * ((100 - discount) / 100)).toFixed();
+    };
+
+    const discountSave = (regularPrice, discount) => {
+        return (regularPrice - regularPrice * ((100 - discount) / 100)).toFixed();
+    };
+
     const modalHandler = () => {
         setIsModalOpen(!isModalOpen);
     };
@@ -34,7 +42,7 @@ export default function ProductDetails() {
                                         style={{ margin: '0px' }}
                                     />
                                     <div className='labels'>
-                                        <div className='label-promo'> -50%</div>
+                                        <div className='label-promo'> - {itemDetails?.discount}%</div>
                                     </div>
                                     <div className={`like-button ${isLiked ? 'liked' : ''}`}>
                                         <div className='heart-container'>
@@ -78,11 +86,15 @@ export default function ProductDetails() {
                                     {regularPrice ? (
                                         <div className='details-regular-price'>{itemDetails?.price * 2} лв.</div>
                                     ) : (
-                                        <div className='details-promo-price'>{itemDetails?.price} лв.</div>
+                                        <div className='details-promo-price'>
+                                            {discountPrice(itemDetails?.price, itemDetails?.discount)} лв.
+                                        </div>
                                     )}
                                     <div className='old-prices'>
-                                        <div className='details-before'>преди {itemDetails?.price * 2} лв.</div>
-                                        <div className='details-you-save'>спестяваш {itemDetails?.price} лв.</div>
+                                        <div className='details-before'>преди {itemDetails?.price} лв.</div>
+                                        <div className='details-you-save'>
+                                            спестяваш {discountSave(itemDetails?.price, itemDetails?.discount)} лв.
+                                        </div>
                                     </div>
                                 </div>
                                 <div className='details-delivery'>
