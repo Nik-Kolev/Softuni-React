@@ -1,20 +1,27 @@
 import { useState } from 'react'
 
+
 export const useImagePreview = () => {
     const [previewImage, setPreviewImage] = useState(null);
 
-    const handleImage = (e) => {
-        const imageFile = e.target.files[0]
+    const handleImage = (input) => {
+        if (!input) return
 
-        if (!imageFile) return;
+        if (typeof input === 'string') {
+            setPreviewImage(input)
+            return
+        }
 
-        const reader = new FileReader();
+        if (input.target && input.target.files) {
 
-        reader.onloadend = () => {
-            setPreviewImage(reader.result);
-        };
+            const reader = new FileReader();
 
-        reader.readAsDataURL(imageFile);
+            reader.onloadend = () => {
+                setPreviewImage(reader.result);
+            };
+
+            reader.readAsDataURL(input.target.files[0]);
+        }
     }
 
     return { previewImage, handleImage };
