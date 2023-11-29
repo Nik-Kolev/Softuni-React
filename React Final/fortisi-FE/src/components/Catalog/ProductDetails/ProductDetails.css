@@ -220,3 +220,27 @@
     box-shadow: 0 2px 10px #82ad92;
     opacity: 0.95;
 }
+
+.admin-control {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.admin-control > button {
+    width: 100px;
+    margin-left: 20px;
+    padding: 10px;
+    background: #fff;
+    color: black;
+    cursor: pointer;
+    border: 2px solid #3b5d50;
+    border-radius: 15px;
+    font-size: 20px;
+    font-family: 'Mulish', sans-serif;
+}
+
+.admin-control > button:hover {
+    background-color: rgba(0, 0, 0, 0.4);
+    color: white;
+}

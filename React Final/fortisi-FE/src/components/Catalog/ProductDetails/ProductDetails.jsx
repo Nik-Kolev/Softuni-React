@@ -112,6 +112,12 @@ export default function ProductDetails() {
                     </div>
                 </div>
             </div>
+            {user.admin && (
+                <div className='admin-control'>
+                    <button className='admin-edit'>Edit</button>
+                    <button className='admin-delete'>Delete</button>
+                </div>
+            )}
         </div>
     );
 }
