@@ -52,7 +52,7 @@ export default function ProductDetails() {
                                     <img src='/src/images/catalog/ProductDetails/color.png' className='color-icon' alt='Color icon' />
                                     <span className='color-text'>{itemDetails?.details.color}</span>
                                 </div>
-                                <div className='details-total-likes'>В любими: 5</div>
+                                {/* <div className='details-total-likes'>В любими: 5</div> */}
                                 <div className='details-more-info'>
                                     <div className='modal-more-info' onClick={modalHandler}>
                                         Описание и размери

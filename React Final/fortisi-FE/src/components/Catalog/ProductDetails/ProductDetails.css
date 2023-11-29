@@ -55,7 +55,7 @@
     font-size: 18px;
 }
 
-.details-total-likes {
+/* .details-total-likes {
     color: #3c0d17;
     font-family: Mulish, sans-serif;
     font-weight: 700;
@@ -63,7 +63,7 @@
     letter-spacing: normal;
     line-height: 20px;
     margin-bottom: 10px;
-}
+} */
 
 .modal-more-info {
     display: flex;
