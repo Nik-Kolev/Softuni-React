@@ -4,13 +4,12 @@ import { useNavigate } from 'react-router-dom';
 import { useImagePreview } from '../../../hooks/useImagePreview';
 import { productSchema } from '../../../validations/createProductValidations';
 import { useNotificationContext } from '../../../context/NotificationContext';
-import { useProductContext } from '../../../context/ProductContext';
 import { supabaseUploader } from '../../../API/supabase';
+import { createProduct } from '../../../services/product';
 import './CreateProduct.css';
 
 export default function CreateProduct() {
     const { setNotification } = useNotificationContext();
-    const { onCreateProductHandler } = useProductContext();
     const { previewImage, handleImage } = useImagePreview();
     const navigateTo = useNavigate();
     const {
@@ -20,16 +19,17 @@ export default function CreateProduct() {
     } = useForm({ resolver: yupResolver(productSchema), mode: 'onBlur' });
 
     const onSubmitHandler = async (data) => {
-        const { productType, name, quantity, price, imageUrl, category, ...details } = data;
+        const { productType, name, quantity, price, discount, imageUrl, category, ...details } = data;
 
         try {
             const newLink = await supabaseUploader(imageUrl[0], category);
-            await onCreateProductHandler({ productType, name, quantity, price, imageUrl: newLink, category, details });
-            navigateTo('/');
+            const product = await createProduct({ productType, name, quantity, price, discount, imageUrl: newLink, category, details });
+            navigateTo(`/catalog/${category}/${product._id}`);
         } catch (err) {
             setNotification(err.message);
         }
     };
+
     //TODO: Image check !
     return (
         <div className='untree_co-section'>

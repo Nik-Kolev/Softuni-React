@@ -7,7 +7,6 @@ import Login from './components/Authentication/Login/Login';
 import SomethingWentWrong from './components/Home/404/404';
 import { NotificationProvider } from './context/NotificationContext';
 import { UserProvider } from './context/UserContext';
-import { ProductProvider } from './context/ProductContext';
 import CatalogOptions from './components/Catalog/CatalogOptions/CatalogOptions';
 import CreateProduct from './components/Products/CreateProducts/CreateProduct';
 import CategoryList from './components/Catalog/CategoryList/CategoryList';
@@ -19,21 +18,19 @@ function App() {
         <>
             <NotificationProvider>
                 <UserProvider>
-                    <ProductProvider>
-                        <NavigationBar />
-                        <Routes>
-                            <Route path='/' element={<Carousel />} />
-                            <Route path='/catalog' element={<CatalogOptions />} />
-                            <Route path='/catalog/:category' element={<CategoryList />} />
-                            <Route path='/catalog/:category/:item' element={<ProductDetails />} />
-                            <Route path='/blog' element={<Blog />} />
-                            <Route path='/login' element={<Login />} />
-                            <Route path='/register' element={<Register />} />
-                            <Route path='/createProduct' element={<CreateProduct />} />
-                            <Route path='*' element={<SomethingWentWrong />} />
-                        </Routes>
-                        <Toasty />
-                    </ProductProvider>
+                    <NavigationBar />
+                    <Routes>
+                        <Route path='/' element={<Carousel />} />
+                        <Route path='/catalog' element={<CatalogOptions />} />
+                        <Route path='/catalog/:category' element={<CategoryList />} />
+                        <Route path='/catalog/:category/:item' element={<ProductDetails />} />
+                        <Route path='/blog' element={<Blog />} />
+                        <Route path='/login' element={<Login />} />
+                        <Route path='/register' element={<Register />} />
+                        <Route path='/createProduct' element={<CreateProduct />} />
+                        <Route path='*' element={<SomethingWentWrong />} />
+                    </Routes>
+                    <Toasty />
                 </UserProvider>
             </NotificationProvider>
             <Footer />

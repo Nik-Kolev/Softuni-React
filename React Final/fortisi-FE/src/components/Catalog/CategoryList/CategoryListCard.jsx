@@ -7,6 +7,7 @@ export default function CategoryListCard({ imageUrl, productType, price, name, _
         e.preventDefault();
         setIsLiked(!isLiked);
     };
+    //TODO: Research Slug for better URLs
     return (
         <div className='col-12 col-md-4 col-lg-4 mb-5'>
             <Link to={`${_id}`} className='product-link'>
