@@ -10,21 +10,21 @@ export default function Catalog() {
                     <div className='col-12 col-md-4 col-lg-4 mb-5'>
                         <Link to={'/catalog/bedroom'} className='product-item'>
                             <img src='src/images/catalog/CatalogOptions/bedroomCatalog.jpg' className='img-fluid product-thumbnail' />
-                            <h3 className='product-title'>Bedroom</h3>
+                            <h3 className='product-title'>Спалня</h3>
                         </Link>
                     </div>
 
                     <div className='col-12 col-md-4 col-lg-4 mb-5'>
                         <a className='product-item' href='#'>
                             <img src='src/images/catalog/CatalogOptions/livingRoomCatalog.jpg' className='img-fluid product-thumbnail' />
-                            <h3 className='product-title'>Living Room</h3>
+                            <h3 className='product-title'>Дневна</h3>
                         </a>
                     </div>
 
                     <div className='col-12 col-md-4 col-lg-4 mb-5'>
                         <a className='product-item' href='#'>
                             <img src='src/images/catalog/CatalogOptions/kitchenCatalog.jpg' className='img-fluid product-thumbnail' />
-                            <h3 className='product-title'>Kitchen</h3>
+                            <h3 className='product-title'>Кухня</h3>
                             {/* <strong className='product-price'>$50.00</strong> */}
                         </a>
                     </div>
@@ -32,7 +32,7 @@ export default function Catalog() {
                     <div className='col-12 col-md-4 col-lg-4 mb-5'>
                         <a className='product-item' href='#'>
                             <img src='src/images/catalog/CatalogOptions/kidsRoomCatalog.jpg' className='img-fluid product-thumbnail' />
-                            <h3 className='product-title'>Children`s room</h3>
+                            <h3 className='product-title'>Детска Стая</h3>
                             {/* <strong className='product-price'>$50.00</strong> */}
                         </a>
                     </div>
@@ -40,7 +40,7 @@ export default function Catalog() {
                     <div className='col-12 col-md-4 col-lg-4 mb-5'>
                         <a className='product-item' href='#'>
                             <img src='src/images/catalog/CatalogOptions/entranceHallCatalog.jpg' className='img-fluid product-thumbnail' />
-                            <h3 className='product-title'>Entrance Hall</h3>
+                            <h3 className='product-title'>Антре</h3>
                             {/* <strong className='product-price'>$50.00</strong> */}
                         </a>
                     </div>
@@ -48,7 +48,7 @@ export default function Catalog() {
                     <div className='col-12 col-md-4 col-lg-4 mb-5'>
                         <a className='product-item' href='#'>
                             <img src='src/images/catalog/CatalogOptions/officeRoomCatalog.jpg' className='img-fluid product-thumbnail' />
-                            <h3 className='product-title'>Office</h3>
+                            <h3 className='product-title'>Офис</h3>
                         </a>
                     </div>
                 </div>

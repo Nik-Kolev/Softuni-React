@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import './CategoryListCard.css';
-export default function CategoryListCard({ imageUrl, productType, price, name }) {
+export default function CategoryListCard({ imageUrl, productType, price, name, _id }) {
     const [isLiked, setIsLiked] = useState(false);
     const handleLikeClick = (e) => {
         e.preventDefault();
@@ -9,7 +9,7 @@ export default function CategoryListCard({ imageUrl, productType, price, name })
     };
     return (
         <div className='col-12 col-md-4 col-lg-4 mb-5'>
-            <Link to={`${name}`} className='product-link'>
+            <Link to={`${_id}`} className='product-link'>
                 <div className='product-framework'>
                     <div className='product-item-card'>
                         <div className='image-container'>
