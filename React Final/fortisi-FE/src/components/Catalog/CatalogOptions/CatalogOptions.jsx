@@ -2,7 +2,6 @@ import { Link } from 'react-router-dom';
 import './CatalogOptions.css';
 
 export default function Catalog() {
-    //TODO - Hyperlinks below product title for different categories - example: standard kitchen, tables, chairs, etc
     return (
         <div className='untree_co-section product-section before-footer-section'>
             <div className='container'>
@@ -15,41 +14,38 @@ export default function Catalog() {
                     </div>
 
                     <div className='col-12 col-md-4 col-lg-4 mb-5'>
-                        <a className='product-item' href='#'>
+                        <Link to={'/catalog/livingroom'} className='product-item'>
                             <img src='src/images/catalog/CatalogOptions/livingRoomCatalog.jpg' className='img-fluid product-thumbnail' />
                             <h3 className='product-title'>Дневна</h3>
-                        </a>
+                        </Link>
                     </div>
 
                     <div className='col-12 col-md-4 col-lg-4 mb-5'>
-                        <a className='product-item' href='#'>
+                        <Link to={'/catalog/kitchen'} className='product-item'>
                             <img src='src/images/catalog/CatalogOptions/kitchenCatalog.jpg' className='img-fluid product-thumbnail' />
                             <h3 className='product-title'>Кухня</h3>
-                            {/* <strong className='product-price'>$50.00</strong> */}
-                        </a>
+                        </Link>
                     </div>
 
                     <div className='col-12 col-md-4 col-lg-4 mb-5'>
-                        <a className='product-item' href='#'>
+                        <Link to={'/catalog/children'} className='product-item'>
                             <img src='src/images/catalog/CatalogOptions/kidsRoomCatalog.jpg' className='img-fluid product-thumbnail' />
                             <h3 className='product-title'>Детска Стая</h3>
-                            {/* <strong className='product-price'>$50.00</strong> */}
-                        </a>
+                        </Link>
                     </div>
 
                     <div className='col-12 col-md-4 col-lg-4 mb-5'>
-                        <a className='product-item' href='#'>
+                        <Link to={'/catalog/entranceHall'} className='product-item'>
                             <img src='src/images/catalog/CatalogOptions/entranceHallCatalog.jpg' className='img-fluid product-thumbnail' />
                             <h3 className='product-title'>Антре</h3>
-                            {/* <strong className='product-price'>$50.00</strong> */}
-                        </a>
+                        </Link>
                     </div>
 
                     <div className='col-12 col-md-4 col-lg-4 mb-5'>
-                        <a className='product-item' href='#'>
+                        <Link to={'/catalog/office'} className='product-item' href='#'>
                             <img src='src/images/catalog/CatalogOptions/officeRoomCatalog.jpg' className='img-fluid product-thumbnail' />
                             <h3 className='product-title'>Офис</h3>
-                        </a>
+                        </Link>
                     </div>
                 </div>
             </div>
