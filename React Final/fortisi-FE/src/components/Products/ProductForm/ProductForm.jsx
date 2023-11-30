@@ -84,9 +84,9 @@ export default function ProductForm({ operationType, onSubmitHandler, defaultVal
                                                 className={`form-control ${errors?.category ? 'input-error' : ''}`}
                                                 {...register('category')}>
                                                 <option value='bedroom'>Спалня</option>
-                                                <option value='livingRoom'>Дневна</option>
+                                                <option value='livingroom'>Дневна</option>
                                                 <option value='kitchen'>Кухня</option>
-                                                <option value='children`sRoom'>Детска Стая</option>
+                                                <option value='children'>Детска Стая</option>
                                                 <option value='entranceHall'>Антре</option>
                                                 <option value='office'>Офис</option>
                                             </select>
