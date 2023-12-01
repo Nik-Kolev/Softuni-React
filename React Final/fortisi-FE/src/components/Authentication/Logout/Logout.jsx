@@ -1,17 +1,16 @@
 import { Link } from 'react-router-dom';
-import { useNotificationContext } from '../../../context/NotificationContext';
+import toast from 'react-simple-toasts';
 import { useUserContext } from '../../../context/UserContext';
 
 export default function Logout() {
     const { onLogoutHandler } = useUserContext();
-    const { setNotification } = useNotificationContext();
 
     const onSubmitHandler = async () => {
         try {
             const user = await onLogoutHandler();
-            setNotification(user);
+            toast(user);
         } catch (err) {
-            setNotification(err.message);
+            toast(err.message);
         }
     };
 

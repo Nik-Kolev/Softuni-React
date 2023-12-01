@@ -1,14 +1,13 @@
 import { useEffect } from 'react';
-import { useNotificationContext } from '../../../context/NotificationContext';
 import { useUserContext } from '../../../context/UserContext';
 import { useNavigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { loginSchema } from '../../../validations/loginValidations';
 import '../Auth.css';
+import toast from 'react-simple-toasts';
 
 export default function Login() {
-    const { setNotification } = useNotificationContext();
     const { onLoginHandler } = useUserContext();
     const navigateTo = useNavigate();
 
@@ -29,10 +28,10 @@ export default function Login() {
     const onSubmitHandler = async (data) => {
         try {
             await onLoginHandler(data);
-            setNotification('Login successful.');
+            toast('Login successful.');
             navigateTo('/');
         } catch (err) {
-            setNotification(err.message);
+            toast(err.message);
         }
     };
 

@@ -1,14 +1,13 @@
 import { useEffect } from 'react';
-import { useNotificationContext } from '../../../context/NotificationContext';
 import { useUserContext } from '../../../context/UserContext';
 import { useNavigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { registerSchema } from '../../../validations/registerValidations';
 import '../Auth.css';
+import toast from 'react-simple-toasts';
 
 export default function Register() {
-    const { setNotification } = useNotificationContext();
     const { onRegisterHandler } = useUserContext();
     const navigateTo = useNavigate();
     const {
@@ -25,10 +24,10 @@ export default function Register() {
     const onSubmitHandler = async (data) => {
         try {
             await onRegisterHandler(data);
-            setNotification('Register successful.');
+            toast('Register successful.');
             navigateTo('/');
         } catch (err) {
-            setNotification(err.message);
+            toast(err.message);
         }
     };
 
