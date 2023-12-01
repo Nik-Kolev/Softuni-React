@@ -151,7 +151,7 @@ userController.post('/liked', async (req, res) => {
 
 userController.get('/liked/:id', async (req, res) => {
     const { id } = req.params
-    const userId = req.user._id
+    const userId = req.user?._id
     try {
         const isLiked = !!(await userModel.exists({ _id: userId, likedProducts: id }));
         res.status(200).json(isLiked)

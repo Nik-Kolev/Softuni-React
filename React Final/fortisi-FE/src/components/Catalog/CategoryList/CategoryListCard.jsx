@@ -17,10 +17,11 @@ export default function CategoryListCard({ imageUrl, productType, price, name, _
     const handleLikeClick = async (e) => {
         e.preventDefault();
         setIsLiked(!isLiked);
-        const response = await likedProducts({ isLiked, _id, userId: user._id });
-        toast(response);
+        if (user) {
+            const response = await likedProducts({ isLiked, _id, userId: user._id });
+            toast(response);
+        }
     };
-
     useEffect(() => {
         currentLike(_id)
             .then((x) => {

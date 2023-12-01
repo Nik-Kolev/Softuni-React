@@ -35,8 +35,10 @@ export default function ProductDetails() {
     const handleLikeClick = async (e) => {
         e.preventDefault();
         setIsLiked(!isLiked);
-        const response = await likedProducts({ isLiked, _id: itemDetails._id, userId: user._id });
-        toast(response);
+        if (user) {
+            const response = await likedProducts({ isLiked, _id: itemDetails._id, userId: user._id });
+            toast(response);
+        }
     };
 
     const handleDelete = async () => {
@@ -139,7 +141,7 @@ export default function ProductDetails() {
                             </div>
                         </div>
                     </div>
-                    {user.admin && (
+                    {user?.admin && (
                         <div className='admin-control'>
                             <Link to={`/edit-product/${id}`} className='admin-edit-link'>
                                 <button className='admin-edit'>Edit</button>
