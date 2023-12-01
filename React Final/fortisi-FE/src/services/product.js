@@ -20,3 +20,11 @@ export async function editSingleProductById(id, data) {
 export async function deleteProductById(id) {
     return await get(productEndpoints.delProduct(id))
 }
+
+export async function likedProducts(data) {
+    return await post(productEndpoints.likeOrDislikeProduct, data)
+}
+
+export async function currentLike(id) {
+    return await get(productEndpoints.asdProduct(id))
+}
