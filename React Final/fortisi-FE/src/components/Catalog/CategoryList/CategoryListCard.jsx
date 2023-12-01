@@ -1,13 +1,33 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+
+import { useUserContext } from '../../../context/UserContext';
+
+import { currentLike, likedProducts } from '../../../services/product';
+
+import toast from 'react-simple-toasts';
 import { discountPrice } from '../../../utils/calculatePriceAfterDiscount';
+
 import './CategoryListCard.css';
+
 export default function CategoryListCard({ imageUrl, productType, price, name, _id, discount }) {
-    const [isLiked, setIsLiked] = useState(false);
-    const handleLikeClick = (e) => {
+    const [isLiked, setIsLiked] = useState();
+    const { user } = useUserContext();
+
+    const handleLikeClick = async (e) => {
         e.preventDefault();
         setIsLiked(!isLiked);
+        const response = await likedProducts({ isLiked, _id, userId: user._id });
+        toast(response);
     };
+
+    useEffect(() => {
+        currentLike(_id)
+            .then((x) => {
+                setIsLiked(x);
+            })
+            .catch((err) => toast(err.message));
+    }, [_id]);
     //TODO: Research Slug for better URLs
     return (
         <div className='col-12 col-md-4 col-lg-4 mb-5'>

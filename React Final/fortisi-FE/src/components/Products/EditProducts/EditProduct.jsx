@@ -1,23 +1,30 @@
 import { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
-import { useNotificationContext } from '../../../context/NotificationContext';
+import toast from 'react-simple-toasts';
+
+import { useSpinner } from '../../../hooks/useSpinner';
 import { editSingleProductById, getSingleProductById } from '../../../services/product';
+import Spinner from '../../Home/Spinner/Spinner';
 import ProductForm from '../ProductForm/ProductForm';
 
 export default function EditProduct() {
-    const [currentProduct, setCurrentProduct] = useState();
-    const { setNotification } = useNotificationContext();
     const navigateTo = useNavigate();
+    const [data, setData] = useState();
     const { id } = useParams();
+    // const { isLoading, errors, data } = useFetch(getSingleProductById, id);
+    const { isLoading, handleIsLoading } = useSpinner();
+
     useEffect(() => {
-        getSingleProductById(id)
-            .then((data) => {
-                setCurrentProduct(data);
-            })
-            .catch((error) => {
-                console.error(error);
-            });
-    }, [id]);
+        handleIsLoading(async () => {
+            const result = await getSingleProductById(id);
+            setData(result);
+        }).catch((err) => {
+            toast(err.message);
+        });
+    });
+    // if (errors) {
+    //     setNotification(errors);
+    // }
 
     const onSubmitHandler = async (data) => {
         const { productType, name, quantity, price, discount, imageUrl, category, ...details } = data;
@@ -26,15 +33,17 @@ export default function EditProduct() {
             await editSingleProductById(id, { productType, name, quantity, price, discount, imageUrl, category, details });
             navigateTo(`/catalog/${category}/${id}`);
         } catch (err) {
-            setNotification(err.message);
+            toast(err.message);
         }
     };
 
-    const data = {
+    const props = {
         operationType: 'Редактирай Продукт',
-        defaultValues: currentProduct,
+        defaultValues: data,
         onSubmitHandler,
     };
-
-    return <ProductForm {...data} />;
+    if (isLoading) {
+        return <Spinner />;
+    }
+    return <ProductForm {...props} />;
 }
