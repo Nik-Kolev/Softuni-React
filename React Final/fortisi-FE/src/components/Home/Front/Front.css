@@ -1,3 +1,12 @@
+.home {
+    width: 100%;
+    min-height: 100vh;
+    background-image: url(imagesa/background.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: left;
+}
+
 .custom-list {
     width: 100%;
 }
@@ -34,7 +43,6 @@
     content: '';
     width: 255px;
     height: 217px;
-    background-image: url('../images/dots-green.svg');
     background-size: contain;
     background-repeat: no-repeat;
     -webkit-transform: translate(-40%, -40%);
@@ -74,4 +82,23 @@
     -ms-grid-row-span: 27;
     grid-row: 6 / span 27;
     padding-top: 20px;
+}
+
+.section-title {
+    color: black;
+    font-size: 28px;
+}
+
+.quote {
+    padding: 20px;
+    background-color: #ffffff9c;
+    border-radius: 15px;
+    height: 450px;
+    font-size: 15px;
+    font-weight: 600;
+}
+
+.text-quote-body {
+    color: black;
+    font-size: 16px;
 }

@@ -1,6 +1,5 @@
 import { Routes, Route } from 'react-router-dom';
 import NavigationBar from './components/Header/NavigationBar/NavigationBar';
-import Carousel from './components/Home/Carousel/Carousel';
 import Blog from './components/Blog/Blog';
 import Register from './components/Authentication/Register/Register';
 import Login from './components/Authentication/Login/Login';
@@ -13,6 +12,7 @@ import CategoryList from './components/Catalog/CategoryList/CategoryList';
 import ProductDetails from './components/Catalog/ProductDetails/ProductDetails';
 import Footer from './Components/Footer/Footer';
 import { toastConfig } from 'react-simple-toasts';
+import Front from './components/Home/Front/Front';
 
 function App() {
     toastConfig({
@@ -27,7 +27,7 @@ function App() {
             <UserProvider>
                 <NavigationBar />
                 <Routes>
-                    <Route path='/' element={<Carousel />} />
+                    <Route path='/' element={<Front />} />
                     <Route path='/catalog' element={<CatalogOptions />} />
                     <Route path='/catalog/:category' element={<CategoryList />} />
                     <Route path='/catalog/:category/:id' element={<ProductDetails />} />
