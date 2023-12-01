@@ -132,4 +132,32 @@ userController.post('/resetPassword', isAuthorized, async (req, res) => {
     }
 });
 
+userController.post('/liked', async (req, res) => {
+    try {
+        const { isLiked, _id, userId } = req.body
+        if (isLiked) {
+            await userModel.findByIdAndUpdate({ _id: userId }, { $pull: { likedProducts: _id } }, { new: true });
+            res.status(200).json('Продуктът е премахнат от любими.')
+        } else {
+            await userModel.findByIdAndUpdate({ _id: userId, likedProducts: { $ne: _id } }, { $push: { likedProducts: _id } }, { new: true });
+            res.status(200).json('Продуктът е добавен в любими.')
+        }
+    } catch (error) {
+        errorHandler(error, res, req)
+    }
+
+
+})
+
+userController.get('/liked/:id', async (req, res) => {
+    const { id } = req.params
+    const userId = req.user._id
+    try {
+        const isLiked = !!(await userModel.exists({ _id: userId, likedProducts: id }));
+        res.status(200).json(isLiked)
+    } catch (error) {
+        errorHandler(error, res, req)
+    }
+})
+
 module.exports = userController

@@ -28,6 +28,9 @@ const userSchema = new mongoose.Schema(
         admin: {
             type: String
         },
+        likedProducts: [{
+            type: String
+        }],
         address: {
             country: {
                 type: String,
