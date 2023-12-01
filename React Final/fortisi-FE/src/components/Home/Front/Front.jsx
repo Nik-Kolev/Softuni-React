@@ -33,8 +33,8 @@ export default function Front() {
                             </div>
                         </div>
                         <div className='col-lg-5 ps-lg-5 quote'>
-                            <h2 className='section-title mb-4'>{quote.quote}</h2>
-                            <p className='text-quote-body'>{quote.value}</p>
+                            <h2 className='section-title mb-4'>{quote.title}</h2>
+                            <p className='text-quote-body'>{quote.text}</p>
 
                             <ul className='list-unstyled custom-list my-4'>
                                 <li>Открийте вечни парчета, създадени от нас за вашия модерен дом.</li>
