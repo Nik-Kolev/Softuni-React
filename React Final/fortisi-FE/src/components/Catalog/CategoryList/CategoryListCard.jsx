@@ -34,7 +34,8 @@ export default function CategoryListCard({ imageUrl, productType, price, name, _
         }
     };
 
-    const handleSell = () => {
+    const handleSell = (e) => {
+        e.preventDefault();
         const currentPath = window.location.pathname;
         if (user._id) {
             toast(`Артикул ${name} е добавен в количката.`);
