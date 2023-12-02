@@ -13,6 +13,7 @@ import ProductDetails from './components/Catalog/ProductDetails/ProductDetails';
 import Footer from './Components/Footer/Footer';
 import { toastConfig } from 'react-simple-toasts';
 import Front from './components/Home/Front/Front';
+import { StoreProvider } from './context/StoreContext';
 
 function App() {
     toastConfig({
@@ -25,19 +26,21 @@ function App() {
     return (
         <>
             <UserProvider>
-                <NavigationBar />
-                <Routes>
-                    <Route path='/' element={<Front />} />
-                    <Route path='/catalog' element={<CatalogOptions />} />
-                    <Route path='/catalog/:category' element={<CategoryList />} />
-                    <Route path='/catalog/:category/:id' element={<ProductDetails />} />
-                    <Route path='/blog' element={<Blog />} />
-                    <Route path='/login' element={<Login />} />
-                    <Route path='/register' element={<Register />} />
-                    <Route path='/create-product' element={<CreateProduct />} />
-                    <Route path='/edit-product/:id' element={<EditProduct />} />
-                    <Route path='*' element={<SomethingWentWrong />} />
-                </Routes>
+                <StoreProvider>
+                    <NavigationBar />
+                    <Routes>
+                        <Route path='/' element={<Front />} />
+                        <Route path='/catalog' element={<CatalogOptions />} />
+                        <Route path='/catalog/:category' element={<CategoryList />} />
+                        <Route path='/catalog/:category/:id' element={<ProductDetails />} />
+                        <Route path='/blog' element={<Blog />} />
+                        <Route path='/login' element={<Login />} />
+                        <Route path='/register' element={<Register />} />
+                        <Route path='/create-product' element={<CreateProduct />} />
+                        <Route path='/edit-product/:id' element={<EditProduct />} />
+                        <Route path='*' element={<SomethingWentWrong />} />
+                    </Routes>
+                </StoreProvider>
             </UserProvider>
             <Footer />
         </>
