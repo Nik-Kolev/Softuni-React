@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 import { useUserContext } from '../../../context/UserContext';
 
@@ -9,10 +9,21 @@ import toast from 'react-simple-toasts';
 import { discountPrice } from '../../../utils/calculatePriceAfterDiscount';
 
 import './CategoryListCard.css';
+import { useStoreContext } from '../../../context/StoreContext';
 
 export default function CategoryListCard({ imageUrl, productType, price, name, _id, discount }) {
     const [isLiked, setIsLiked] = useState();
     const { user } = useUserContext();
+    const { addToBasket } = useStoreContext();
+    const navigateTo = useNavigate();
+
+    useEffect(() => {
+        currentLike(_id)
+            .then((x) => {
+                setIsLiked(x);
+            })
+            .catch((err) => toast(err.message));
+    }, [_id]);
 
     const handleLikeClick = async (e) => {
         e.preventDefault();
@@ -22,13 +33,19 @@ export default function CategoryListCard({ imageUrl, productType, price, name, _
             toast(response);
         }
     };
-    useEffect(() => {
-        currentLike(_id)
-            .then((x) => {
-                setIsLiked(x);
-            })
-            .catch((err) => toast(err.message));
-    }, [_id]);
+
+    const handleSell = () => {
+        const currentPath = window.location.pathname;
+        if (user._id) {
+            toast(`Артикул ${name} е добавен в количката.`);
+            addToBasket({ itemId: _id, price: discountPrice(price, discount) });
+            navigateTo('/cart');
+        } else {
+            toast('Трябва да се логнете преди да продължите.');
+            navigateTo(`/login?redirect=${currentPath}/${_id}`);
+        }
+    };
+
     //TODO: Research Slug for better URLs
     return (
         <div className='col-12 col-md-4 col-lg-4 mb-5'>
@@ -62,7 +79,7 @@ export default function CategoryListCard({ imageUrl, productType, price, name, _
                             </div>
                         </div>
                         <div className='purchase-button-wrapper'>
-                            <div className='purchase-icon-container'>
+                            <div className='purchase-icon-container' onClick={handleSell}>
                                 <img
                                     src='/src/images/catalog/CategoryList/shopping_cart.png'
                                     alt='shopping_cart_icon'

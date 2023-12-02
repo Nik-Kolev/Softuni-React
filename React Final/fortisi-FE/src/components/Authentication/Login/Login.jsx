@@ -26,10 +26,11 @@ export default function Login() {
     }, [setFocus]);
 
     const onSubmitHandler = async (data) => {
+        const redirectPath = new URLSearchParams(window.location.search).get('redirect');
         try {
             await onLoginHandler(data);
-            toast('Login successful.');
-            navigateTo('/');
+            toast('Влизането успешно.');
+            navigateTo(redirectPath || '/');
         } catch (err) {
             toast(err.message);
         }
