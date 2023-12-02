@@ -8,6 +8,7 @@ import { useSpinner } from '../../../hooks/useSpinner';
 import Spinner from '../../Home/Spinner/Spinner';
 import toast from 'react-simple-toasts';
 import './ProductDetails.css';
+import { useStoreContext } from '../../../context/StoreContext';
 
 export default function ProductDetails() {
     const [itemDetails, setItemDetails] = useState();
@@ -17,6 +18,11 @@ export default function ProductDetails() {
     const { user } = useUserContext();
     const { category, id } = useParams();
     const { isLoading, handleIsLoading } = useSpinner();
+    const { addToBasket } = useStoreContext();
+
+    const handleSell = () => {
+        addToBasket({ itemId: itemDetails._id, price: discountPrice(itemDetails.price, itemDetails.discount) });
+    };
 
     useEffect(() => {
         handleIsLoading(async () => {
@@ -128,7 +134,7 @@ export default function ProductDetails() {
                                             Безплатна доставка до <strong>7 дни</strong>
                                         </div>
 
-                                        <div className='details-purchase-button-wrapper'>
+                                        <div className='details-purchase-button-wrapper' onClick={handleSell}>
                                             <img
                                                 src='/src/images/catalog/CategoryList/shopping_cart.png'
                                                 alt='shopping_cart_icon'
