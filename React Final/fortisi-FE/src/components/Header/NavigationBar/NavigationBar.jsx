@@ -1,7 +1,7 @@
 import './NavigationBar.css';
 import { Link } from 'react-router-dom';
 import UserDropDown from '../UserDropdown/UserDropDown';
-import CartDropDown from '../CartDropdown/CardDropDown';
+import CartDropDown from '../CartDropdown/CartDropDown';
 export default function NavigationBar() {
     return (
         <nav className='custom-navbar navbar navbar navbar-expand-md navbar-dark bg-dark'>

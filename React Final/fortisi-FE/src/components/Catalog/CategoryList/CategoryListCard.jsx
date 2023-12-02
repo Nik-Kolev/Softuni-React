@@ -10,6 +10,7 @@ import { discountPrice } from '../../../utils/calculatePriceAfterDiscount';
 
 import './CategoryListCard.css';
 import { useStoreContext } from '../../../context/StoreContext';
+import { postStoredProducts } from '../../../services/user';
 
 export default function CategoryListCard({ imageUrl, productType, price, name, _id, discount }) {
     const [isLiked, setIsLiked] = useState();
@@ -34,12 +35,13 @@ export default function CategoryListCard({ imageUrl, productType, price, name, _
         }
     };
 
-    const handleSell = (e) => {
+    const handleSell = async (e) => {
         e.preventDefault();
         const currentPath = window.location.pathname;
         if (user._id) {
             toast(`Артикул ${name} е добавен в количката.`);
             addToBasket({ itemId: _id, price: discountPrice(price, discount) });
+            await postStoredProducts({ productId: _id, price: discountPrice(price, discount), action: 'added' });
             navigateTo('/cart');
         } else {
             toast('Трябва да се логнете преди да продължите.');

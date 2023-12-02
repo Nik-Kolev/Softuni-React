@@ -1,3 +1,4 @@
+/* eslint-disable react-refresh/only-export-components */
 import { createContext, useContext } from 'react';
 import { useLocaleStorage } from '../hooks/useLocalStorage';
 import * as userServices from '../services/user';

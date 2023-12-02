@@ -6,7 +6,7 @@ const phoneRegex = new RegExp(/^([+]?359)|0?(|-| )8[789]\d{1}(|-| )\d{3}(|-| )\d
 export const registerSchema = yup.object().shape({
     firstName: yup.string().trim().required('First name is required.'),
     lastName: yup.string().trim().required('Last name is required.'),
-    phoneNumber: yup.string().required('Phone Number is required.').matches(phoneRegex, 'Invalid phone format.'),
+    phoneNumber: yup.string().trim().required('Phone Number is required.').matches(phoneRegex, 'Invalid phone format.'),
     password: yup.string().trim().required('Password is required.').min(3, 'Password must be minimum 3 characters.'),
     rePass: yup.string().required('Confirm password is required.')
         .oneOf([yup.ref('password'), null], 'Passwords must match.'),
