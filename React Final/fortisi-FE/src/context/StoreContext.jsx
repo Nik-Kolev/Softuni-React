@@ -6,7 +6,7 @@ const StoreContext = createContext();
 export const StoreProvider = ({ children }) => {
     const [state, dispatch] = useReducer(storeReducer, initialState);
 
-    const addToProducts = (product) => {
+    const addToBasket = (product) => {
         const updateProducts = [...state.products, product];
         updatePrice(updateProducts);
 
@@ -16,7 +16,7 @@ export const StoreProvider = ({ children }) => {
         });
     };
 
-    const removeFromProducts = (product) => {
+    const removeFromBasket = (product) => {
         const updateProducts = state.products.filter((x) => x.name !== product.name);
 
         updatePrice(updateProducts);
@@ -42,8 +42,8 @@ export const StoreProvider = ({ children }) => {
     const contextValues = {
         total: state.total,
         products: state.products,
-        addToProducts,
-        removeFromProducts,
+        addToBasket,
+        removeFromBasket,
     };
 
     return <StoreContext.Provider value={contextValues}>{children}</StoreContext.Provider>;
