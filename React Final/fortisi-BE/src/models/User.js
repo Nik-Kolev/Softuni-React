@@ -31,6 +31,17 @@ const userSchema = new mongoose.Schema(
         likedProducts: [{
             type: String
         }],
+        storedProducts: [{
+            item: {
+                type: mongoose.Schema.Types.ObjectId,
+                ref: 'Product',
+                required: true
+            },
+            price: {
+                type: Number,
+                required: true
+            }
+        }],
         address: {
             country: {
                 type: String,

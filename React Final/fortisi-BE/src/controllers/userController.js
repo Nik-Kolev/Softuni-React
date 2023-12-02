@@ -160,4 +160,33 @@ userController.get('/liked/:id', async (req, res) => {
     }
 })
 
+userController.post('/basket', async (req, res) => {
+    const userId = req.user?._id
+    const { productId, price, action } = req.body
+    console.log(productId)
+    console.log(price)
+    console.log(action)
+    try {
+        if (action == 'added') {
+            await userModel.findByIdAndUpdate({ _id: userId }, { $push: { storedProducts: { item: productId, price: price } } })
+        } else {
+            await userModel.findByIdAndUpdate({ _id: userId }, { $pull: { storedProducts: productId } })
+        }
+        res.status(200).json(`${productId} ${action}`)
+    } catch (error) {
+        errorHandler(error, res, req)
+    }
+})
+
+userController.get('/basket', async (req, res) => {
+    const userId = req.user?._id
+    try {
+        const storedProducts = await userModel.findOne({ _id: userId }).select('storedProducts');
+        console.log(storedProducts)
+        res.status(200).json(storedProducts)
+    } catch (error) {
+        errorHandler(error, res, req)
+    }
+})
+
 module.exports = userController
