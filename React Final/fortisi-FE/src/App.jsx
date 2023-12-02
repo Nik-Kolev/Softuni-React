@@ -1,19 +1,21 @@
-import { Routes, Route } from 'react-router-dom';
-import NavigationBar from './components/Header/NavigationBar/NavigationBar';
-import Blog from './components/Blog/Blog';
-import Register from './components/Authentication/Register/Register';
+import { Route, Routes } from 'react-router-dom';
+import { toastConfig } from 'react-simple-toasts';
+
 import Login from './components/Authentication/Login/Login';
-import SomethingWentWrong from './components/Home/404/404';
-import { UserProvider } from './context/UserContext';
+import Register from './components/Authentication/Register/Register';
+import Blog from './components/Blog/Blog';
 import CatalogOptions from './components/Catalog/CatalogOptions/CatalogOptions';
-import CreateProduct from './components/Products/CreateProducts/CreateProduct';
-import EditProduct from './components/Products/EditProducts/EditProduct';
 import CategoryList from './components/Catalog/CategoryList/CategoryList';
 import ProductDetails from './components/Catalog/ProductDetails/ProductDetails';
-import Footer from './Components/Footer/Footer';
-import { toastConfig } from 'react-simple-toasts';
+import Footer from './components/Footer/Footer';
+import NavigationBar from './components/Header/NavigationBar/NavigationBar';
+import SomethingWentWrong from './components/Home/404/404';
 import Front from './components/Home/Front/Front';
+import CreateProduct from './components/Products/CreateProducts/CreateProduct';
+import EditProduct from './components/Products/EditProducts/EditProduct';
+import Profile from './components/Profile/Profile';
 import { StoreProvider } from './context/StoreContext';
+import { UserProvider } from './context/UserContext';
 
 function App() {
     toastConfig({
@@ -38,6 +40,7 @@ function App() {
                         <Route path='/register' element={<Register />} />
                         <Route path='/create-product' element={<CreateProduct />} />
                         <Route path='/edit-product/:id' element={<EditProduct />} />
+                        <Route path='/profile' element={<Profile />} />
                         <Route path='*' element={<SomethingWentWrong />} />
                     </Routes>
                 </StoreProvider>

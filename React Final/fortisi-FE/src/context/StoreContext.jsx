@@ -1,6 +1,7 @@
 /* eslint-disable react-refresh/only-export-components */
 import { createContext, useCallback, useContext, useEffect, useReducer } from 'react';
 import toast from 'react-simple-toasts';
+
 import { initialState, storeReducer } from '../reducers/storeReducer';
 import { getStoredProducts } from '../services/user';
 import { useUserContext } from './UserContext';

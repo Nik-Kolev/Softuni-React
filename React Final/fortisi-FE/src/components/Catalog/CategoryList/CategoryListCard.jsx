@@ -1,16 +1,14 @@
-import { useState, useEffect } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
-
-import { useUserContext } from '../../../context/UserContext';
-
-import { currentLike, likedProducts } from '../../../services/product';
-
-import toast from 'react-simple-toasts';
-import { discountPrice } from '../../../utils/calculatePriceAfterDiscount';
-
 import './CategoryListCard.css';
+
+import { useEffect, useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+import toast from 'react-simple-toasts';
+
 import { useStoreContext } from '../../../context/StoreContext';
+import { useUserContext } from '../../../context/UserContext';
+import { currentLike, likedProducts } from '../../../services/product';
 import { postStoredProducts } from '../../../services/user';
+import { discountPrice } from '../../../utils/calculatePriceAfterDiscount';
 
 export default function CategoryListCard({ imageUrl, productType, price, name, _id, discount }) {
     const [isLiked, setIsLiked] = useState();

@@ -1,7 +1,9 @@
-import { DropdownMenu } from '../../../hooks/useDropdownMenu';
-import { Link } from 'react-router-dom';
 import './CartDropDown.css';
+
+import { Link } from 'react-router-dom';
+
 import { useStoreContext } from '../../../context/StoreContext';
+import { DropdownMenu } from '../../../hooks/useDropdownMenu';
 
 export default function CartDropDown() {
     const { showDropdown, hideDropdown, isDropdownVisible } = DropdownMenu();
