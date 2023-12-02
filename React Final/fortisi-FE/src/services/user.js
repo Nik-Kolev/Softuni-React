@@ -1,5 +1,5 @@
 import { userEndpoints } from '../API/endpoints'
-import { post } from '../API/requester'
+import { get, post } from '../API/requester'
 
 export async function register(userData) {
     return await post(userEndpoints.register, userData)
@@ -11,4 +11,12 @@ export async function login(userData) {
 
 export async function logout(userData) {
     return await post(userEndpoints.logout, userData)
+}
+
+export async function getStoredProducts() {
+    return await get(userEndpoints.storedProducts)
+}
+
+export async function postStoredProducts(data) {
+    return await post(userEndpoints.storedProducts, data)
 }
