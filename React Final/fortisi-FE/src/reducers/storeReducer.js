@@ -20,6 +20,10 @@ export const storeReducer = (state, action) => {
                 ...state,
                 total: action.payload
             }
+        case "empty basket":
+            return {
+                ...initialState
+            };
         default: throw Error('Such case do not exist.')
     }
 }
