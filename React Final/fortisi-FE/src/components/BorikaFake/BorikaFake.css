@@ -1,0 +1,58 @@
+.borika-payment-mockup {
+    width: 100%;
+    max-width: 400px;
+    margin: 150px auto;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+}
+
+.payment-form h2 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.payment-form .form-group {
+    margin-bottom: 10px;
+}
+
+.payment-form .form-group label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.payment-form .form-group input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.payment-form .submit-btn {
+    width: 100%;
+    margin-top: 10px;
+    padding: 10px;
+    background-color: #3b5d50;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.payment-form .submit-btn:hover {
+    background-color: #2a4438;
+}
+
+.total {
+    padding: 20px 0;
+    font-size: 20px;
+    font-weight: 700;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.total > p {
+    margin: 0;
+}
