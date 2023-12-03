@@ -11,30 +11,47 @@ const StoreContext = createContext();
 export const StoreProvider = ({ children }) => {
     const [state, dispatch] = useReducer(storeReducer, initialState);
     const { user } = useUserContext();
-
+    
     useEffect(() => {
-        const fetchStoredProducts = async () => {
+        if (user) {
+            const fetchStoredProducts = async () => {
             try {
                 const result = await getStoredProducts();
-                if (result.storedProducts.length > 0) {
+
+                if (result && result.storedProducts.length > 0) {
                     dispatch({
                         type: 'add',
                         payload: result.storedProducts,
                     });
+
+                    let total = 0;
+
+                    result.storedProducts.forEach((x) => {
+                        total += Number(x.price);
+                        
+                    });
+
+                     dispatch({
+                        type: 'update price',
+                        payload: total,
+                    });
                 }
             } catch (err) {
-                toast('Failed to fetch stored products:', err.message);
+                toast(err.message)
             }
         };
 
         fetchStoredProducts();
+        }
+        
     }, [user]);
 
     const addToBasket = useCallback(
         (products) => {
             let newProducts = Array.isArray(products) ? products : [products];
             let updatedProducts = [...state.products, ...newProducts];
-
+            console.log(products)
+            console.log(updatedProducts)
             let total = 0;
             updatedProducts.forEach((x) => {
                 total += Number(x.price);
@@ -54,25 +71,22 @@ export const StoreProvider = ({ children }) => {
     );
 
     const removeFromBasket = useCallback(
-        (products) => {
-            const updateProducts = state.products.filter((x) => x.name !== products.name);
-
-            let total = 0;
-            products.forEach((x) => {
-                total += Number(x.price);
-            });
-
+        (id) => {
+            const updateProducts = state.products.filter((x) => x._id != id);
+           
+            let total = state.total - state.products.find(x => x.id = id).price
+           
             dispatch({
                 type: 'update price',
                 payload: total,
             });
-
+            
             dispatch({
                 type: 'remove',
                 payload: updateProducts,
             });
         },
-        [state.products]
+        [state.products, state.total]
     );
 
     const emptyBasket = useCallback(() => {
