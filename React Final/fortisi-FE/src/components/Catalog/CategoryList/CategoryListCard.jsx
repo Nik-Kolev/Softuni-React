@@ -38,8 +38,16 @@ export default function CategoryListCard({ imageUrl, productType, price, name, _
         const currentPath = window.location.pathname;
         if (user._id) {
             toast(`Артикул ${name} е добавен в количката.`);
-            addToBasket({ itemId: _id, price: discountPrice(price, discount) });
-            await postStoredProducts({ productId: _id, price: discountPrice(price, discount), action: 'added' });
+            const result = await postStoredProducts({ action: 'added', productId: _id, price: discountPrice(price, discount) });
+            const data = {
+                itemId: result.item,
+                price: result.price,
+                imageUrl: result.imageUrl,
+                productType: result.productType,
+                name: result.name,
+                _id: result._id,
+            };
+            addToBasket(data);
             navigateTo('/cart');
         } else {
             toast('Трябва да се логнете преди да продължите.');
