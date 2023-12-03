@@ -1,12 +1,11 @@
+import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import toast from 'react-simple-toasts';
 
+import { useSpinner } from '../../../hooks/useSpinner';
 import { getProductByCategory } from '../../../services/product';
-
 import Spinner from '../../Home/Spinner/Spinner';
 import CategoryListCard from './CategoryListCard';
-import { useSpinner } from '../../../hooks/useSpinner';
-import { useEffect, useState } from 'react';
 
 export default function CategoryList() {
     const { category } = useParams();

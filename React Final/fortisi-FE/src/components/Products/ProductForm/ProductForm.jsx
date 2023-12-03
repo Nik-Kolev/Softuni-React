@@ -1,9 +1,11 @@
-import { useForm } from 'react-hook-form';
-import { useEffect } from 'react';
-import { useImagePreview } from '../../../hooks/useImagePreview';
-import { yupResolver } from '@hookform/resolvers/yup';
-import { productSchema } from '../../../validations/createProductValidations';
 import './ProductForm.css';
+
+import { yupResolver } from '@hookform/resolvers/yup';
+import { useEffect } from 'react';
+import { useForm } from 'react-hook-form';
+
+import { useImagePreview } from '../../../hooks/useImagePreview';
+import { productSchema } from '../../../validations/createProductValidations';
 
 export default function ProductForm({ operationType, onSubmitHandler, defaultValues }) {
     const { previewImage, handleImage } = useImagePreview();

@@ -1,14 +1,16 @@
-import { useState, useEffect } from 'react';
+import './ProductDetails.css';
+
+import { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
+import { Link } from 'react-router-dom';
+import toast from 'react-simple-toasts';
+
+import { useStoreContext } from '../../../context/StoreContext';
 import { useUserContext } from '../../../context/UserContext';
+import { useSpinner } from '../../../hooks/useSpinner';
 import { currentLike, deleteProductById, getSingleProductById, likedProducts } from '../../../services/product';
 import { discountPrice, discountSave } from '../../../utils/calculatePriceAfterDiscount';
-import { Link } from 'react-router-dom';
-import { useSpinner } from '../../../hooks/useSpinner';
 import Spinner from '../../Home/Spinner/Spinner';
-import toast from 'react-simple-toasts';
-import './ProductDetails.css';
-import { useStoreContext } from '../../../context/StoreContext';
 
 export default function ProductDetails() {
     const [itemDetails, setItemDetails] = useState();

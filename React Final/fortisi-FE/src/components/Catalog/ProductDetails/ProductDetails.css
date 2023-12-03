@@ -80,7 +80,9 @@
 }
 
 .modal-more-info:hover {
-    box-shadow: 0 0 15px #3b5d50;
+    background-color: #4c7a67;
+    color: #e8f0e3;
+    transition: all 0.3s ease;
 }
 
 .modal-overlay {
@@ -221,8 +223,9 @@
 }
 
 .details-purchase-button-wrapper:hover {
-    box-shadow: 0 2px 10px #82ad92;
-    opacity: 0.95;
+    background-color: #4c7a67;
+    color: #e8f0e3;
+    transition: all 0.3s ease;
 }
 
 .admin-control {
