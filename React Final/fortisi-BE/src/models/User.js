@@ -40,6 +40,15 @@ const userSchema = new mongoose.Schema(
             price: {
                 type: Number,
                 required: true
+            },
+            imageUrl: {
+                type: String
+            },
+            productType: {
+                type: String
+            },
+            name: {
+                type: String
             }
         }],
         address: {

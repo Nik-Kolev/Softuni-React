@@ -4,6 +4,8 @@ const errorHandler = require('../utils/errorHandler')
 const bcrypt = require('bcrypt')
 const { tokenCreator } = require('../utils/tokenCreator')
 const { isAuthorized, isGuest } = require('../middlewares/guards')
+const Product = require('../models/Product')
+
 
 userController.post('/login', isGuest, async (req, res) => {
     const { email, password } = req.body;
@@ -161,28 +163,44 @@ userController.get('/liked/:id', async (req, res) => {
 })
 
 userController.post('/basket', async (req, res) => {
-    const userId = req.user?._id
-    const { productId, price, action } = req.body
-    console.log(productId)
-    console.log(price)
-    console.log(action)
     try {
+        const userId = req.user?._id
+        const { action, productId, price } = req.body
+
         if (action == 'added') {
-            await userModel.findByIdAndUpdate({ _id: userId }, { $push: { storedProducts: { item: productId, price: price } } })
-        } else {
-            await userModel.findByIdAndUpdate({ _id: userId }, { $pull: { storedProducts: productId } })
+            const product = await Product.findById(productId);
+
+            const data = {
+                item: productId,
+                price: price,
+                imageUrl: product.imageUrl,
+                productType: product.productType,
+                name: product.name
+            }
+
+            const updatedUser = await userModel.findByIdAndUpdate(
+                userId,
+                { $push: { storedProducts: data } },
+                { new: true, fields: { storedProducts: { $slice: -1 } } }
+            );
+
+            const newProduct = updatedUser.storedProducts[0];
+
+            res.status(200).json(newProduct);
         }
-        res.status(200).json(`${productId} ${action}`)
+        if (action == 'remove') {
+            await userModel.findByIdAndUpdate(userId, { $pull: { storedProducts: { _id: productId } } });
+            res.status(200).json(`${productId} ${action}`)
+        }
     } catch (error) {
         errorHandler(error, res, req)
     }
 })
 
 userController.get('/basket', async (req, res) => {
-    const userId = req.user?._id
     try {
+        const userId = req.user?._id
         const storedProducts = await userModel.findOne({ _id: userId }).select('storedProducts');
-        console.log(storedProducts)
         res.status(200).json(storedProducts)
     } catch (error) {
         errorHandler(error, res, req)
