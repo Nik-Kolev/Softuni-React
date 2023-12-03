@@ -166,10 +166,9 @@ userController.post('/basket', async (req, res) => {
     try {
         const userId = req.user?._id
         const { action, productId, price } = req.body
-
         if (action == 'added') {
             const product = await Product.findById(productId);
-
+            console.log(product)
             const data = {
                 item: productId,
                 price: price,

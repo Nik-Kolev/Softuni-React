@@ -50,8 +50,7 @@ export const StoreProvider = ({ children }) => {
         (products) => {
             let newProducts = Array.isArray(products) ? products : [products];
             let updatedProducts = [...state.products, ...newProducts];
-            console.log(products)
-            console.log(updatedProducts)
+        
             let total = 0;
             updatedProducts.forEach((x) => {
                 total += Number(x.price);
