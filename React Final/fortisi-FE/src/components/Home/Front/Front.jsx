@@ -1,4 +1,5 @@
 import './Front.css';
+
 import { useEffect, useState } from 'react';
 export default function Front() {
     const [quote, setQuote] = useState([]);
@@ -10,12 +11,6 @@ export default function Front() {
     }, []);
     return (
         <section className='home' id='home'>
-            {/* <div className='home-text'>
-                <h1>
-                    <span>{quote.quote}</span>
-                    <p>{quote.value}</p>
-                </h1>
-            </div> */}
             <div className='we-help-section'>
                 <div className='container'>
                     <div className='row justify-content-between'>
@@ -42,11 +37,6 @@ export default function Front() {
                                 <li>Освежете вашия дом с мебели, които придават характер и индивидуалност.</li>
                                 <li>Всяко парче мебел от нас е приказка за уют и изтънченост във вашия дом.</li>
                             </ul>
-                            {/* <p>
-                                <a href='#' className='btn'>
-                                    Explore
-                                </a>
-                            </p> */}
                         </div>
                     </div>
                 </div>

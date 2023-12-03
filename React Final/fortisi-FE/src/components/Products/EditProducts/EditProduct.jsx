@@ -11,7 +11,6 @@ export default function EditProduct() {
     const navigateTo = useNavigate();
     const [data, setData] = useState();
     const { id } = useParams();
-    // const { isLoading, errors, data } = useFetch(getSingleProductById, id);
     const { isLoading, handleIsLoading } = useSpinner();
 
     useEffect(() => {
@@ -22,14 +21,10 @@ export default function EditProduct() {
             toast(err.message);
         });
     });
-    // if (errors) {
-    //     setNotification(errors);
-    // }
 
     const onSubmitHandler = async (data) => {
         const { productType, name, quantity, price, discount, imageUrl, category, ...details } = data;
         try {
-            console.log(details);
             await editSingleProductById(id, { productType, name, quantity, price, discount, imageUrl, category, details });
             navigateTo(`/catalog/${category}/${id}`);
         } catch (err) {
@@ -42,8 +37,6 @@ export default function EditProduct() {
         defaultValues: data,
         onSubmitHandler,
     };
-    if (isLoading) {
-        return <Spinner />;
-    }
-    return <ProductForm {...props} />;
+
+    return isLoading ? <Spinner /> : <ProductForm {...props} />;
 }

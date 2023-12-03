@@ -1,8 +1,9 @@
 import { useNavigate } from 'react-router-dom';
+import toast from 'react-simple-toasts';
+
 import { supabaseUploader } from '../../../API/supabase';
 import { createProduct } from '../../../services/product';
 import ProductForm from '../ProductForm/ProductForm';
-import toast from 'react-simple-toasts';
 
 export default function CreateProduct() {
     const navigateTo = useNavigate();
@@ -12,7 +13,6 @@ export default function CreateProduct() {
         try {
             const newLink = await supabaseUploader(imageUrl[0], category);
             const product = await createProduct({ productType, name, quantity, price, discount, imageUrl: newLink, category, details });
-            console.log(product);
             navigateTo(`/catalog/${category}/${product._id}`);
         } catch (err) {
             toast(err.message);
