@@ -4,11 +4,10 @@ const emailRegex = new RegExp(/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]
 const phoneRegex = new RegExp(/^([+]?359)|0?(|-| )8[789]\d{1}(|-| )\d{3}(|-| )\d{3}$/)
 
 export const registerSchema = yup.object().shape({
-    firstName: yup.string().trim().required('First name is required.'),
-    lastName: yup.string().trim().required('Last name is required.'),
-    phoneNumber: yup.string().trim().required('Phone Number is required.').matches(phoneRegex, 'Invalid phone format.'),
-    password: yup.string().trim().required('Password is required.').min(3, 'Password must be minimum 3 characters.'),
-    rePass: yup.string().required('Confirm password is required.')
-        .oneOf([yup.ref('password'), null], 'Passwords must match.'),
-    email: yup.string().trim().required('Email is required.').email("Invalid email.").matches(emailRegex, "Invalid email."),
+    firstName: yup.string().trim().required('Името е задължително.'),
+    lastName: yup.string().trim().required('Фамилията е задължителна.'),
+    phoneNumber: yup.string().trim().required('Телефонният номер е задължителен.').matches(phoneRegex, 'Невалиден формат на телефонен номер.'),
+    password: yup.string().trim().required('Паролата е задължителна.').min(3, 'Паролата трябва да бъде минимум 3 символа.'),
+    rePass: yup.string().required('Потвърждението на паролата е задължително.').oneOf([yup.ref('password'), null], 'Паролите трябва да съвпадат.'),
+    email: yup.string().trim().required('Имейлът е задължителен.').email("Невалиден имейл.").matches(emailRegex, "Невалиден имейл.")
 })

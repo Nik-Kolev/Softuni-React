@@ -32,7 +32,7 @@ export default function Register() {
             toast(err.message);
         }
     };
-    //TODO: change yup validation to bulgarian
+
     return (
         <div className='untree_co-section'>
             <div className='container'>
