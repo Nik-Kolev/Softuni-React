@@ -1,0 +1,157 @@
+.cart-section {
+    background-color: white;
+    padding: 20px 0;
+}
+
+.cart-table .table {
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.cart-button {
+    background-color: #3b5d50;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+}
+
+.cart-button:hover {
+    background-color: #4c7a67;
+    color: #e8f0e3;
+    transition: all 0.3s ease;
+}
+
+.quantity-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.quantity-amount {
+    width: 50px;
+    text-align: center;
+    margin: 0 5px;
+}
+
+.cart-row-wrapper {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.cart-row-coupon {
+    width: 50%;
+}
+
+.cart-thumbnail img {
+    width: 350px;
+    height: 200px;
+}
+
+.cart-name h2 {
+    margin: 0;
+    font-size: 1rem;
+}
+
+.cart-thumbnail,
+.cart-name,
+.cart-price,
+.cart-total,
+.cart-quantity,
+.cart-remove {
+    text-align: center;
+    vertical-align: middle;
+}
+
+.cart-remove button {
+    background-color: #3b5d50;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+}
+.cart-remove {
+    width: 13%;
+}
+
+.cart-totals {
+    width: 70%;
+    align-self: flex-end;
+}
+
+.cart-totals .text-black {
+    margin-bottom: 0.5rem;
+}
+
+.cart-totals strong {
+    font-size: 1.2rem;
+}
+
+.checkout {
+    width: 100%;
+    text-align: center;
+}
+
+#coupon {
+    background-color: white;
+    color: black;
+}
+
+.cart-name,
+.cart-price,
+.cart-total,
+.cart-quantity {
+    text-align: center;
+}
+
+.cart-totals {
+    margin-left: 20px;
+    float: right;
+}
+
+.cart-totals .text-black {
+    margin-bottom: 0.5rem;
+}
+
+.cart-totals strong {
+    font-size: 1.3rem;
+}
+
+.checkout {
+    width: 100%;
+    text-align: center;
+}
+
+.cart-buttons {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    width: auto;
+}
+
+.cart-buttons span {
+    color: black;
+    font-size: 18px;
+    padding: 0 20px;
+}
+
+.cart-button:last-child {
+    margin-bottom: 0;
+}
+
+.cart-row-table {
+    margin-bottom: 2rem;
+}
+
+.no-products-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.no-products {
+    font-size: 48px;
+}
