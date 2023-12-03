@@ -1,11 +1,13 @@
-import { useEffect } from 'react';
-import { useUserContext } from '../../../context/UserContext';
-import { useNavigate } from 'react-router-dom';
-import { useForm } from 'react-hook-form';
-import { yupResolver } from '@hookform/resolvers/yup';
-import { loginSchema } from '../../../validations/loginValidations';
 import '../Auth.css';
+
+import { yupResolver } from '@hookform/resolvers/yup';
+import { useEffect } from 'react';
+import { useForm } from 'react-hook-form';
+import { useNavigate } from 'react-router-dom';
 import toast from 'react-simple-toasts';
+
+import { useUserContext } from '../../../context/UserContext';
+import { loginSchema } from '../../../validations/loginValidations';
 
 export default function Login() {
     const { onLoginHandler } = useUserContext();
@@ -35,7 +37,7 @@ export default function Login() {
             toast(err.message);
         }
     };
-
+    //TODO: change yup validation to bulgarian
     return (
         <div className='untree_co-section'>
             <div className='container'>
@@ -45,7 +47,7 @@ export default function Login() {
                             <form onSubmit={handleSubmit(onSubmitHandler)}>
                                 <div className='form-group'>
                                     <label className='text-black' htmlFor='email'>
-                                        Email address
+                                        Е-мейл
                                     </label>
                                     <input
                                         type='email'
@@ -59,7 +61,7 @@ export default function Login() {
 
                                 <div className='form-group'>
                                     <label className='text-black' htmlFor='password'>
-                                        Password
+                                        Парола
                                     </label>
                                     <input
                                         type='password'
@@ -72,7 +74,7 @@ export default function Login() {
                                 </div>
 
                                 <button type='submit' className='btn btn-primary-hover-outline'>
-                                    Login
+                                    Вход
                                 </button>
                             </form>
                         </div>

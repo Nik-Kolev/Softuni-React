@@ -1,11 +1,13 @@
-import { useEffect } from 'react';
-import { useUserContext } from '../../../context/UserContext';
-import { useNavigate } from 'react-router-dom';
-import { useForm } from 'react-hook-form';
-import { yupResolver } from '@hookform/resolvers/yup';
-import { registerSchema } from '../../../validations/registerValidations';
 import '../Auth.css';
+
+import { yupResolver } from '@hookform/resolvers/yup';
+import { useEffect } from 'react';
+import { useForm } from 'react-hook-form';
+import { useNavigate } from 'react-router-dom';
 import toast from 'react-simple-toasts';
+
+import { useUserContext } from '../../../context/UserContext';
+import { registerSchema } from '../../../validations/registerValidations';
 
 export default function Register() {
     const { onRegisterHandler } = useUserContext();
@@ -24,13 +26,13 @@ export default function Register() {
     const onSubmitHandler = async (data) => {
         try {
             await onRegisterHandler(data);
-            toast('Register successful.');
+            toast('Регистрацията успешна.');
             navigateTo('/');
         } catch (err) {
             toast(err.message);
         }
     };
-
+    //TODO: change yup validation to bulgarian
     return (
         <div className='untree_co-section'>
             <div className='container'>
@@ -42,7 +44,7 @@ export default function Register() {
                                     <div className='col-6'>
                                         <div className='form-group'>
                                             <label className='text-black' htmlFor='firstName'>
-                                                First name
+                                                Име
                                             </label>
                                             <input
                                                 type='text'
@@ -57,7 +59,7 @@ export default function Register() {
                                     <div className='col-6'>
                                         <div className='form-group'>
                                             <label className='text-black' htmlFor='lastName'>
-                                                Last name
+                                                Фамилия
                                             </label>
                                             <input
                                                 type='text'
@@ -74,7 +76,7 @@ export default function Register() {
                                     <div className='col-6'>
                                         <div className='form-group'>
                                             <label className='text-black' htmlFor='email'>
-                                                Email address
+                                                Имейл
                                             </label>
                                             <input
                                                 type='email'
@@ -89,7 +91,7 @@ export default function Register() {
                                     <div className='col-6'>
                                         <div className='form-group'>
                                             <label className='text-black' htmlFor='phoneNumber'>
-                                                Phone Number
+                                                Телефонен Номер
                                             </label>
                                             <input
                                                 type='text'
@@ -106,7 +108,7 @@ export default function Register() {
                                     <div className='col-6'>
                                         <div className='form-group'>
                                             <label className='text-black' htmlFor='password'>
-                                                Password
+                                                Парола
                                             </label>
                                             <input
                                                 type='password'
@@ -121,7 +123,7 @@ export default function Register() {
                                     <div className='col-6'>
                                         <div className='form-group'>
                                             <label className='text-black' htmlFor='rePass'>
-                                                Confirm Password
+                                                Потвърди Паролата
                                             </label>
                                             <input
                                                 type='password'
@@ -134,23 +136,8 @@ export default function Register() {
                                         </div>
                                     </div>
                                 </div>
-                                {/* TODO : Terms of use perhaps with checkbox ? To be decided*/}
-                                {/* 
-                                <div className='form-group'>
-                                    <label className='text-black' htmlFor='password'>
-                                        Password
-                                    </label>
-                                    <input type='password' className='form-control' id='password' />
-                                </div>
-
-                                <div className='form-group'>
-                                    <label className='text-black' htmlFor='rePass'>
-                                        Repeat Password
-                                    </label>
-                                    <input type='rePass' className='form-control' id='rePass' />
-                                </div> */}
                                 <button type='submit' className='btn btn-primary-hover-outline'>
-                                    Register
+                                    Регистрация
                                 </button>
                             </form>
                         </div>

@@ -10,9 +10,9 @@ export default function Logout() {
 
     const onSubmitHandler = async () => {
         try {
-            const user = await onLogoutHandler();
+            await onLogoutHandler();
             emptyBasket();
-            toast(user);
+            toast('Излизането успешно.');
         } catch (err) {
             toast(err.message);
         }
@@ -20,7 +20,7 @@ export default function Logout() {
 
     return (
         <Link to={'/'} className='dropdown-link' onClick={onSubmitHandler}>
-            Излез
+            Изход
         </Link>
     );
 }
