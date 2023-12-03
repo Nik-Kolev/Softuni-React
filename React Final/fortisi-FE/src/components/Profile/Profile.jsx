@@ -1,3 +1,9 @@
+import { Link } from 'react-router-dom';
+
 export default function Profile() {
-    return <p>hi </p>;
+    return (
+        <Link to={'/profile'} className='dropdown-link'>
+            Профил
+        </Link>
+    );
 }

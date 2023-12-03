@@ -1,12 +1,15 @@
+import './UserDropDown.css';
+
 import { Link } from 'react-router-dom';
+
 import { useUserContext } from '../../../context/UserContext';
 import { DropdownMenu } from '../../../hooks/useDropdownMenu';
 import Logout from '../../Authentication/Logout/Logout';
-import './UserDropDown.css';
+import Profile from '../../Profile/Profile';
 
 export default function UserDropDown() {
     const { showDropdown, hideDropdown, isDropdownVisible } = DropdownMenu();
-    const { isAuthenticated } = useUserContext();
+    const { isAuthenticated, user } = useUserContext();
 
     return (
         <li className='user-container' onMouseEnter={showDropdown} onMouseLeave={hideDropdown}>
@@ -17,15 +20,18 @@ export default function UserDropDown() {
                 <div className='dropdown-menu' onClick={hideDropdown}>
                     {isAuthenticated ? (
                         <>
-                            <Link to={'/create-product'} className='dropdown-link'>
-                                Създай Продукт
-                            </Link>
+                            {user.admin && (
+                                <Link to={'/create-product'} className='dropdown-link'>
+                                    Създай Продукт
+                                </Link>
+                            )}
+                            <Profile />
                             <Logout />
                         </>
                     ) : (
                         <>
                             <Link to={'/login'} className='dropdown-link'>
-                                Влизане
+                                Вход
                             </Link>
                             <Link to={'/register'} className='dropdown-link'>
                                 Регистрация
