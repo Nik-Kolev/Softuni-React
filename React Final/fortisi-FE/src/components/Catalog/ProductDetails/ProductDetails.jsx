@@ -9,6 +9,7 @@ import { useStoreContext } from '../../../context/StoreContext';
 import { useUserContext } from '../../../context/UserContext';
 import { useSpinner } from '../../../hooks/useSpinner';
 import { currentLike, deleteProductById, getSingleProductById, likedProducts } from '../../../services/product';
+import { postStoredProducts } from '../../../services/user';
 import { discountPrice, discountSave } from '../../../utils/calculatePriceAfterDiscount';
 import Spinner from '../../Home/Spinner/Spinner';
 
@@ -22,8 +23,30 @@ export default function ProductDetails() {
     const { isLoading, handleIsLoading } = useSpinner();
     const { addToBasket } = useStoreContext();
 
-    const handleSell = () => {
-        addToBasket({ itemId: itemDetails._id, price: discountPrice(itemDetails.price, itemDetails.discount) });
+    const handleSell = async (e) => {
+        e.preventDefault();
+        const currentPath = window.location.pathname;
+        if (user._id) {
+            toast(`Артикул ${itemDetails.name} е добавен в количката.`);
+            const result = await postStoredProducts({
+                action: 'added',
+                productId: itemDetails._id,
+                price: discountPrice(itemDetails.price, itemDetails.discount),
+            });
+            const data = {
+                itemId: result.item,
+                price: result.price,
+                imageUrl: result.imageUrl,
+                productType: result.productType,
+                name: result.name,
+                _id: result._id,
+            };
+            addToBasket(data);
+            navigateTo('/cart');
+        } else {
+            toast('Трябва да се логнете преди да продължите.');
+            navigateTo(`/login?redirect=${currentPath}`);
+        }
     };
 
     useEffect(() => {
