@@ -47,7 +47,7 @@ export default function Login() {
                             <form onSubmit={handleSubmit(onSubmitHandler)}>
                                 <div className='form-group'>
                                     <label className='text-black' htmlFor='email'>
-                                        Е-мейл
+                                        Имейл
                                     </label>
                                     <input
                                         type='email'

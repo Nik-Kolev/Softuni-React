@@ -20,12 +20,12 @@ export default function UserDropDown() {
                 <div className='dropdown-menu' onClick={hideDropdown}>
                     {isAuthenticated ? (
                         <>
+                            <Profile />
                             {user.admin && (
                                 <Link to={'/create-product'} className='dropdown-link'>
                                     Създай Продукт
                                 </Link>
                             )}
-                            <Profile />
                             <Logout />
                         </>
                     ) : (

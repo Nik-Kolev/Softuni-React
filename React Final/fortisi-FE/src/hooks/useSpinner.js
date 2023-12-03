@@ -1,5 +1,5 @@
 /* eslint-disable no-useless-catch */
-import { useState, useCallback } from 'react'
+import { useCallback, useState } from 'react'
 
 export const useSpinner = () => {
     const [isLoading, setIsLoading] = useState(true)

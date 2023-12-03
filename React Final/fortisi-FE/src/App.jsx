@@ -4,6 +4,8 @@ import { toastConfig } from 'react-simple-toasts';
 import Login from './components/Authentication/Login/Login';
 import Register from './components/Authentication/Register/Register';
 import Blog from './components/Blog/Blog';
+import BorikaFake from './components/BorikaFake/BorikaFake';
+import Cart from './components/Cart/Cart';
 import CatalogOptions from './components/Catalog/CatalogOptions/CatalogOptions';
 import CategoryList from './components/Catalog/CategoryList/CategoryList';
 import ProductDetails from './components/Catalog/ProductDetails/ProductDetails';
@@ -41,6 +43,8 @@ function App() {
                         <Route path='/create-product' element={<CreateProduct />} />
                         <Route path='/edit-product/:id' element={<EditProduct />} />
                         <Route path='/profile' element={<Profile />} />
+                        <Route path='/cart' element={<Cart />} />
+                        <Route path='/BorikaFake' element={<BorikaFake />} />
                         <Route path='*' element={<SomethingWentWrong />} />
                     </Routes>
                 </StoreProvider>
