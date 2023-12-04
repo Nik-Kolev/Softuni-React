@@ -26,7 +26,7 @@ export default function ProductDetails() {
     const handleSell = async (e) => {
         e.preventDefault();
         const currentPath = window.location.pathname;
-        if (user._id) {
+        if (user?._id) {
             toast(`Артикул ${itemDetails.name} е добавен в количката.`);
             const result = await postStoredProducts({
                 action: 'added',
@@ -65,8 +65,8 @@ export default function ProductDetails() {
 
     const handleLikeClick = async (e) => {
         e.preventDefault();
-        setIsLiked(!isLiked);
-        if (user) {
+        if (user?._id) {
+            setIsLiked(!isLiked);
             const response = await likedProducts({ isLiked, _id: itemDetails._id, userId: user._id });
             toast(response);
         }
@@ -96,14 +96,18 @@ export default function ProductDetails() {
                                                     alt={itemDetails.name}
                                                     style={{ margin: '0px' }}
                                                 />
-                                                <div className='labels'>
-                                                    <div className='label-promo'> - {itemDetails.discount}%</div>
-                                                </div>
-                                                <div className={`like-button ${isLiked ? 'liked' : ''}`} onClick={handleLikeClick}>
-                                                    <div className='heart-container'>
-                                                        <div className='heart'></div>
+                                                {itemDetails.discount > 0 && (
+                                                    <div className='labels'>
+                                                        <div className='label-promo'> - {itemDetails.discount}%</div>
                                                     </div>
-                                                </div>
+                                                )}
+                                                {user?._id && (
+                                                    <div className={`like-button ${isLiked ? 'liked' : ''}`} onClick={handleLikeClick}>
+                                                        <div className='heart-container'>
+                                                            <div className='heart'></div>
+                                                        </div>
+                                                    </div>
+                                                )}
                                             </div>
                                         </div>
                                     </div>
@@ -129,11 +133,19 @@ export default function ProductDetails() {
                                                             X
                                                         </button>
                                                         <div className='modal-content' onClick={(e) => e.stopPropagation()}>
-                                                            <h2>Описание и размери</h2>
-                                                            <p>Предимства: {itemDetails.details.advantages}</p>
-                                                            <p>Описание: {itemDetails.details.description}</p>
-                                                            <p>Размери: {itemDetails.details.size}</p>
-                                                            <p>Материали: {itemDetails.details.materials}</p>
+                                                            <h2 className='modal-header'>Описание и размери</h2>
+                                                            <p>
+                                                                <span>Предимства:</span> {itemDetails.details.advantages}
+                                                            </p>
+                                                            <p>
+                                                                <span>Описание:</span> {itemDetails.details.description}
+                                                            </p>
+                                                            <p>
+                                                                <span>Размери:</span> {itemDetails.details.size}
+                                                            </p>
+                                                            <p>
+                                                                <span>Материали:</span> {itemDetails.details.materials}
+                                                            </p>
                                                         </div>
                                                     </div>
                                                 )}

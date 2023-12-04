@@ -26,8 +26,8 @@ export default function CategoryListCard({ imageUrl, productType, price, name, _
 
     const handleLikeClick = async (e) => {
         e.preventDefault();
-        setIsLiked(!isLiked);
-        if (user) {
+        if (user?._id) {
+            setIsLiked(!isLiked);
             const response = await likedProducts({ isLiked, _id, userId: user._id });
             toast(response);
         }
@@ -36,7 +36,7 @@ export default function CategoryListCard({ imageUrl, productType, price, name, _
     const handleSell = async (e) => {
         e.preventDefault();
         const currentPath = window.location.pathname;
-        if (user._id) {
+        if (user?._id) {
             toast(`Артикул ${name} е добавен в количката.`);
             const result = await postStoredProducts({ action: 'added', productId: _id, price: discountPrice(price, discount) });
             const data = {
@@ -63,14 +63,19 @@ export default function CategoryListCard({ imageUrl, productType, price, name, _
                     <div className='product-item-card'>
                         <div className='image-container'>
                             <img src={imageUrl} className='img-card-fluid product-card-thumbnail' alt={name} />
-                            <div className='labels'>
-                                <div className='label-promo'> - {discount}%</div>
-                            </div>
-                            <div className={`like-button ${isLiked ? 'liked' : ''}`} onClick={handleLikeClick}>
-                                <div className='heart-container'>
-                                    <div className='heart'></div>
+
+                            {discount > 0 && (
+                                <div className='labels'>
+                                    <div className='label-promo'> - {discount}%</div>
                                 </div>
-                            </div>
+                            )}
+                            {user?._id && (
+                                <div className={`like-button ${isLiked ? 'liked' : ''}`} onClick={handleLikeClick}>
+                                    <div className='heart-container'>
+                                        <div className='heart'></div>
+                                    </div>
+                                </div>
+                            )}
                         </div>
                     </div>
                     <div className='details'>
