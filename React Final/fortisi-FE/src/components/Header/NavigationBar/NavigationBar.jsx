@@ -31,17 +31,17 @@ export default function NavigationBar() {
                             </Link>
                         </li>
                         <li>
-                            <Link to={'/about-us'} className='nav-link'>
-                                За нас
-                            </Link>
-                        </li>
-                        <li>
                             <Link to={'/blog'} className='nav-link'>
                                 Блог
                             </Link>
                         </li>
                         <li>
-                            <Link to={'/contact'} className='nav-link'>
+                            <Link to={'/about-us'} className='nav-link'>
+                                За нас
+                            </Link>
+                        </li>
+                        <li>
+                            <Link to={'/contacts'} className='nav-link'>
                                 Контакти
                             </Link>
                         </li>
