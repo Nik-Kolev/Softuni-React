@@ -12,23 +12,30 @@ export default function Footer() {
                     </p>
                     <ul className='footer-social-links'>
                         <li>
-                            <a href='#' className='social-link'>
+                            <a
+                                href='https://www.facebook.com/mebelmag.bg/'
+                                className='social-link'
+                                target='_blank'
+                                rel='noopener noreferrer'>
                                 <span className='fa fa-brands fa-facebook-f'></span>
                             </a>
                         </li>
                         <li>
-                            <a href='#' className='social-link'>
-                                <span className='fa fa-brands fa-twitter'></span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href='#' className='social-link'>
+                            <a
+                                href='https://www.instagram.com/mebelmag.bg/'
+                                className='social-link'
+                                target='_blank'
+                                rel='noopener noreferrer'>
                                 <span className='fa fa-brands fa-instagram'></span>
                             </a>
                         </li>
                         <li>
-                            <a href='#' className='social-link'>
-                                <span className='fa fa-brands fa-linkedin'></span>
+                            <a
+                                href='https://www.youtube.com/@MebelMagBG/videos'
+                                className='social-link'
+                                target='_blank'
+                                rel='noopener noreferrer'>
+                                <span className='fa fa-brands fa-youtube'></span>
                             </a>
                         </li>
                     </ul>
@@ -36,16 +43,16 @@ export default function Footer() {
                 <div className='footer-nav'>
                     <ul className='footer-links'>
                         <li>
-                            <a href='#'>About us</a>
+                            <Link to={'/catalog'}>Каталог</Link>
                         </li>
                         <li>
-                            <a href='#'>Catalog</a>
+                            <Link to={'/blog'}>Блог</Link>
                         </li>
                         <li>
-                            <a href='#'>Blog</a>
+                            <Link to={'/about-us'}>За Нас</Link>
                         </li>
                         <li>
-                            <a href='#'>Contact us</a>
+                            <Link to={'/contacts'}>Контакти</Link>
                         </li>
                     </ul>
                 </div>
