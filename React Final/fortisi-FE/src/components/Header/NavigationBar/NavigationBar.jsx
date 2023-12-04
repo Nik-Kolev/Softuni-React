@@ -1,7 +1,9 @@
 import './NavigationBar.css';
+
 import { Link } from 'react-router-dom';
-import UserDropDown from '../UserDropdown/UserDropDown';
+
 import CartDropDown from '../CartDropdown/CartDropDown';
+import UserDropDown from '../UserDropdown/UserDropDown';
 export default function NavigationBar() {
     return (
         <nav className='custom-navbar navbar navbar navbar-expand-md navbar-dark bg-dark'>
@@ -10,7 +12,6 @@ export default function NavigationBar() {
                     <p>Fortisi</p>
                     <img src='/src/images/home/ftslogo.png' className='small-logo' />
                 </Link>
-
                 <button
                     className='navbar-toggler'
                     type='button'
