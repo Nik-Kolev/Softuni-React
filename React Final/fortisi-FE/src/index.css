@@ -108,3 +108,8 @@ a.more {
     border-radius: 15px;
     /* border: 2px solid white; */
 }
+
+.main-content {
+    min-height: calc(100vh - 300px);
+    background-color: #f7f7f7;
+}

@@ -20,36 +20,36 @@
 .brand-text {
     font-size: 1.5rem;
     font-weight: bold;
-    font-family: 'Indie Flower', cursive; /* Updated font family */
+    font-family: 'Indie Flower', cursive;
 }
 
 .footer-content p {
     text-align: center;
     margin-bottom: 1rem;
     font-family: 'Open Sans', sans-serif;
-    font-size: calc(1rem + 3px); /* Increase font size by 3px */
+    font-size: calc(1rem + 3px);
 }
 
 .footer-social-links .social-link {
     color: #3b5d50;
     text-decoration: none;
     display: inline-block;
-    width: 40px; /* Set a fixed width */
-    height: 40px; /* Set a fixed height */
-    line-height: 40px; /* Center the icon vertically */
-    border-radius: 50%; /* Make it a circle */
-    background-color: #e6e6e6; /* Light grey background */
-    transition: background-color 0.3s, transform 0.3s; /* Smooth transition for hover effect */
-    overflow: hidden; /* Ensure the icon stays within the circle */
+    width: 40px;
+    height: 40px;
+    line-height: 40px;
+    border-radius: 50%;
+    background-color: #e6e6e6;
+    transition: background-color 0.3s, transform 0.3s;
+    overflow: hidden;
 }
 
 .footer-social-links .social-link:hover {
-    background-color: #3b5d50; /* Change background color on hover */
-    transform: scale(1.1); /* Slightly increase the size on hover */
+    background-color: #3b5d50;
+    transform: scale(1.1);
 }
 
 .footer-social-links .social-link:hover span {
-    color: #ffffff; /* Change icon color on hover to ensure visibility */
+    color: #ffffff;
 }
 
 .footer-social-links {

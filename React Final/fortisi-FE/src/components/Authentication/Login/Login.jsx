@@ -39,44 +39,46 @@ export default function Login() {
     };
 
     return (
-        <div className='untree_co-section'>
-            <div className='container'>
-                <div className='block'>
-                    <div className='row justify-content-center'>
-                        <div className='col-md-8 col-lg-8 pb-4'>
-                            <form onSubmit={handleSubmit(onSubmitHandler)}>
-                                <div className='form-group'>
-                                    <label className='text-black' htmlFor='email'>
-                                        Имейл
-                                    </label>
-                                    <input
-                                        type='email'
-                                        className={`form-control ${errors?.email ? 'input-error' : ''}`}
-                                        id='email'
-                                        name='email'
-                                        {...register('email')}
-                                    />
-                                    <span className={errors?.email ? 'form-error' : ''}>{errors?.email?.message}</span>
-                                </div>
+        <div className='main-content'>
+            <div className='untree_co-section'>
+                <div className='container'>
+                    <div className='block'>
+                        <div className='row justify-content-center'>
+                            <div className='col-md-8 col-lg-8 pb-4'>
+                                <form onSubmit={handleSubmit(onSubmitHandler)}>
+                                    <div className='form-group'>
+                                        <label className='text-black' htmlFor='email'>
+                                            Имейл
+                                        </label>
+                                        <input
+                                            type='email'
+                                            className={`form-control ${errors?.email ? 'input-error' : ''}`}
+                                            id='email'
+                                            name='email'
+                                            {...register('email')}
+                                        />
+                                        <span className={errors?.email ? 'form-error' : ''}>{errors?.email?.message}</span>
+                                    </div>
 
-                                <div className='form-group'>
-                                    <label className='text-black' htmlFor='password'>
-                                        Парола
-                                    </label>
-                                    <input
-                                        type='password'
-                                        className={`form-control ${errors?.password ? 'input-error' : ''}`}
-                                        id='password'
-                                        name='password'
-                                        {...register('password')}
-                                    />
-                                    <span className={errors?.password ? 'form-error' : ''}>{errors?.password?.message}</span>
-                                </div>
+                                    <div className='form-group'>
+                                        <label className='text-black' htmlFor='password'>
+                                            Парола
+                                        </label>
+                                        <input
+                                            type='password'
+                                            className={`form-control ${errors?.password ? 'input-error' : ''}`}
+                                            id='password'
+                                            name='password'
+                                            {...register('password')}
+                                        />
+                                        <span className={errors?.password ? 'form-error' : ''}>{errors?.password?.message}</span>
+                                    </div>
 
-                                <button type='submit' className='btn btn-primary-hover-outline'>
-                                    Вход
-                                </button>
-                            </form>
+                                    <button type='submit' className='btn btn-primary-hover-outline'>
+                                        Вход
+                                    </button>
+                                </form>
+                            </div>
                         </div>
                     </div>
                 </div>
