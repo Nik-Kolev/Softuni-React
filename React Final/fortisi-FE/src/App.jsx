@@ -10,6 +10,9 @@ import CatalogOptions from './components/Catalog/CatalogOptions/CatalogOptions';
 import CategoryList from './components/Catalog/CategoryList/CategoryList';
 import ProductDetails from './components/Catalog/ProductDetails/ProductDetails';
 import Footer from './components/Footer/Footer';
+import AuthenticationGuard from './components/Guards/AuthenticationGuard';
+import LoggedUserGuard from './components/Guards/LoggedUserGuard';
+import PaymentGuard from './components/Guards/PaymentGuard';
 import NavigationBar from './components/Header/NavigationBar/NavigationBar';
 import SomethingWentWrong from './components/Home/404/404';
 import Front from './components/Home/Front/Front';
@@ -33,18 +36,33 @@ function App() {
                 <StoreProvider>
                     <NavigationBar />
                     <Routes>
+                        {/* For all users */}
                         <Route path='/' element={<Front />} />
                         <Route path='/catalog' element={<CatalogOptions />} />
                         <Route path='/catalog/:category' element={<CategoryList />} />
                         <Route path='/catalog/:category/:id' element={<ProductDetails />} />
                         <Route path='/blog' element={<Blog />} />
-                        <Route path='/login' element={<Login />} />
-                        <Route path='/register' element={<Register />} />
-                        <Route path='/create-product' element={<CreateProduct />} />
-                        <Route path='/edit-product/:id' element={<EditProduct />} />
-                        <Route path='/profile' element={<Profile />} />
-                        <Route path='/cart' element={<Cart />} />
-                        <Route path='/BorikaFake' element={<BorikaFake />} />
+                        {/* For not logged in users */}
+                        <Route element={<LoggedUserGuard />}>
+                            <Route path='/login' element={<Login />} />
+                            <Route path='/register' element={<Register />} />
+                        </Route>
+                        {/* For logged in users */}
+                        <Route element={<AuthenticationGuard />}>
+                            <Route path='/create-product' element={<CreateProduct />} />
+                            <Route path='/edit-product/:id' element={<EditProduct />} />
+                            <Route path='/profile' element={<Profile />} />
+                            <Route path='/cart' element={<Cart />} />
+                            <Route
+                                path='/BorikaFake'
+                                element={
+                                    <PaymentGuard>
+                                        <BorikaFake />
+                                    </PaymentGuard>
+                                }
+                            />
+                        </Route>
+
                         <Route path='*' element={<SomethingWentWrong />} />
                     </Routes>
                 </StoreProvider>
