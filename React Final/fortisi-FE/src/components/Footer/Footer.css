@@ -1,116 +1,93 @@
 .footer-section {
-    padding: 80px 0 10px 0;
-    background: #ffffff;
-}
-.footer-section .relative {
-    position: relative;
-}
-.footer-section a {
-    text-decoration: none;
-    color: #2f2f2f;
-    -webkit-transition: 0.3s all ease;
-    -o-transition: 0.3s all ease;
-    transition: 0.3s all ease;
-}
-.footer-section a:hover {
-    color: rgba(47, 47, 47, 0.5);
-}
-.footer-section .subscription-form {
-    margin-bottom: 40px;
-    position: relative;
-    z-index: 2;
-    margin-top: 100px;
-}
-@media (min-width: 992px) {
-    .footer-section .subscription-form {
-        margin-top: 0px;
-        margin-bottom: 80px;
-    }
-}
-.footer-section .subscription-form h3 {
-    font-size: 18px;
-    font-weight: 500;
+    padding: 20px 0;
+    background: #f7f7f7;
     color: #3b5d50;
+    font-family: 'Roboto', sans-serif;
 }
-.footer-section .subscription-form .form-control {
-    height: 50px;
-    border-radius: 10px;
-    font-family: 'Inter', sans-serif;
+
+.footer-branding {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1rem;
 }
-.footer-section .subscription-form .form-control:active,
-.footer-section .subscription-form .form-control:focus {
-    outline: none;
-    -webkit-box-shadow: none;
-    box-shadow: none;
-    border-color: #3b5d50;
-    -webkit-box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.2);
-    box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.2);
+
+.brand-logo {
+    max-width: 100px;
+    margin-right: 10px;
 }
-.footer-section .subscription-form .form-control::-webkit-input-placeholder {
-    font-size: 14px;
+
+.brand-text {
+    font-size: 1.5rem;
+    font-weight: bold;
+    font-family: 'Indie Flower', cursive; /* Updated font family */
 }
-.footer-section .subscription-form .form-control::-moz-placeholder {
-    font-size: 14px;
-}
-.footer-section .subscription-form .form-control:-ms-input-placeholder {
-    font-size: 14px;
-}
-.footer-section .subscription-form .form-control:-moz-placeholder {
-    font-size: 14px;
-}
-.footer-section .subscription-form .btn {
-    border-radius: 10px !important;
-}
-.footer-section .sofa-img {
-    position: absolute;
-    top: 0px;
-    z-index: 0;
-    right: 0;
-}
-.footer-section .sofa-img img {
-    max-width: 380px;
-}
-.footer-section .links-wrap {
-    margin-top: 0px;
-}
-@media (min-width: 992px) {
-    .footer-section .links-wrap {
-        margin-top: 54px;
-    }
-}
-.footer-section .links-wrap ul li {
-    margin-bottom: 10px;
-}
-.footer-section .footer-logo-wrap .footer-logo {
-    font-size: 32px;
-    font-weight: 500;
-    text-decoration: none;
-    color: #3b5d50;
-}
-.footer-section .custom-social li {
-    margin: 2px;
-    display: inline-block;
-}
-.footer-section .custom-social li a {
-    width: 40px;
-    height: 40px;
+
+.footer-content p {
     text-align: center;
-    line-height: 40px;
-    display: inline-block;
-    background: #dce5e4;
+    margin-bottom: 1rem;
+    font-family: 'Open Sans', sans-serif;
+    font-size: calc(1rem + 3px); /* Increase font size by 3px */
+}
+
+.footer-social-links .social-link {
     color: #3b5d50;
-    border-radius: 50%;
+    text-decoration: none;
+    display: inline-block;
+    width: 40px; /* Set a fixed width */
+    height: 40px; /* Set a fixed height */
+    line-height: 40px; /* Center the icon vertically */
+    border-radius: 50%; /* Make it a circle */
+    background-color: #e6e6e6; /* Light grey background */
+    transition: background-color 0.3s, transform 0.3s; /* Smooth transition for hover effect */
+    overflow: hidden; /* Ensure the icon stays within the circle */
 }
-.footer-section .custom-social li a:hover {
-    background: #3b5d50;
-    color: #ffffff;
+
+.footer-social-links .social-link:hover {
+    background-color: #3b5d50; /* Change background color on hover */
+    transform: scale(1.1); /* Slightly increase the size on hover */
 }
-.footer-section .border-top {
-    border-color: #dce5e4;
+
+.footer-social-links .social-link:hover span {
+    color: #ffffff; /* Change icon color on hover to ensure visibility */
 }
-.footer-section .border-top.copyright {
-    font-size: 14px !important;
+
+.footer-social-links {
+    list-style: none;
+    text-align: center;
+    padding: 0;
 }
-.brand-name {
-    max-width: 155px;
+
+.footer-social-links li {
+    display: inline-block;
+    margin: 0 0.5rem;
+}
+
+.footer-social-links .social-link {
+    color: #3b5d50;
+    text-decoration: none;
+}
+
+.footer-nav {
+    text-align: center;
+}
+
+.footer-links {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-links li {
+    display: inline-block;
+    margin: 0 0.5rem;
+}
+
+.footer-links a {
+    color: #3b5d50;
+    text-decoration: none;
+    font-size: 0.9rem;
+}
+
+.footer-links a:hover {
+    text-decoration: underline;
 }
