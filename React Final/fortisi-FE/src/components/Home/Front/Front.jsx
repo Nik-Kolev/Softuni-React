@@ -17,13 +17,13 @@ export default function Front() {
                         <div className='col-lg-7 mb-5 mb-lg-0'>
                             <div className='imgs-grid'>
                                 <div className='grid grid-1'>
-                                    <img src='imagesa/img-grid-1.jpg' alt='Untree.co' />
+                                    <img src='/src/images/home/front3.jpg' alt='Untree.co' />
                                 </div>
                                 <div className='grid grid-2'>
-                                    <img src='/imagesa/img-grid-2.jpg' alt='Untree.co' />
+                                    <img src='/src/images/home/front2.jpg' alt='Untree.co' />
                                 </div>
                                 <div className='grid grid-3'>
-                                    <img src='imagesa/img-grid-3.jpg' alt='Untree.co' />
+                                    <img src='/src/images/home/front1.jpg' alt='Untree.co' />
                                 </div>
                             </div>
                         </div>
