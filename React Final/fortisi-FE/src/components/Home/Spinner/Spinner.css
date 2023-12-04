@@ -3,7 +3,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    height: 350px;
+    height: 550px;
 }
 
 .msg {
@@ -88,4 +88,9 @@
     100% {
         opacity: 0;
     }
+}
+
+.main-content-spinner {
+    min-height: calc(98vh - 270px);
+    background-color: #f7f7f7;
 }

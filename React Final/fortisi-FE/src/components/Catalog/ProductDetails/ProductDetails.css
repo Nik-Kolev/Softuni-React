@@ -253,3 +253,8 @@
     background-color: rgba(0, 0, 0, 0.4);
     color: white;
 }
+
+.main-content {
+    min-height: calc(98vh - 270px);
+    background-color: #f7f7f7;
+}

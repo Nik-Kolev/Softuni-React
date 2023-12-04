@@ -103,3 +103,8 @@
 .product-section .product-item:hover:before {
     height: 70%;
 }
+
+.main-content {
+    min-height: calc(100vh - 120px);
+    background-color: #f7f7f7;
+}

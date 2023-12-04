@@ -1,5 +1,4 @@
 .cart-section {
-    background-color: white;
     padding: 20px 0;
 }
 
@@ -154,4 +153,9 @@
 
 .no-products {
     font-size: 48px;
+}
+
+.main-content {
+    min-height: calc(100vh - 120px);
+    background-color: #f7f7f7;
 }

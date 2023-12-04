@@ -26,9 +26,11 @@ export default function CategoryList() {
             {isLoading ? (
                 <Spinner />
             ) : (
-                <div className='product-card'>
-                    <div className='container'>
-                        <div className='row'>{data && data.map((x) => <CategoryListCard key={x._id} {...x} />)}</div>
+                <div className='main-content'>
+                    <div className='product-card'>
+                        <div className='container'>
+                            <div className='row'>{data && data.map((x) => <CategoryListCard key={x._id} {...x} />)}</div>
+                        </div>
                     </div>
                 </div>
             )}
