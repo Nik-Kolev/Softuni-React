@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import toast from 'react-simple-toasts';
 
+import { supabaseUploader } from '../../../API/supabase';
 import { useSpinner } from '../../../hooks/useSpinner';
 import { editSingleProductById, getSingleProductById } from '../../../services/product';
 import Spinner from '../../Home/Spinner/Spinner';
@@ -20,12 +21,13 @@ export default function EditProduct() {
         }).catch((err) => {
             toast(err.message);
         });
-    });
+    }, [id, handleIsLoading]);
 
     const onSubmitHandler = async (data) => {
         const { productType, name, quantity, price, discount, imageUrl, category, ...details } = data;
         try {
-            await editSingleProductById(id, { productType, name, quantity, price, discount, imageUrl, category, details });
+            const newLink = await supabaseUploader(imageUrl[0], category);
+            await editSingleProductById(id, { productType, name, quantity, price, discount, imageUrl: newLink, category, details });
             navigateTo(`/catalog/${category}/${id}`);
         } catch (err) {
             toast(err.message);
