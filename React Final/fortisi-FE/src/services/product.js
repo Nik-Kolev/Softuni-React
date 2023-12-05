@@ -5,8 +5,8 @@ export async function createProduct(productData) {
     return await post(productEndpoints.create, productData)
 }
 
-export async function getProductByCategory(category) {
-    return await get(productEndpoints.getByCategory(category))
+export async function getProductByCategory(category, currentPage) {
+    return await get(productEndpoints.getByCategory(category, currentPage))
 }
 
 export async function getSingleProductById(id) {
