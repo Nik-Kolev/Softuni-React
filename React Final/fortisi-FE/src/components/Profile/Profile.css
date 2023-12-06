@@ -1,0 +1,53 @@
+/* Wrapper for the sidebar and main content */
+.profile-container {
+    display: flex;
+    padding: 0 20%; /* 20% space on both sides */
+}
+
+/* Sidebar styles */
+.profile-navbar {
+    margin-top: 100px;
+    width: auto; /* Sidebar width is now auto to fit content */
+    flex: 0 0 auto; /* Don't grow, don't shrink, base on content width */
+    padding-right: 30px; /* Space between the sidebar and the content */
+}
+
+.profile-navbar ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    cursor: pointer;
+}
+
+.profile-navbar li div {
+    font-size: 16px; /* Adjust the font size as needed */
+    line-height: 24px; /* Set the line height to match the icon height */
+    margin: 0;
+    padding: 10px 0 10px; /* Padding top and bottom for each item */
+    border-bottom: 1px solid #ccc; /* Greyish line below each item */
+    width: 250px;
+}
+
+.profile-navbar div {
+    text-decoration: none;
+    color: #333;
+    font-weight: bold;
+    display: block; /* Make the links fill the li */
+    transition: all 0.3s ease; /* Smooth transition for hover effect */
+}
+
+.profile-navbar div:hover {
+    background-color: #7e7e7e; /* New hover background color */
+    color: #e8f0e3; /* New hover text color */
+}
+
+/* Main content styles */
+.container-right {
+    margin: 100px 0;
+    width: calc(60% - 30px); /* Adjusted width to account for the padding */
+    padding-left: 30px; /* Space between the content and the sidebar */
+}
+
+.profile-navbar li {
+    margin-bottom: 15px; /* Adds space between menu items */
+}
