@@ -36,10 +36,9 @@ userController.post('/login', isGuest, async (req, res) => {
         }
 
         const token = await tokenCreator(user)
-        const data = { firstName: user.firstName, lastName: user.lastName, _id: user._id, email: user.email, admin: user.admin, token }
+        const data = { firstName: user.firstName, lastName: user.lastName, _id: user._id, email: user.email, phoneNumber: user.phoneNumber, admin: user.admin, token }
         res.status(200).json(data);
     } catch (error) {
-        console.log(error)
         errorHandler(error, res, req);
     }
 });
@@ -78,9 +77,9 @@ userController.post('/register', isGuest, async (req, res) => {
 
         const token = await tokenCreator(newUser)
 
-        const data = { firstName: newUser.firstName, lastName: newUser.lastName, _id: newUser._id, email: newUser.email, token }
-
+        const data = { firstName: newUser.firstName, lastName: newUser.lastName, _id: newUser._id, email: newUser.email, phoneNumber: newUser.phoneNumber, admin: newUser.admin, token }
         res.status(200).json(data);
+
     } catch (error) {
         errorHandler(error, res, req);
     }
@@ -95,9 +94,8 @@ userController.post('/logout', (req, res) => {
     }
 })
 
-
-userController.post('/resetPassword', isAuthorized, async (req, res) => {
-    const { email, password, newPassword } = req.body;
+userController.post('/changeInformation', isAuthorized, async (req, res) => {
+    const { firstName, lastName, phoneNumber } = req.body;
     let errors = [];
 
     Object.entries(req.body).forEach(([fieldName, value]) => {
@@ -111,23 +109,42 @@ userController.post('/resetPassword', isAuthorized, async (req, res) => {
     }
 
     try {
-        const user = await userModel.findOne({ email });
 
-        const isValid = await bcrypt.compare(password, user.password)
+        const updatedUser = await userModel.findByIdAndUpdate({ _id: req.user._id }, { firstName: firstName, lastName: lastName, phoneNumber: phoneNumber }, { new: true })
 
-        if (!isValid) {
-            return res.status(404).json({ error: 'Email or password is incorrect !' })
+        const token = await tokenCreator(updatedUser)
+
+        const data = { firstName: updatedUser.firstName, lastName: updatedUser.lastName, _id: updatedUser._id, email: updatedUser.email, phoneNumber: updatedUser.phoneNumber, admin: updatedUser.admin, token }
+        res.status(200).json(data);
+
+    } catch (error) {
+        errorHandler(error, res, req);
+    }
+})
+
+
+userController.post('/resetPassword', isAuthorized, async (req, res) => {
+    const { newPassword } = req.body;
+    let errors = [];
+
+    Object.entries(req.body).forEach(([fieldName, value]) => {
+        if (value === '') {
+            let errorName = fieldName.charAt(0).toUpperCase() + fieldName.slice(1)
+            errors.push(`${errorName} is required.`);
         }
+    });
+    if (errors.length > 0) {
+        return res.status(400).json(errors);
+    }
 
-        if (!user) {
-            return res.status(404).json({ error: 'Email or password is incorrect !' })
-        }
-
+    try {
         const newHashedPassword = await bcrypt.hash(newPassword, 10)
 
-        const updatedUser = await userModel.findByIdAndUpdate({ _id: user._id }, { password: newHashedPassword }, { new: true })
+        const updatedUser = await userModel.findByIdAndUpdate({ _id: req.user._id }, { password: newHashedPassword }, { new: true })
+
         const token = await tokenCreator(updatedUser)
-        const data = { firstName: user.firstName, lastName: user.lastName, _id: user._id, email: user.email, token }
+
+        const data = { firstName: updatedUser.firstName, lastName: updatedUser.lastName, _id: updatedUser._id, email: updatedUser.email, phoneNumber: updatedUser.phoneNumber, admin: updatedUser.admin, token }
         res.status(200).json(data);
     } catch (error) {
         errorHandler(error, res, req);
@@ -168,7 +185,7 @@ userController.post('/basket', async (req, res) => {
         const { action, productId, price } = req.body
         if (action == 'added') {
             const product = await Product.findById(productId);
-            console.log(product)
+
             const data = {
                 item: productId,
                 price: price,
