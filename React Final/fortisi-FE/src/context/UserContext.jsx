@@ -8,13 +8,14 @@ const UserContext = createContext();
 
 export const UserProvider = ({ children }) => {
     const [user, setUser] = useLocaleStorage();
-
+    console.log(user);
     const onLoginHandler = async (userData) => {
-        const user = await userServices.login(userData);
-        if (!user) {
-            throw user;
+        try {
+            const user = await userServices.login(userData);
+            setUser(user);
+        } catch (err) {
+            throw Error(err.message);
         }
-        setUser(user);
     };
 
     const onRegisterHandler = async (userData) => {
@@ -28,12 +29,25 @@ export const UserProvider = ({ children }) => {
         return response;
     };
 
+    const onChangeUserInfo = async (userData) => {
+        const response = await userServices.changeUserInformation(userData);
+        setUser(response);
+    };
+
+    const onChangePassword = async (userData) => {
+        const response = await userServices.resetPassword(userData);
+        setUser(response);
+    };
+
     const contextValues = {
         user,
         isAuthenticated: !!user?.token,
+        isAdmin: !!user?.admin,
         onLoginHandler,
         onRegisterHandler,
         onLogoutHandler,
+        onChangeUserInfo,
+        onChangePassword,
     };
 
     return <UserContext.Provider value={contextValues}>{children}</UserContext.Provider>;
