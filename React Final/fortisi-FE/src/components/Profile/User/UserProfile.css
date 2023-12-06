@@ -1,0 +1,39 @@
+.user-profile {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: 'Inter', sans-serif;
+}
+
+.name-fields,
+.contact-fields {
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+}
+
+.form-group {
+    display: flex;
+    justify-content: space-around;
+    flex-direction: column;
+    margin-bottom: 1rem;
+    line-height: 2;
+    font-size: 17px;
+    font-weight: 600;
+}
+
+.btn {
+    width: 250px;
+    padding: 10px;
+    margin-top: 20px;
+    border: none;
+    border-radius: 20px;
+    background-color: #3b5d50;
+    color: white;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.btn:hover {
+    background-color: #2e4a3d;
+}
