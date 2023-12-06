@@ -24,7 +24,7 @@ export default function BorikaFake() {
                     <div className='total'>
                         <p>Сума за плащане: {total} лв.</p>
                     </div>
-                    <button type='submit' className='submit-btn'>
+                    <button type='button' className='submit-btn'>
                         Плати
                     </button>
                 </form>

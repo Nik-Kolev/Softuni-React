@@ -1,5 +1,6 @@
 import { useState } from 'react'
-import { getUserData, setUserData, clearUserData } from '../utils/userLocaleStorage'
+
+import { clearUserData, getUserData, setUserData } from '../utils/userLocaleStorage'
 
 export const useLocaleStorage = () => {
     const [state, setState] = useState(getUserData)

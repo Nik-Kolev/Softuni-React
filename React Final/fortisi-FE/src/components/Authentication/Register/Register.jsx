@@ -95,7 +95,7 @@ export default function Register() {
                                                     Телефонен Номер
                                                 </label>
                                                 <input
-                                                    type='text'
+                                                    type='tel'
                                                     className={`form-control ${errors?.phoneNumber ? 'input-error' : ''}`}
                                                     id='phoneNumber'
                                                     name='phoneNumber'
