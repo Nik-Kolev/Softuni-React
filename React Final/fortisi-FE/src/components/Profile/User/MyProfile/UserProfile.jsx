@@ -98,6 +98,7 @@ export default function UserProfile() {
                         value={user.email}
                         style={{ cursor: 'not-allowed' }}
                     />
+                    <span></span>
                 </div>
             </div>
             <div className='form-group'>
