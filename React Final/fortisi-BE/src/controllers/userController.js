@@ -109,7 +109,6 @@ userController.post('/changeInformation', isAuthorized, async (req, res) => {
     }
 
     try {
-
         const updatedUser = await userModel.findByIdAndUpdate({ _id: req.user._id }, { firstName: firstName, lastName: lastName, phoneNumber: phoneNumber }, { new: true })
 
         const token = await tokenCreator(updatedUser)
@@ -124,7 +123,8 @@ userController.post('/changeInformation', isAuthorized, async (req, res) => {
 
 
 userController.post('/resetPassword', isAuthorized, async (req, res) => {
-    const { newPassword } = req.body;
+    const { password, newPassword, email } = req.body;
+
     let errors = [];
 
     Object.entries(req.body).forEach(([fieldName, value]) => {
@@ -138,6 +138,14 @@ userController.post('/resetPassword', isAuthorized, async (req, res) => {
     }
 
     try {
+        const user = await userModel.findOne({ email });
+
+        const isValid = await bcrypt.compare(password, user.password)
+
+        if (!isValid) {
+            return res.status(401).json('Невалидна парола.')
+        }
+
         const newHashedPassword = await bcrypt.hash(newPassword, 10)
 
         const updatedUser = await userModel.findByIdAndUpdate({ _id: req.user._id }, { password: newHashedPassword }, { new: true })

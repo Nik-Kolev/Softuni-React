@@ -9,7 +9,7 @@ import { useUserContext } from '../../../../context/UserContext';
 import { changePasswordSchema } from '../../../../validations/changePassword';
 
 export default function ChangePassword() {
-    const { onChangePassword } = useUserContext();
+    const { user, onChangePassword } = useUserContext();
 
     const {
         register,
@@ -24,9 +24,14 @@ export default function ChangePassword() {
     }, [setFocus]);
 
     const onSubmitHandler = async (data) => {
+        const enhancedData = {
+            password: data.password,
+            newPassword: data.newPassword,
+            email: user.email,
+        };
         try {
-            console.log(data);
-            await onChangePassword({ newPassword: data.newPassword });
+            console.log(enhancedData);
+            await onChangePassword(enhancedData);
             toast('Промените са запазени успешно.');
             reset();
         } catch (err) {
