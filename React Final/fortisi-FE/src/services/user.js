@@ -20,3 +20,11 @@ export async function getStoredProducts() {
 export async function postStoredProducts(data) {
     return await post(userEndpoints.storedProducts, data)
 }
+
+export async function changeUserInformation(data) {
+    return await post(userEndpoints.changeInfo, data)
+}
+
+export async function resetPassword(data) {
+    return await post(userEndpoints.resetPass, data)
+}

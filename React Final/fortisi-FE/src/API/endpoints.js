@@ -2,7 +2,9 @@ export const userEndpoints = {
     login: '/users/login',
     register: '/users/register',
     logout: '/users/logout',
-    storedProducts: '/users/basket'
+    storedProducts: '/users/basket',
+    changeInfo: '/users/changeInformation',
+    resetPass: '/users/resetPassword'
 }
 
 export const productEndpoints = {
