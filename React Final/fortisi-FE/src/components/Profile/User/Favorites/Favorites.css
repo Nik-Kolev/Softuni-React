@@ -1,0 +1,34 @@
+.favorites-no-products-container {
+    margin-top: 50px;
+    text-align: center;
+}
+
+.favorites-no-products {
+    font-size: 48px;
+}
+
+.favorites-back-button {
+    width: 220px;
+    margin: 30px auto;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    background-color: #3b5d50;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+}
+
+.favorites-back-button:hover {
+    background-color: #4c7a67;
+    color: #e8f0e3;
+    transition: all 0.3s ease;
+}
+
+.favorites-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
