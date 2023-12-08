@@ -18,6 +18,7 @@ import PaymentGuard from './components/Guards/PaymentGuard';
 import NavigationBar from './components/Header/NavigationBar/NavigationBar';
 import SomethingWentWrong from './components/Home/404/404';
 import Front from './components/Home/Front/Front';
+import CreateQuote from './components/Home/Quotes/Quotes';
 import CreateProduct from './components/Products/CreateProducts/CreateProduct';
 import EditProduct from './components/Products/EditProducts/EditProduct';
 import Profile from './components/Profile/Profile';
@@ -74,6 +75,7 @@ function App() {
                             <Route element={<AdminGuard />}>
                                 <Route path='/create-product' element={<CreateProduct />} />
                                 <Route path='/edit-product/:id' element={<EditProduct />} />
+                                <Route path='/create-quote' element={<CreateQuote />} />
                             </Route>
                         </Route>
 

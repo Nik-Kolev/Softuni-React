@@ -17,5 +17,9 @@ export const productEndpoints = {
     getById: (id) => `/product/getSingleProductById/${id}`,
     editProduct: (id) => `/product/editProductById/${id}`,
     delProduct: (id) => `/product/delete/${id}`,
+}
 
+export const quoteEndpoints = {
+    create: '/quote/create-quote',
+    getSingleQuote: '/quote/getSingleQuote'
 }

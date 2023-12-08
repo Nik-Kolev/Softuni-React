@@ -1,11 +1,12 @@
 import './Front.css';
 
 import { useEffect, useState } from 'react';
+
+import { getSingleQuote } from '../../../services/quote';
 export default function Front() {
     const [quote, setQuote] = useState([]);
     useEffect(() => {
-        fetch('http://localhost:3000/quote/getSingleQuote')
-            .then((x) => x.json())
+        getSingleQuote()
             .then((x) => setQuote(x[0]))
             .catch((err) => console.log(err));
     }, []);
