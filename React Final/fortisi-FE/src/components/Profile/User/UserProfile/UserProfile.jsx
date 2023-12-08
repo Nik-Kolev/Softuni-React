@@ -21,7 +21,10 @@ export default function UserProfile() {
 
     useEffect(() => {
         setFocus('firstName');
-    }, [setFocus]);
+        return () => {
+            reset();
+        };
+    }, [setFocus, reset]);
 
     const onSubmitHandler = async (data) => {
         const enhancedData = {

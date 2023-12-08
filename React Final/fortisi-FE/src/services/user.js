@@ -28,3 +28,7 @@ export async function changeUserInformation(data) {
 export async function resetPassword(data) {
     return await post(userEndpoints.resetPass, data)
 }
+
+export async function updateUserAddress(data) {
+    return await post(userEndpoints.updateAddressInfo, data)
+}

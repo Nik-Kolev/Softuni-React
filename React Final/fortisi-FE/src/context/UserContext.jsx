@@ -39,6 +39,11 @@ export const UserProvider = ({ children }) => {
         setUser(response);
     };
 
+    const onChangeUserAddress = async (userData) => {
+        const response = await userServices.updateUserAddress(userData);
+        setUser(response);
+    };
+
     const contextValues = {
         user,
         isAuthenticated: !!user?.token,
@@ -48,6 +53,7 @@ export const UserProvider = ({ children }) => {
         onLogoutHandler,
         onChangeUserInfo,
         onChangePassword,
+        onChangeUserAddress,
     };
 
     return <UserContext.Provider value={contextValues}>{children}</UserContext.Provider>;

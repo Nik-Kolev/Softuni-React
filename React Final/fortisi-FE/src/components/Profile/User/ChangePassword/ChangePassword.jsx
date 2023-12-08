@@ -30,7 +30,6 @@ export default function ChangePassword() {
             email: user.email,
         };
         try {
-            console.log(enhancedData);
             await onChangePassword(enhancedData);
             toast('Промените са запазени успешно.');
             reset();
@@ -55,31 +54,33 @@ export default function ChangePassword() {
                     />
                     <span className={errors?.password ? 'form-error' : ''}>{errors?.password?.message}</span>
                 </div>
-                <div className='form-group'>
-                    <label htmlFor='newPassword' className='text-black'>
-                        Нова парола
-                    </label>
-                    <input
-                        type='password'
-                        className={`form-control ${errors?.newPassword ? 'input-error' : ''}`}
-                        id='newPassword'
-                        name='newPassword'
-                        {...register('newPassword')}
-                    />
-                    <span className={errors?.newPassword ? 'form-error' : ''}>{errors?.newPassword?.message}</span>
-                </div>
-                <div className='form-group'>
-                    <label htmlFor='reNewPassword' className='text-black'>
-                        Потвърди новата парола
-                    </label>
-                    <input
-                        type='password'
-                        className={`form-control ${errors?.reNewPassword ? 'input-error' : ''}`}
-                        id='reNewPassword'
-                        name='reNewPassword'
-                        {...register('reNewPassword')}
-                    />
-                    <span className={errors?.reNewPassword ? 'form-error' : ''}>{errors?.reNewPassword?.message}</span>
+                <div className='password-fields'>
+                    <div className='form-group'>
+                        <label htmlFor='newPassword' className='text-black'>
+                            Нова парола
+                        </label>
+                        <input
+                            type='password'
+                            className={`form-control ${errors?.newPassword ? 'input-error' : ''}`}
+                            id='newPassword'
+                            name='newPassword'
+                            {...register('newPassword')}
+                        />
+                        <span className={errors?.newPassword ? 'form-error' : ''}>{errors?.newPassword?.message}</span>
+                    </div>
+                    <div className='form-group'>
+                        <label htmlFor='reNewPassword' className='text-black'>
+                            Потвърди новата парола
+                        </label>
+                        <input
+                            type='password'
+                            className={`form-control ${errors?.reNewPassword ? 'input-error' : ''}`}
+                            id='reNewPassword'
+                            name='reNewPassword'
+                            {...register('reNewPassword')}
+                        />
+                        <span className={errors?.reNewPassword ? 'form-error' : ''}>{errors?.reNewPassword?.message}</span>
+                    </div>
                 </div>
             </div>
             <div className='form-group'>
