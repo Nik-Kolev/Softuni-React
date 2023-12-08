@@ -2,7 +2,6 @@ import './Profile.css';
 
 import { useState } from 'react';
 
-import { useUserContext } from '../../context/UserContext';
 import Address from './User/Address/Address';
 import ChangePassword from './User/ChangePassword/ChangePassword';
 import UserProfile from './User/UserProfile/UserProfile';
@@ -10,8 +9,6 @@ import UserProfile from './User/UserProfile/UserProfile';
 export default function Profile() {
     const [currentComponent, setCurrentComponent] = useState('Admin');
 
-    const { user } = useUserContext();
-    console.log(user);
     const renderComponent = () => {
         switch (currentComponent) {
             case 'changePassword':
