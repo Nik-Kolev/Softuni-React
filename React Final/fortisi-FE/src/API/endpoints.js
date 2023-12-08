@@ -5,7 +5,10 @@ export const userEndpoints = {
     storedProducts: '/users/basket',
     changeInfo: '/users/changeInformation',
     resetPass: '/users/resetPassword',
-    updateAddressInfo: '/users/addressInformation'
+    updateAddressInfo: '/users/addressInformation',
+    getAllLiked: (currentPage) => `/users/all-liked?page=${currentPage}`,
+    likeOrDislikeProduct: '/users/liked',
+    productStatus: (id) => `/users/liked/${id}`,
 }
 
 export const productEndpoints = {
@@ -14,6 +17,5 @@ export const productEndpoints = {
     getById: (id) => `/product/getSingleProductById/${id}`,
     editProduct: (id) => `/product/editProductById/${id}`,
     delProduct: (id) => `/product/delete/${id}`,
-    likeOrDislikeProduct: '/users/liked',
-    asdProduct: (id) => `/users/liked/${id}`,
+
 }
