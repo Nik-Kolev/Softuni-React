@@ -22,24 +22,6 @@ export default function ItemCard({ name, price, productType, imageUrl, removeFro
                 </h2>
             </td>
             <td className='cart-price'>{price} лв.</td>
-            <td className='cart-quantity'>
-                <div className='quantity-container d-flex align-items-center justify-content-center'>
-                    <button className='cart-button decrease' type='button'>
-                        -
-                    </button>
-                    <input
-                        type='text'
-                        className='form-control text-center quantity-amount'
-                        placeholder='0'
-                        aria-label='Example text with button addon'
-                        aria-describedby='button-addon1'
-                    />
-                    <button className='cart-button increase' type='button'>
-                        +
-                    </button>
-                </div>
-            </td>
-            <td className='cart-total'>{price} лв.</td>
             <td className='cart-remove'>
                 <button className='cart-button' type='button' onClick={handleRemoveItem}>
                     Премахни

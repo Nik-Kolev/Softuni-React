@@ -22,8 +22,6 @@ export default function Cart() {
                                             <th className='cart-thumbnail'>Продукт</th>
                                             <th className='cart-name'>Име</th>
                                             <th className='cart-price'>Цена</th>
-                                            <th className='cart-quantity'>Количесво</th>
-                                            <th className='cart-total'>Общо</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -57,10 +55,9 @@ export default function Cart() {
                             <div className='col-md-7'>
                                 <div className='cart-row'>
                                     <div className='col-md-12 text-right border-bottom mb-5'>
-                                        <h3 className='text-black h4 text-uppercase'>Общо</h3>
-                                        <div className='col-md-6 text-right'>
-                                            <strong className='text-black'>{total} лв.</strong>
-                                        </div>
+                                        <h3 className='text-black h6 text-uppercase'>
+                                            Общо: <strong className='text-black'>{total} лв.</strong>
+                                        </h3>
                                     </div>
                                 </div>
                                 <div className='col-md-12 cart-buttons'>
