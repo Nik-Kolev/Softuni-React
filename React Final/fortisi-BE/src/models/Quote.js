@@ -1,18 +1,13 @@
 const mongoose = require('mongoose')
 
 const quoteSchema = new mongoose.Schema({
-    quote: {
+    title: {
         type: String,
         required: true
     },
-    value: {
+    text: {
         type: String,
         required: true,
-    },
-    imageUrl: {
-        type: String,
-        required: true,
-        // match: [/^https?:\/\/.+/, 'ImageUrl is not valid!'],
     },
 })
 
