@@ -1,7 +1,6 @@
 import '../UserProfile.css';
 
 import { yupResolver } from '@hookform/resolvers/yup';
-import { useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import toast from 'react-simple-toasts';
 
@@ -15,16 +14,8 @@ export default function UserProfile() {
         register,
         handleSubmit,
         formState: { errors },
-        setFocus,
         reset,
     } = useForm({ resolver: yupResolver(changeInformationSchema), mode: 'onBlur' });
-
-    useEffect(() => {
-        setFocus('firstName');
-        return () => {
-            reset();
-        };
-    }, [setFocus, reset]);
 
     const onSubmitHandler = async (data) => {
         const enhancedData = {

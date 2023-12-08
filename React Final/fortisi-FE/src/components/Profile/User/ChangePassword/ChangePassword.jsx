@@ -1,7 +1,6 @@
 import '../UserProfile.css';
 
 import { yupResolver } from '@hookform/resolvers/yup';
-import { useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import toast from 'react-simple-toasts';
 
@@ -15,13 +14,8 @@ export default function ChangePassword() {
         register,
         handleSubmit,
         formState: { errors },
-        setFocus,
         reset,
     } = useForm({ resolver: yupResolver(changePasswordSchema), mode: 'onBlur' });
-
-    useEffect(() => {
-        setFocus('password');
-    }, [setFocus]);
 
     const onSubmitHandler = async (data) => {
         const enhancedData = {

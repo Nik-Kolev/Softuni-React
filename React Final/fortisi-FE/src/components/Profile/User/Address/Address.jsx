@@ -1,6 +1,5 @@
 import '../UserProfile.css';
 
-import { useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import toast from 'react-simple-toasts';
 
@@ -13,13 +12,8 @@ export default function Address() {
         register,
         handleSubmit,
         formState: { errors },
-        setFocus,
         reset,
     } = useForm({ mode: 'onBlur' });
-
-    useEffect(() => {
-        setFocus('city');
-    }, [setFocus]);
 
     const onSubmitHandler = async (data) => {
         try {
