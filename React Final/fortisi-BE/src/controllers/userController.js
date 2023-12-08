@@ -173,7 +173,6 @@ userController.post('/liked', async (req, res) => {
         errorHandler(error, res, req)
     }
 
-
 })
 
 userController.get('/liked/:id', async (req, res) => {
@@ -186,6 +185,30 @@ userController.get('/liked/:id', async (req, res) => {
         errorHandler(error, res, req)
     }
 })
+
+userController.get('/all-liked', async (req, res) => {
+    try {
+        const userId = req.user?._id;
+        const page = Number(req.query.page) || 1;
+        const limit = 9;
+        const skip = (page - 1) * limit;
+
+        const likedProducts = await userModel.findOne({ _id: userId })
+            .select({ likedProducts: 1, _id: 0 })
+            .lean()
+            .then(doc => doc.likedProducts);
+        const totalPages = Math.ceil(likedProducts.length / limit);
+        const data = {
+            products: likedProducts.slice(skip, limit + skip),
+            totalPages: totalPages
+        };
+
+        res.status(200).json(data);
+    } catch (error) {
+        errorHandler(error);
+    }
+});
+
 
 userController.post('/basket', async (req, res) => {
     try {
@@ -214,7 +237,7 @@ userController.post('/basket', async (req, res) => {
         }
         if (action == 'remove') {
             await userModel.findByIdAndUpdate(userId, { $pull: { storedProducts: { _id: productId } } });
-            res.status(200).json(`${productId} ${action}`)
+            res.status(200).json(`${productId} is ${action}d`)
         }
     } catch (error) {
         errorHandler(error, res, req)
