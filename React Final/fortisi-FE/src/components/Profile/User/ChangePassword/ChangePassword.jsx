@@ -5,7 +5,7 @@ import { useForm } from 'react-hook-form';
 import toast from 'react-simple-toasts';
 
 import { useUserContext } from '../../../../context/UserContext';
-import { changePasswordSchema } from '../../../../validations/changePassword';
+import { changePasswordSchema } from '../../../../validations/changePasswordValidations';
 
 export default function ChangePassword() {
     const { user, onChangePassword } = useUserContext();

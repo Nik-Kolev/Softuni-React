@@ -5,7 +5,7 @@ import { useForm } from 'react-hook-form';
 import toast from 'react-simple-toasts';
 
 import { useUserContext } from '../../../../context/UserContext';
-import { changeInformationSchema } from '../../../../validations/changeInformation';
+import { changeInformationSchema } from '../../../../validations/changeInformationValidations';
 
 export default function UserProfile() {
     const { user, onChangeUserInfo } = useUserContext();
