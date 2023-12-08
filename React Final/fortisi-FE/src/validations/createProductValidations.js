@@ -1,6 +1,6 @@
 import * as yup from 'yup'
 
-const allowedCategories = ['bedroom', 'livingRoom', 'kitchen', 'children`sRoom', 'entranceHall', 'office'];
+const allowedCategories = ['bedroom', 'livingroom', 'kitchen', 'children', 'entranceHall', 'office'];
 
 export const productSchema = yup.object().shape({
     productType: yup.string().trim().required('Полето е задължително.'),
