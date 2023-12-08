@@ -19,17 +19,23 @@ export default function UserDropDown() {
                 <div className='dropdown-menu' onClick={hideDropdown}>
                     {isAuthenticated ? (
                         <>
+                            {user.admin ? (
+                                <>
+                                    <Link to={'/create-product'} className='dropdown-link'>
+                                        Създай Продукт
+                                    </Link>
+                                    <Link to={'/create-quote'} className='dropdown-link'>
+                                        Създай Цитат
+                                    </Link>
+                                </>
+                            ) : (
+                                <Link to={'/profile'} className='dropdown-link'>
+                                    Профил
+                                </Link>
+                            )}
                             <Link to={'/all-liked'} className='dropdown-link'>
                                 Любими
                             </Link>
-                            <Link to={'/profile'} className='dropdown-link'>
-                                Профил
-                            </Link>
-                            {user.admin && (
-                                <Link to={'/create-product'} className='dropdown-link'>
-                                    Създай Продукт
-                                </Link>
-                            )}
                             <Logout />
                         </>
                     ) : (
