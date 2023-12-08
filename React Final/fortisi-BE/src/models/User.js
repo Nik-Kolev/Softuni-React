@@ -52,39 +52,15 @@ const userSchema = new mongoose.Schema(
             }
         }],
         address: {
-            country: {
-                type: String,
-                // required: true,
-                default: ''
-                // minLength: [2, 'Country should be at least 2 characters long!'],
-            },
-            city: {
-                type: String,
-                default: ''
-                // required: true,
-                // minLength: [3, 'City should be at least 3 characters long!'],
-            },
-            street: {
-                type: String,
-                default: ''
-                // required: true,
-                // minLength: [3, 'Street should be at least 3 characters long!'],
-            },
-            streetNumber: {
-                type: Number,
-                default: 0
-                // required: true,
-                // min: [1, 'Street number should be a positive number!'],
-            },
-            buildingInformation: {
-                type: String,
-                default: ''
-            },
-            extraInformation: {
-                type: String,
-                default: ''
-            }
-        },
+            city: { type: String, default: '' },
+            street: { type: String, default: '' },
+            streetNumber: { type: String, default: '' },
+            block: { type: String, default: '' },
+            entrance: { type: String, default: '' },
+            floor: { type: String, default: '' },
+            apartment: { type: String, default: '' },
+            description: { type: String, default: '' }
+        }
     },
 );
 

@@ -4,7 +4,8 @@ export const userEndpoints = {
     logout: '/users/logout',
     storedProducts: '/users/basket',
     changeInfo: '/users/changeInformation',
-    resetPass: '/users/resetPassword'
+    resetPass: '/users/resetPassword',
+    updateAddressInfo: '/users/addressInformation'
 }
 
 export const productEndpoints = {

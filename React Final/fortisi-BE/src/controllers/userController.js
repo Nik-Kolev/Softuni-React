@@ -36,7 +36,7 @@ userController.post('/login', isGuest, async (req, res) => {
         }
 
         const token = await tokenCreator(user)
-        const data = { firstName: user.firstName, lastName: user.lastName, _id: user._id, email: user.email, phoneNumber: user.phoneNumber, admin: user.admin, token }
+        const data = { firstName: user.firstName, lastName: user.lastName, _id: user._id, email: user.email, phoneNumber: user.phoneNumber, address: user.address, admin: user.admin, token }
         res.status(200).json(data);
     } catch (error) {
         errorHandler(error, res, req);
@@ -230,5 +230,29 @@ userController.get('/basket', async (req, res) => {
         errorHandler(error, res, req)
     }
 })
+
+userController.post('/addressInformation', async (req, res) => {
+    try {
+        const { _id: userId } = req.user || {};
+
+        const addressFields = ['city', 'street', 'streetNumber', 'block', 'entrance', 'floor', 'apartment', 'description'];
+        const addressUpdate = addressFields.reduce((acc, field) => {
+            if (req.body[field]) {
+                acc[`address.${field}`] = req.body[field]
+            };
+            return acc;
+        }, {});
+
+        const updatedAddressInfo = await userModel.findByIdAndUpdate(userId, { $set: addressUpdate }, { new: true });
+        const token = await tokenCreator(updatedAddressInfo);
+
+        const { firstName, lastName, email, phoneNumber, address, admin } = updatedAddressInfo;
+        const data = { firstName, lastName, _id: userId, email, phoneNumber, address, admin, token };
+
+        res.status(200).json(data);
+    } catch (error) {
+        errorHandler(error, res, req);
+    }
+});
 
 module.exports = userController
