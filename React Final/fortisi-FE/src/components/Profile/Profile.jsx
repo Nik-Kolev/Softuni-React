@@ -3,8 +3,9 @@ import './Profile.css';
 import { useState } from 'react';
 
 import { useUserContext } from '../../context/UserContext';
+import Address from './User/Address/Address';
 import ChangePassword from './User/ChangePassword/ChangePassword';
-import UserProfile from './User/MyProfile/UserProfile';
+import UserProfile from './User/UserProfile/UserProfile';
 
 export default function Profile() {
     const [currentComponent, setCurrentComponent] = useState('Admin');
@@ -15,6 +16,8 @@ export default function Profile() {
         switch (currentComponent) {
             case 'changePassword':
                 return <ChangePassword />;
+            case 'address':
+                return <Address />;
             default:
                 return <UserProfile />;
         }
@@ -37,7 +40,7 @@ export default function Profile() {
                             <div onClick={(e) => handleClick(e, 'changePassword')}>Смяна на парола</div>
                         </li>
                         <li>
-                            <div onClick={(e) => handleClick(e, 'Test')}>Адрес за доставка</div>
+                            <div onClick={(e) => handleClick(e, 'address')}>Адрес за доставка</div>
                         </li>
                     </ul>
                 </nav>
