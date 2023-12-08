@@ -1,10 +1,11 @@
 import { useEffect, useState } from 'react';
-import { Link, useNavigate, useParams, useSearchParams } from 'react-router-dom';
+import { useNavigate, useParams, useSearchParams } from 'react-router-dom';
 import toast from 'react-simple-toasts';
 
 import { useSpinner } from '../../../hooks/useSpinner';
 import { getProductByCategory } from '../../../services/product';
 import Spinner from '../../Home/Spinner/Spinner';
+import Pagination from '../../Pagination/Pagination';
 import CategoryListCard from './CategoryListCard';
 
 export default function CategoryList() {
@@ -42,31 +43,7 @@ export default function CategoryList() {
                             <div className='row'>{data && data.map((x) => <CategoryListCard key={x._id} {...x} />)}</div>
                         </div>
                     </div>
-                    {totalPages != 1 && (
-                        <div className='pagination-container'>
-                            <ul className='pagination'>
-                                {page !== 1 && (
-                                    <li>
-                                        <Link to={`?page=${page - 1}`} style={{ fontSize: '24px' }}>
-                                            &laquo;
-                                        </Link>
-                                    </li>
-                                )}
-                                {numberOfPages.map((pageNumber) => (
-                                    <li key={pageNumber} className={page === pageNumber ? 'active' : ''}>
-                                        <Link to={`?page=${pageNumber}`}>{pageNumber}</Link>
-                                    </li>
-                                ))}
-                                {totalPages !== page && (
-                                    <li>
-                                        <Link to={`?page=${page + 1}`} style={{ fontSize: '24px' }}>
-                                            &raquo;
-                                        </Link>
-                                    </li>
-                                )}
-                            </ul>
-                        </div>
-                    )}
+                    {totalPages != 1 && <Pagination page={page} numberOfPages={numberOfPages} totalPages={totalPages} />}
                 </div>
             )}
         </>
