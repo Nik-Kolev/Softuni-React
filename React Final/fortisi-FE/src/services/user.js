@@ -32,3 +32,15 @@ export async function resetPassword(data) {
 export async function updateUserAddress(data) {
     return await post(userEndpoints.updateAddressInfo, data)
 }
+
+export async function likeOrDislikeProduct(data) {
+    return await post(userEndpoints.likeOrDislikeProduct, data)
+}
+
+export async function productStatus(id) {
+    return await get(userEndpoints.productStatus(id))
+}
+
+export async function getAllLikedProducts(currentPage) {
+    return await get(userEndpoints.getAllLiked(currentPage))
+}

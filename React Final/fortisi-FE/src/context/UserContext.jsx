@@ -8,7 +8,7 @@ const UserContext = createContext();
 
 export const UserProvider = ({ children }) => {
     const [user, setUser] = useLocaleStorage();
-    console.log(user);
+
     const onLoginHandler = async (userData) => {
         try {
             const user = await userServices.login(userData);
