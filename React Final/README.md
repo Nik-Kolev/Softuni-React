@@ -1,5 +1,17 @@
+## Table of Contents
+
 1. [Fortisi](#Fortisi)
 2. [Technologies Used](#Technologies)
+3. [Project Overview](#project-overview)
+4. [Admin Capabilities](#features)
+    - [Product Management](#product-management)
+    - [Quote Creation](#quote-creation)
+    - [User Profile](#user-profile)
+5. [User Experience](#user-experience)
+    - [Shopping Cart](#shopping-cart)
+    - [Product Interaction](#product-interaction)
+    - [Secure Authentication](#secure-authentication)
+    - [Intuitive Interface](#intuitive-interface)
 
 # Fortisi
 
@@ -14,3 +26,35 @@ Fortisi is an innovative e-commerce platform specializing in furniture that offe
 **Frontend Stack**
 
 [![React](https://img.shields.io/badge/React-✓-blue)]()[![Supabase](https://img.shields.io/badge/Supabase-✓-yellowgreen)]() [![React Router DOM](https://img.shields.io/badge/React_Router_DOM-✓-brightgreen)]()[![Bootstrap](https://img.shields.io/badge/Bootstrap-✓-red)]()
+
+# Project Overview
+
+Fortisi is a dynamic e-commerce platform that revolutionizes the furniture shopping experience with its vast selection and user-friendly design. It aims to provide customers with a convenient and enjoyable way to find and purchase high-quality furniture online.
+
+## Admin Capabilities
+
+### Product Management
+
+Admins can effortlessly create new products, edit existing listings, and delete products to keep the inventory up-to-date.
+
+### Quote Creation
+
+Quote Creation: Admins have the ability to generate custom quotes, providing personalized pricing and offers to customers.
+
+## User Experience
+
+### Shopping Cart
+
+Users can browse and purchase products with ease, adding items to their shopping cart for a streamlined checkout process.
+
+### Product Interaction
+
+Customers can engage with products by liking them, contributing to a community-driven experience and helping others make informed decisions.
+
+### Secure Authentication
+
+Both admins and users benefit from secure authentication, ensuring a safe and personalized experience on the platform.
+
+### Intuitive Interface
+
+The platform’s intuitive design allows for easy navigation and interaction with the product offerings and features.
