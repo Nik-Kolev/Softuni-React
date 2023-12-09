@@ -16,7 +16,7 @@ export default function AboutUs() {
                     Отговорни сме към хората, средата и природата. Почтени сме. Подкрепяме благотворителни каузи в различни области.
                     Вярваме, че изборът на живот днес е основата за живот утре.
                 </p>
-                <img src='/src/images/aboutUs/responsibility.jpg' alt='отговорност' />
+                <img src='/src/images/aboutUs/responsibility.png' alt='отговорност' />
             </div>
             <div className='card'>
                 <h2>ГРИЖА</h2>
