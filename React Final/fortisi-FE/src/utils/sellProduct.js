@@ -18,7 +18,6 @@ export const sellProduct = async (user, _id, price, discount, name, postStoredPr
         };
         addToBasket(data);
         toast(`Артикул ${name} е добавен в количката.`);
-        navigateTo('/cart');
     } else {
         toast('Трябва да се логнете преди да продължите.');
         navigateTo(`/login?redirect=${currentPath}`);
