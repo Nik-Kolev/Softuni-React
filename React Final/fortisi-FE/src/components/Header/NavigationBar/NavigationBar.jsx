@@ -41,9 +41,9 @@ export default function NavigationBar() {
                             </Link>
                         </li>
                         <li>
-                            <Link to={'/contacts'} className='nav-link'>
-                                Контакти
-                            </Link>
+                            <div className='nav-link' style={{ cursor: 'pointer' }}>
+                                0892 90 90 92
+                            </div>
                         </li>
                     </ul>
 
