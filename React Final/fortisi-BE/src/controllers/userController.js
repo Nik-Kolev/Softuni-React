@@ -26,13 +26,13 @@ userController.post('/login', isGuest, async (req, res) => {
         const user = await userModel.findOne({ email });
 
         if (!user) {
-            return res.status(404).json('Email or password is incorrect.')
+            return res.status(404).json('Имейлът или паролата са невалидни.')
         }
 
         const isValid = await bcrypt.compare(password, user.password)
 
         if (!isValid) {
-            return res.status(404).json('Email or password is incorrect.')
+            return res.status(404).json('Имейлът или паролата са невалидни.')
         }
 
         const token = await tokenCreator(user)
@@ -62,13 +62,13 @@ userController.post('/register', isGuest, async (req, res) => {
     try {
 
         if (password !== rePass) {
-            return res.status(404).json('Passwords don`t match.')
+            return res.status(404).json('Паролите не съвпадат.')
         }
 
         const user = await userModel.exists({ email })
 
         if (user) {
-            return res.status(409).json('Email is already taken.')
+            return res.status(409).json('Имейлът е вече зает.')
         }
 
         const hashedPass = await bcrypt.hash(password, 10)
