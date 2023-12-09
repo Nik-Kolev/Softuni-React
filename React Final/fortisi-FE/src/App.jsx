@@ -1,6 +1,7 @@
 import { Route, Routes } from 'react-router-dom';
 import { toastConfig } from 'react-simple-toasts';
 
+import AboutUs from './components/AboutUs/AboutUs';
 import Login from './components/Authentication/Login/Login';
 import Register from './components/Authentication/Register/Register';
 import Blog from './components/Blog/Blog';
@@ -46,6 +47,7 @@ function App() {
                         <Route path='/catalog/:category' element={<CategoryList />} />
                         <Route path='/catalog/:category/:id' element={<ProductDetails />} />
                         <Route path='/blog' element={<Blog />} />
+                        <Route path='/about-us' element={<AboutUs />} />
                         {/* For not logged in users */}
                         <Route element={<LoggedUserGuard />}>
                             <Route path='/login' element={<Login />} />
