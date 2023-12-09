@@ -13,6 +13,7 @@
     - [Secure Authentication](#secure-authentication)
     - [Intuitive Interface](#intuitive-interface)
 6. [Project Structure](#project-structure)
+7. [Installation and Running the Application](#installation-and-running-the-application)
 
 # Fortisi
 
@@ -62,7 +63,7 @@ The platform’s intuitive design allows for easy navigation and interaction wit
 
 ## Project Structure
 
--   _/fortisi-BE/src_: ExpressJS backend server
+-   **_/fortisi-BE/src_**: ExpressJS backend server
 
     -   **/config**: Configuration files for the server.
 
@@ -76,4 +77,6 @@ The platform’s intuitive design allows for easy navigation and interaction wit
 
     -   **/routes**: Express routes for handling API requests.
 
--   _/fortisi-FE/src_: Contains the frontend application built with React - components, styles, and application logic.
+-   **_/fortisi-FE/src_**: Contains the frontend application built with React - components, styles, and application logic.
+
+## Installation and Running the Application
