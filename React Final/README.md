@@ -4,4 +4,6 @@
 
 **Frontend Stack**
 
-[![React](https://img.shields.io/badge/React-✓-blue)]()[![Supabase](https://img.shields.io/badge/Supabase-✓-yellowgreen)]() [![React Router DOM](https://img.shields.io/badge/React_Router_DOM-✓-brightgreen)]() [![React-Hook-Form](https://img.shields.io/badge/React-Hook-Form-✓-yellowgreen)]() [![Bootstrap](https://img.shields.io/badge/Bootstrap-✓-red)]()[![React-Simple-Toasts](https://img.shields.io/badge/react-simple-toasts-✓-brightgreen)]()
+[![React](https://img.shields.io/badge/React-✓-blue)]()[![Supabase](https://img.shields.io/badge/Supabase-✓-yellowgreen)]() [![React Router DOM](https://img.shields.io/badge/React_Router_DOM-✓-brightgreen)]()[![Bootstrap](https://img.shields.io/badge/Bootstrap-✓-red)]()
+
+Fortisi is an innovative e-commerce platform specializing in furniture that offers a seamless online shopping experience. This platform is tailored to cater to the needs of modern consumers looking for quality furniture with convenience. Fortisi provides a user-friendly interface where customers can browse through an extensive collection of furniture, compare products, and make informed decisions with ease. The goal is to transform the way people shop for furniture by offering stylish and functional pieces that can be purchased from the comfort of their home. Fortisi aims to enhance the customer’s journey from selection to delivery, ensuring satisfaction at every step.
