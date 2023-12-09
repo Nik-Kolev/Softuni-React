@@ -52,7 +52,7 @@ export default function Footer() {
                             <Link to={'/about-us'}>За Нас</Link>
                         </li>
                         <li>
-                            <Link to={'/contacts'}>Контакти</Link>
+                            <div style={{ cursor: 'pointer' }}>0892 90 90 92</div>
                         </li>
                     </ul>
                 </div>
