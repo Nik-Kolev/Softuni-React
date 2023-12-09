@@ -43,7 +43,7 @@ export default function CategoryList() {
                             <div className='row'>{data && data.map((x) => <CategoryListCard key={x._id} {...x} />)}</div>
                         </div>
                     </div>
-                    {totalPages != 1 && <Pagination page={page} numberOfPages={numberOfPages} totalPages={totalPages} />}
+                    {totalPages != 1 && data.length > 0 && <Pagination page={page} numberOfPages={numberOfPages} totalPages={totalPages} />}
                 </div>
             )}
         </>
