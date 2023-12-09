@@ -4,4 +4,4 @@
 
 **Frontend Stack**
 
-[![React](https://img.shields.io/badge/React-✓-blue)]()[![Supabase](https://img.shields.io/badge/Supabase-✓-yellowgreen)]() [![React Router DOM](https://img.shields.io/badge/React_Router_DOM-✓-brightgreen)]() [![React-Hook-Form](https://img.shields.io/badge/React-Hook-Form-✓-yellowgreen)]() [![Bootstrap](https://img.shields.io/badge/Bootstrap-✓-red)]()[![Static Badge](https://img.shields.io/badge/react-simple-toasts-✓-brightgreen)]()
+[![React](https://img.shields.io/badge/React-✓-blue)]()[![Supabase](https://img.shields.io/badge/Supabase-✓-yellowgreen)]() [![React Router DOM](https://img.shields.io/badge/React_Router_DOM-✓-brightgreen)]() [![React-Hook-Form](https://img.shields.io/badge/React-Hook-Form-✓-yellowgreen)]() [![Bootstrap](https://img.shields.io/badge/Bootstrap-✓-red)]()[![React-Simple-Toasts](https://img.shields.io/badge/react-simple-toasts-✓-brightgreen)]()
