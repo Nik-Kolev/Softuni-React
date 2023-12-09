@@ -12,6 +12,7 @@
     - [Product Interaction](#product-interaction)
     - [Secure Authentication](#secure-authentication)
     - [Intuitive Interface](#intuitive-interface)
+6. [Project Structure](#project-structure)
 
 # Fortisi
 
@@ -58,3 +59,21 @@ Both admins and users benefit from secure authentication, ensuring a safe and pe
 ### Intuitive Interface
 
 The platform’s intuitive design allows for easy navigation and interaction with the product offerings and features.
+
+## Project Structure
+
+-   _/fortisi-BE/src_: ExpressJS backend server
+
+    -   **/config**: Configuration files for the server.
+
+    -   **/controllers**: Controllers handling the business logic.
+
+    -   **/middlewares**: Guards for authentication and authorization.
+
+    -   **/models**: DB Models.
+
+    -   **/utils**: Utility functions and helper modules.
+
+    -   **/routes**: Express routes for handling API requests.
+
+-   _/fortisi-FE/src_: Contains the frontend application built with React - components, styles, and application logic.
